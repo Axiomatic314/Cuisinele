@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".FirstFragment" tools:ignore="SpeakableTextPresentCheck" android:id="@+id/nestedScrollView">
+    <androidx.gridlayout.widget.GridLayout
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:id="@+id/gridLayout2" app:layout_constraintBottom_toTopOf="@+id/gridLayout3"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+                android:text="A"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="0"
+                android:id="@+id/keyboardA"/>
+        <Button
+                android:text="S"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="1"
+                android:id="@+id/keyboardS"/>
+        <Button
+                android:text="D"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="2"
+                android:id="@+id/keyboardD"/>
+        <Button
+                android:text="F"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="3"
+                android:id="@+id/keyboardF"/>
+        <Button
+                android:text="G"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="4"
+                android:id="@+id/keyboardG"/>
+        <Button
+                android:text="H"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="5"
+                android:id="@+id/keyboardH"/>
+        <Button
+                android:text="J"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="6"
+                android:id="@+id/keyboardJ"/>
+        <Button
+                android:text="K"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="7"
+                android:id="@+id/keyboardK"/>
+        <Button
+                android:text="L"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="8"
+                android:id="@+id/keyboardL"/>
+    </androidx.gridlayout.widget.GridLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <EditText
+            android:layout_width="270dp"
+            android:layout_height="50dp"
+            android:inputType="none"
+            android:text=""
+            android:ems="10"
+            android:id="@+id/editTextTextPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/gridLayout" app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginBottom="50dp" app:layout_constraintEnd_toStartOf="@+id/keyboardBackspace"
+            android:layout_marginEnd="5dp" android:layout_marginStart="20dp"/>
+    <ImageView
+            android:layout_width="373dp"
+            android:layout_height="315dp" tools:src="@tools:sample/backgrounds/scenic"
+            android:id="@+id/imageView"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName" android:layout_marginBottom="65dp"/>
+    <androidx.gridlayout.widget.GridLayout
+            android:layout_width="400dp"
+            android:layout_height="50dp"
+            android:id="@+id/gridLayout"
+            app:layout_constraintBottom_toTopOf="@+id/gridLayout2" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+                android:text="Q"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="0"
+                android:id="@+id/keyboardQ" android:textSize="14sp"/>
+        <Button
+                android:text="W"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="1"
+                android:id="@+id/keyboardW" android:textSize="14sp" android:textAlignment="center"/>
+        <Button
+                android:text="E"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="2"
+                android:id="@+id/keyboardE"/>
+        <Button
+                android:text="R"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="3"
+                android:id="@+id/keyboardR"/>
+        <Button
+                android:text="T"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="4"
+                android:id="@+id/keyboardT"/>
+        <Button
+                android:text="Y"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="5"
+                android:id="@+id/keyboardY"/>
+        <Button
+                android:text="U"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="6"
+                android:id="@+id/keyboardU"/>
+        <Button
+                android:text="I"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="7"
+                android:id="@+id/keyboardI"/>
+        <Button
+                android:text="O"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="8"
+                android:id="@+id/keyboardO"/>
+        <Button
+                android:text="P"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="9"
+                android:id="@+id/keyboardP"/>
+    </androidx.gridlayout.widget.GridLayout>
+    <androidx.gridlayout.widget.GridLayout
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="80dp" android:id="@+id/gridLayout3">
+
+        <Button
+                android:text="Z"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="0"
+                android:id="@+id/keyboardZ"/>
+        <Button
+                android:text="X"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="1"
+                android:id="@+id/keyboardX"/>
+        <Button
+                android:text="C"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="2"
+                android:id="@+id/keyboardC"/>
+        <Button
+                android:text="V"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="3"
+                android:id="@+id/keyboardV"/>
+        <Button
+                android:text="B"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="4"
+                android:id="@+id/keyboardB"/>
+        <Button
+                android:text="N"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="5"
+                android:id="@+id/keyboardN"/>
+        <Button
+                android:text="M"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" app:layout_row="0" app:layout_column="6"
+                android:id="@+id/keyboardM"/>
+    </androidx.gridlayout.widget.GridLayout>
+    <Button
+            android:text="Enter"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" android:id="@+id/keyboardEnter" app:iconPadding="2dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="20dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="20dp"/>
+    <Button
+            android:text="Clear"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" android:id="@+id/keyboardClear"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="20dp"/>
+    <Button
+            android:text="Delete"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" android:id="@+id/keyboardBackspace"
+            app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+            android:layout_marginBottom="52dp" android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
