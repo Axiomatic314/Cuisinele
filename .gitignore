@@ -26,3 +26,5 @@ hs_err_pid*
 Cuisinele/.gradle
 Cuisinele/.idea
 Cuisinele/build
+Cuisinele/local.properties
+Cuisinele/app/build
