@@ -24,7 +24,6 @@ class Cuisinele : Fragment() {
     ): View? {
         _binding = CuisineleBinding.inflate(inflater, container, false)
         setKeyButtons();
-
         return binding.root
 
     }
@@ -41,86 +40,87 @@ class Cuisinele : Fragment() {
 
     fun setKeyButtons() {
         binding.keyboardA.setOnClickListener {
-            binding.countryTextField.text.append("A");
+            writeChar("A");
         }
         binding.keyboardB.setOnClickListener {
-            binding.countryTextField.text.append("B");
+            writeChar("B");
         }
         binding.keyboardC.setOnClickListener {
-            binding.countryTextField.text.append("C");
+            writeChar("C");
         }
         binding.keyboardD.setOnClickListener {
-            binding.countryTextField.text.append("D");
+            writeChar("D");
         }
         binding.keyboardE.setOnClickListener {
-            binding.countryTextField.text.append("E");
+            writeChar("E");
         }
         binding.keyboardF.setOnClickListener {
-            binding.countryTextField.text.append("F");
+            writeChar("F");
         }
         binding.keyboardG.setOnClickListener {
-            binding.countryTextField.text.append("G");
+            writeChar("G");
         }
         binding.keyboardH.setOnClickListener {
-            binding.countryTextField.text.append("H");
+            writeChar("H");
         }
         binding.keyboardI.setOnClickListener {
-            binding.countryTextField.text.append("I");
+            writeChar("I");
         }
         binding.keyboardJ.setOnClickListener {
-            binding.countryTextField.text.append("J");
+            writeChar("J");
         }
         binding.keyboardK.setOnClickListener {
-            binding.countryTextField.text.append("K");
+            writeChar("K");
         }
         binding.keyboardL.setOnClickListener {
-            binding.countryTextField.text.append("L");
+            writeChar("L");
         }
         binding.keyboardM.setOnClickListener {
-            binding.countryTextField.text.append("M");
+            writeChar("M");
         }
         binding.keyboardN.setOnClickListener {
-            binding.countryTextField.text.append("N");
+            writeChar("N");
         }
         binding.keyboardO.setOnClickListener {
-            binding.countryTextField.text.append("O");
+            writeChar("O");
         }
         binding.keyboardP.setOnClickListener {
-            binding.countryTextField.text.append("P");
+            writeChar("P");
         }
         binding.keyboardQ.setOnClickListener {
-            binding.countryTextField.text.append("Q");
+            writeChar("Q");
         }
         binding.keyboardR.setOnClickListener {
-            binding.countryTextField.text.append("R");
+            writeChar("R");
         }
         binding.keyboardS.setOnClickListener {
-            binding.countryTextField.text.append("S");
+            writeChar("S");
         }
         binding.keyboardT.setOnClickListener {
-            binding.countryTextField.text.append("T");
+            writeChar("T");
         }
         binding.keyboardU.setOnClickListener {
-            binding.countryTextField.text.append("U");
+            writeChar("U");
         }
         binding.keyboardV.setOnClickListener {
-            binding.countryTextField.text.append("V");
+            writeChar("V");
         }
         binding.keyboardW.setOnClickListener {
-            binding.countryTextField.text.append("W");
+            writeChar("W");
         }
         binding.keyboardX.setOnClickListener {
-            binding.countryTextField.text.append("X");
+            writeChar("X");
         }
         binding.keyboardY.setOnClickListener {
-            binding.countryTextField.text.append("Y");
+            writeChar("Y");
         }
         binding.keyboardZ.setOnClickListener {
-            binding.countryTextField.text.append("Z");
+            writeChar("Z");
         }
         binding.keyboardSpace.setOnClickListener {
-            binding.countryTextField.text.append(" ");
+            writeChar(" ");
         }
+
         binding.keyboardBackspace.setOnClickListener {
             if (binding.countryTextField.text.isNotEmpty())
                 binding.countryTextField.text.delete(binding.countryTextField.text.length - 1, binding.countryTextField.text.length);
@@ -128,5 +128,9 @@ class Cuisinele : Fragment() {
         binding.keyboardClear.setOnClickListener {
             binding.countryTextField.text.clear();
         }
+    }
+
+    fun writeChar(char: String) {
+        binding.countryTextField.append(char);
     }
 }
