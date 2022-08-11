@@ -9,17 +9,18 @@
     tools:ignore="SpeakableTextPresentCheck">
 
     <!-- todo: replace this with an AutoCompleteTextView  -->
+    <!-- todo: add cursor functionality   -->
     <EditText
         android:id="@+id/countryTextField"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
-        android:clickable="true"
+        android:clickable="false"
         android:textIsSelectable="true"
         android:cursorVisible="true"
         android:ems="10"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:inputType="text"
         android:hint="Enter Country..."
         app:layout_constraintBottom_toTopOf="@+id/keyboard"
