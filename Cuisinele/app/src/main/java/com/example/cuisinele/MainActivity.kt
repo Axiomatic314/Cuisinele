@@ -1,7 +1,6 @@
 package com.example.cuisinele
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
@@ -10,7 +9,14 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.room.Database
+import com.example.cuisinele.data.CuisineleDB
+import com.example.cuisinele.data.models.Country
 import com.example.cuisinele.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +35,18 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        var countries: List<Country> = listOf()
+
+        GlobalScope.launch(Dispatchers.IO) {
+            countries = CuisineleDB.getInstance(applicationContext).cuisineleDAO().getCountries()
+        }
+
+        if (countries != null) {
+            for (country in countries) {
+                Toast.makeText(applicationContext, country.CountryName, Toast.LENGTH_LONG)
+            }
+        }
 
     }
 
