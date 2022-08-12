@@ -21,6 +21,8 @@ jobs:
         cache: gradle
     - name: Open Cuisinele directory
       run: cd Cuisinele
+    - name: List contents
+      run: ls
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
@@ -32,6 +34,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Open Cuisinele directory
         run: cd Cuisinele
+      - name: List contents
+        run: ls
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Instrumented Tests
