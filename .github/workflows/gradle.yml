@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Grant execute permission for gradlew
         working-directory: ./Cuisinele
-        run: chmod +x gradlew
+        run: chmod +x ./gradlew
       - name: Instrumented Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -42,7 +42,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Grant execute permission for gradlew
         working-directory: ./Cuisinele
-        run: chmod +x gradlew
+        run: chmod +x ./gradlew
       - name: Unit tests
         working-directory: ./Cuisinele
         run: ./gradlew test
