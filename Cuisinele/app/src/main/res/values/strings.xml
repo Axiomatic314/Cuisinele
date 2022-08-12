@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Cuisinele</string>
     <string name="action_settings">Settings</string>
+    <string name="action_tutorial">Tutorial</string>
     <!-- Strings used for fragments for navigation -->
     <string name="next">Next</string>
     <string name="previous">Previous</string>

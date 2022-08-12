@@ -10,7 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.room.Database
+//import androidx.room.Database
 import com.example.cuisinele.data.CuisineleDB
 import com.example.cuisinele.data.models.Country
 import android.view.WindowManager
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_tutorial -> true
             else -> super.onOptionsItemSelected(item)
         }
     }
