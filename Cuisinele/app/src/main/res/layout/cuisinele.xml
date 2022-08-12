@@ -9,7 +9,8 @@
     tools:ignore="SpeakableTextPresentCheck">
 
     <!-- todo: replace this with an AutoCompleteTextView  -->
-    <!-- todo: add cursor functionality   -->
+    <!-- todo: add cursor functionality  -->
+    <!-- todo: disable keyboard popping up  -->
     <EditText
         android:id="@+id/countryTextField"
         android:layout_width="match_parent"
@@ -23,6 +24,7 @@
         android:focusableInTouchMode="false"
         android:inputType="text"
         android:hint="Enter Country..."
+        android:autofillHints="countryName"
         app:layout_constraintBottom_toTopOf="@+id/keyboard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -30,6 +32,7 @@
 
     <ImageView
         android:id="@+id/cuisineleImage"
+        android:contentDescription="@null"
         android:layout_width="wrap_content"
         android:layout_height="250dp"
         android:layout_marginStart="10dp"
@@ -41,6 +44,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/backgrounds/scenic" />
 
+    <!--todo: add more feedback when typing -->
     <LinearLayout
         android:id="@id/keyboard"
         android:layout_width="match_parent"
@@ -204,6 +208,8 @@
             app:layout_constraintBottom_toTopOf="@+id/keyboardBottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             app:layout_constraintStart_toStartOf="parent">
 
             <Button
@@ -333,6 +339,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:gravity="center">
 
             <Button
@@ -496,14 +504,15 @@
 
     </LinearLayout>
 
+    <!-- todo: fix the height when images are added properly    -->
     <TextView
         android:id="@+id/textView"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:layout_marginTop="40dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/countryTextField"
         app:layout_constraintTop_toBottomOf="@+id/cuisineleImage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
