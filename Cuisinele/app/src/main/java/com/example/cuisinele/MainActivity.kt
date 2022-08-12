@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.room.Database
 import com.example.cuisinele.data.CuisineleDB
 import com.example.cuisinele.data.models.Country
+import android.view.WindowManager
 import com.example.cuisinele.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -26,6 +27,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
+
+        // todo: disable the soft keyboard from popping up
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
