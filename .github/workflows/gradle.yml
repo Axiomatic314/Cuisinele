@@ -20,25 +20,29 @@ jobs:
         distribution: 'temurin'
         cache: gradle
     - name: Build with Gradle
-      run: ./Cuisinele/gradlew build
+      working-directory: ./Cuisinele
+      run: ./gradlew build
 
   android_tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Grant execute permission for gradlew
-        run: chmod +x Cuisinele/gradlew
+        working-directory: ./Cuisinele
+        run: chmod +x gradlew
       - name: Instrumented Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 28
-          script: ./Cuisinele/gradlew connectedAndroidTest
+          script: ./gradlew connectedAndroidTest
 
   unit_tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Grant execute permission for gradlew
-        run: chmod +x Cuisinele/gradlew
+        working-directory: ./Cuisinele
+        run: chmod +x gradlew
       - name: Unit tests
-        run: ./Cuisinele/gradlew test
+        working-directory: ./Cuisinele
+        run: ./gradlew test
