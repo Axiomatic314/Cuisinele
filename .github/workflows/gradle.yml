@@ -34,6 +34,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 28
+          working-directory: ./Cuisinele
           script: ./gradlew connectedAndroidTest
 
   unit_tests:
