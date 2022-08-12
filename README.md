@@ -1,2 +1,2 @@
 # Cuisinele
-This is a test push by jack to the main branch.
+![Build](https://github.com/Axiomatic314/Cuisinele/blob/master/.github/workflows/gradle.yml/badge.svg)
