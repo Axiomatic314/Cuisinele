@@ -19,8 +19,14 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
+    - name: List contents
+      run: ls
     - name: Open Cuisinele directory
-      run: cd Cuisinele/Cuisinele
+      run: cd Cuisinele
+    - name: List contents
+      run: ls
+    - name: Open Cuisinele directory
+      run: cd Cuisinele
     - name: List contents
       run: ls
     - name: Grant execute permission for gradlew
@@ -32,8 +38,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: List contents
+        run: ls
       - name: Open Cuisinele directory
-        run: cd Cuisinele/Cuisinele
+        run: cd Cuisinele
+      - name: List contents
+        run: ls
+      - name: Open Cuisinele directory
+        run: cd Cuisinele
       - name: List contents
         run: ls
       - name: Grant execute permission for gradlew
@@ -48,8 +60,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      
+      - name: List contents
+        run: ls
       - name: Open Cuisinele directory
-        run: cd Cuisinele/Cuisinele
+        run: cd Cuisinele
+      - name: List contents
+        run: ls
+      - name: Open Cuisinele directory
+        run: cd Cuisinele
+      - name: List contents
+        run: ls
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Unit tests
