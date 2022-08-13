@@ -1,5 +1,6 @@
 package com.example.cuisinele
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -14,6 +15,7 @@ import android.widget.Toast
 import com.example.cuisinele.data.CuisineleDB
 import com.example.cuisinele.data.models.Country
 import android.view.WindowManager
+import androidx.navigation.ui.onNavDestinationSelected
 import com.example.cuisinele.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -34,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
@@ -51,7 +53,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, country.CountryName, Toast.LENGTH_LONG)
             }
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -64,10 +65,8 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_tutorial -> true
-            else -> super.onOptionsItemSelected(item)
-        }
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -9,5 +9,14 @@
             android:id="@+id/Home"
             android:name="com.example.cuisinele.Cuisinele"
             android:label="@string/app_name"
-            tools:layout="@layout/cuisinele"/>
+            tools:layout="@layout/cuisinele">
+        <action
+            android:id="@+id/action_Home_to_Tut"
+            app:destination="@id/Tut" />
+    </fragment>
+    <fragment
+        android:id="@+id/Tut"
+        android:name="com.example.cuisinele.Tutorial"
+        android:label="@string/app_name"
+        tools:layout="@layout/tutorial_page"/>
 </navigation>

@@ -2,8 +2,8 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.example.cuisinele.MainActivity">
-    <item android:id="@+id/action_tutorial"
-          android:title="@string/action_tutorial"
-          android:orderInCategory="100"
-          app:showAsAction="never"/>
+
+    <item android:id="@+id/Tut"
+        android:title="@string/action_tutorial"
+        app:showAsAction="ifRoom"/>
 </menu>
