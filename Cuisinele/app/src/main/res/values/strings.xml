@@ -5,4 +5,12 @@
     <!-- Strings used for fragments for navigation -->
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="howTo">How To Play</string>
+    <string name="Steps">Guess the CUISINELE in 6 tries or less. \n\nEach Guess must be a valid country. \n\nAfter each incorrect guess, you will be given a fact about the country to help narrow down the possibilities.</string>
+    <string name="ExampleString">Example:</string>
+    <string name="HintStringExample">Hint</string>
+    <string name="HintDescription">In this case, the correct answer was:</string>
+    <string name="DishNameExample">Name</string>
+    <string name="AvailableEachDay">A new CUISINELE will be available each day!</string>
+    <string name="ExampleAnswer">Answer</string>
 </resources>
