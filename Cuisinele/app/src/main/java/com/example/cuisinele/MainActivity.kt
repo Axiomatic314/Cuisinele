@@ -20,12 +20,21 @@ import com.example.cuisinele.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-
+/**
+ * @file
+ * @brief Class sets up the navigation bar and navigation between pages.
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
+    /**
+     * @brief Creates the navigation bar
+     * @details Method inflates the navigation bar and sets the view to the main game page.
+     * Also sets up the bar with the navigation controller.
+     * @param the state of the application.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
@@ -54,17 +63,23 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
+    /**
+     * @brief creates the icons for the navigation bar
+     * @details Inflates the menu and adds the help button to the bar.
+     * @param the main menu.
+     */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
+    /**
+     * @brief handles clicks of items in the navigation bar
+     * @details attempts to navigate to the page associated with the item clicked
+     * @param the item clicked in the navigation.
+     * @return the page of the click.
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
