@@ -30,16 +30,70 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/cuisineleImage"
-        android:contentDescription="@null"
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/under_work" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/countryTextField"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/cuisineleImage"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/under_work" />
+
+            <!-- todo: fix the height when images are added properly    -->
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginTop="10dp"
+                android:text="Hint" />
+
+            <TextView
+                android:id="@+id/guessOneTextView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/guessbox" />
+
+            <TextView
+                android:id="@+id/guessTwoTextView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/guessbox" />
+
+            <TextView
+                android:id="@+id/guessThreeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/guessbox" />
+
+            <TextView
+                android:id="@+id/guessFourTextView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/guessbox" />
+
+            <TextView
+                android:id="@+id/guessFiveTextView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/guessbox" />
+        </LinearLayout>
+    </ScrollView>
+
 
     <!--todo: add more feedback when typing -->
     <LinearLayout
@@ -524,16 +578,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <!-- todo: fix the height when images are added properly    -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/countryTextField"
-        app:layout_constraintTop_toBottomOf="@+id/cuisineleImage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
