@@ -68,6 +68,10 @@ $dokka.location:com.example.cuisinele/Settings.Companion/getDailyGames/#/Pointin
 $dokka.location:com.example.cuisinele/Settings.Companion/getStartDate/#/PointingToDeclaration/app/com.example.cuisinele/-settings/-companion/get-start-date.html
 $dokka.location:com.example.cuisinele/Settings///PointingToDeclaration/app/com.example.cuisinele/-settings/index.html
 $dokka.location:com.example.cuisinele/Settings/Settings/#/PointingToDeclaration/app/com.example.cuisinele/-settings/-settings.html
+$dokka.location:com.example.cuisinele/Success///PointingToDeclaration/app/com.example.cuisinele/-success/index.html
+$dokka.location:com.example.cuisinele/Success/Success/#/PointingToDeclaration/app/com.example.cuisinele/-success/-success.html
+$dokka.location:com.example.cuisinele/Success/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.cuisinele/-success/on-create-view.html
+$dokka.location:com.example.cuisinele/Success/onDestroyView/#/PointingToDeclaration/app/com.example.cuisinele/-success/on-destroy-view.html
 $dokka.location:com.example.cuisinele/Tutorial///PointingToDeclaration/app/com.example.cuisinele/-tutorial/index.html
 $dokka.location:com.example.cuisinele/Tutorial/Tutorial/#/PointingToDeclaration/app/com.example.cuisinele/-tutorial/-tutorial.html
 $dokka.location:com.example.cuisinele/Tutorial/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.cuisinele/-tutorial/on-create-view.html
