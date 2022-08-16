@@ -9,8 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.cuisinele.databinding.TutorialPageBinding
 
 /**
- * @file
- * @brief A fragment class for the tutorial page.
+ * fragment class for the tutorial page.
  */
 class Tutorial : Fragment() {
 
@@ -20,7 +19,7 @@ class Tutorial : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     /**
-     * @details Method creates and returns the view hierarchy associated with this fragment and inflates the page to be viewed.
+     * Method creates and returns the view hierarchy associated with this fragment and inflates the page to be viewed.
      * @return the full xml page to be displayed.
      */
     override fun onCreateView(
@@ -35,7 +34,7 @@ class Tutorial : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
     /**
-     * @details Method destorys the view and unsets the binding variable.
+     * Method destroys the view and unsets the binding variable.
      */
     override fun onDestroyView() {
         super.onDestroyView()
