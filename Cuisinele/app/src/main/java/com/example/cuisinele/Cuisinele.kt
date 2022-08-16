@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import com.example.cuisinele.databinding.CuisineleBinding
 
 /**
- * @file
- * @brief A fragment class which acts as the main game page and the default navigation page.
+ * A fragment class which acts as the main game page and the default navigation page.
  */
 class Cuisinele : Fragment() {
 
@@ -18,8 +17,10 @@ class Cuisinele : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
     /**
-     * @details Method creates and returns the view hierarchy associated with this fragment and calls the keyboard setup function.
+     * Method creates and returns the view hierarchy associated with this fragment and calls the keyboard setup function.
+     *
      * @return the full xml page to be displayed.
      */
     override fun onCreateView(
@@ -35,16 +36,19 @@ class Cuisinele : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
+
     /**
-     * @details Method destorys the view and unsets the binding variable.
+     * Method destroys the view and unsets the binding variable.
      */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
     /**
-     * @brief Sets up the keyboard listeners.
-     * @details Creates each individual button's listener with a call to the write method and sets up functionality for the clear and delete buttons.
+     * Sets up the keyboard listeners.
+     *
+     * Creates each individual button's listener with a call to the write method and sets up functionality for the clear and delete buttons.
      */
     fun setKeyButtons() {
         binding.keyboardA.setOnClickListener {
@@ -131,15 +135,20 @@ class Cuisinele : Fragment() {
 
         binding.keyboardBackspace.setOnClickListener {
             if (binding.countryTextField.text.isNotEmpty())
-                binding.countryTextField.text.delete(binding.countryTextField.text.length - 1, binding.countryTextField.text.length)
+                binding.countryTextField.text.delete(
+                    binding.countryTextField.text.length - 1,
+                    binding.countryTextField.text.length
+                )
         }
         binding.keyboardClear.setOnClickListener {
             binding.countryTextField.text.clear()
         }
     }
+
     /**
-     * @brief appends the input character to the text box display of the input.
-     * @param single character input of the key pressed.
+     * Appends the input character to the text box display of the input.
+     *
+     * @param[char] single character input of the key pressed.
      */
     fun writeChar(char: String) {
         binding.countryTextField.append(char)

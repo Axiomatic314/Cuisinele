@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.cuisinele.databinding.TutorialPageBinding
 
 /**
- * fragment class for the tutorial page.
+ * Fragment class for the tutorial page.
  */
 class Tutorial : Fragment() {
 
