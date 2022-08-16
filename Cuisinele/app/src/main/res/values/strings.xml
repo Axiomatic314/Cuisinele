@@ -13,4 +13,7 @@
     <string name="DishNameExample">Name</string>
     <string name="AvailableEachDay">A new CUISINELE will be available each day!</string>
     <string name="ExampleAnswer">Answer</string>
+    <string name="success">Success!</string>
+    <string name="failure">Failure...</string>
+    <string name="continueButton">Continue</string>
 </resources>
