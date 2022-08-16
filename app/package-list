@@ -1,0 +1,69 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.example.cuisinele.data.models////PointingToDeclaration/app/com.example.cuisinele.data.models/index.html
+$dokka.location:com.example.cuisinele.data.models/Country///PointingToDeclaration/app/com.example.cuisinele.data.models/-country/index.html
+$dokka.location:com.example.cuisinele.data.models/Country/Country/#kotlin.Int#kotlin.String/PointingToDeclaration/app/com.example.cuisinele.data.models/-country/-country.html
+$dokka.location:com.example.cuisinele.data.models/Country/getCountryID/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-country/get-country-i-d.html
+$dokka.location:com.example.cuisinele.data.models/Country/getCountryName/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-country/get-country-name.html
+$dokka.location:com.example.cuisinele.data.models/Dish///PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/index.html
+$dokka.location:com.example.cuisinele.data.models/Dish/Dish/#kotlin.Int#kotlin.String#kotlin.String#kotlin.Int#kotlin.Boolean#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/-dish.html
+$dokka.location:com.example.cuisinele.data.models/Dish/getCountryID/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/get-country-i-d.html
+$dokka.location:com.example.cuisinele.data.models/Dish/getDishID/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/get-dish-i-d.html
+$dokka.location:com.example.cuisinele.data.models/Dish/getDishName/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/get-dish-name.html
+$dokka.location:com.example.cuisinele.data.models/Dish/getGuessFive/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/get-guess-five.html
+$dokka.location:com.example.cuisinele.data.models/Dish/getGuessFour/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/get-guess-four.html
+$dokka.location:com.example.cuisinele.data.models/Dish/getGuessOne/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/get-guess-one.html
+$dokka.location:com.example.cuisinele.data.models/Dish/getGuessSix/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/get-guess-six.html
+$dokka.location:com.example.cuisinele.data.models/Dish/getGuessThree/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/get-guess-three.html
+$dokka.location:com.example.cuisinele.data.models/Dish/getGuessTwo/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/get-guess-two.html
+$dokka.location:com.example.cuisinele.data.models/Dish/getImageUrl/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/get-image-url.html
+$dokka.location:com.example.cuisinele.data.models/Dish/getIsComplete/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-dish/get-is-complete.html
+$dokka.location:com.example.cuisinele.data.models/Hint///PointingToDeclaration/app/com.example.cuisinele.data.models/-hint/index.html
+$dokka.location:com.example.cuisinele.data.models/Hint/Hint/#kotlin.Int#kotlin.String#kotlin.Int/PointingToDeclaration/app/com.example.cuisinele.data.models/-hint/-hint.html
+$dokka.location:com.example.cuisinele.data.models/Hint/getCountryID/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-hint/get-country-i-d.html
+$dokka.location:com.example.cuisinele.data.models/Hint/getHintID/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-hint/get-hint-i-d.html
+$dokka.location:com.example.cuisinele.data.models/Hint/getHintText/#/PointingToDeclaration/app/com.example.cuisinele.data.models/-hint/get-hint-text.html
+$dokka.location:com.example.cuisinele.data////PointingToDeclaration/app/com.example.cuisinele.data/index.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO///PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/index.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/getCountries/#/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/get-countries.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/getCountryByID/#kotlin.Int/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/get-country-by-i-d.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/getDishByID/#kotlin.Int/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/get-dish-by-i-d.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/getDishs/#/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/get-dishs.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/getHintByID/#kotlin.Int/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/get-hint-by-i-d.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/getHints/#/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/get-hints.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/getHintsByDishID/#kotlin.Int/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/get-hints-by-dish-i-d.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/insertCountry/#com.example.cuisinele.data.models.Country/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/insert-country.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/insertDish/#com.example.cuisinele.data.models.Dish/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/insert-dish.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/insertHint/#com.example.cuisinele.data.models.Hint/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/insert-hint.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/updateCountry/#com.example.cuisinele.data.models.Country/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/update-country.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/updateDish/#com.example.cuisinele.data.models.Dish/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/update-dish.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/updateHint/#com.example.cuisinele.data.models.Hint/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/update-hint.html
+$dokka.location:com.example.cuisinele.data/CuisineleDB.Companion///PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-b/-companion/index.html
+$dokka.location:com.example.cuisinele.data/CuisineleDB.Companion/getINSTANCE/#/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-b/-companion/get-i-n-s-t-a-n-c-e.html
+$dokka.location:com.example.cuisinele.data/CuisineleDB.Companion/getInstance/#android.content.Context/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-b/-companion/get-instance.html
+$dokka.location:com.example.cuisinele.data/CuisineleDB.Companion/setINSTANCE/#com.example.cuisinele.data.CuisineleDB?/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-b/-companion/set-i-n-s-t-a-n-c-e.html
+$dokka.location:com.example.cuisinele.data/CuisineleDB///PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-b/index.html
+$dokka.location:com.example.cuisinele.data/CuisineleDB/CuisineleDB/#/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-b/-cuisinele-d-b.html
+$dokka.location:com.example.cuisinele.data/CuisineleDB/cuisineleDAO/#/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-b/cuisinele-d-a-o.html
+$dokka.location:com.example.cuisinele////PointingToDeclaration/app/com.example.cuisinele/index.html
+$dokka.location:com.example.cuisinele/Cuisinele///PointingToDeclaration/app/com.example.cuisinele/-cuisinele/index.html
+$dokka.location:com.example.cuisinele/Cuisinele/Cuisinele/#/PointingToDeclaration/app/com.example.cuisinele/-cuisinele/-cuisinele.html
+$dokka.location:com.example.cuisinele/Cuisinele/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.cuisinele/-cuisinele/on-create-view.html
+$dokka.location:com.example.cuisinele/Cuisinele/onDestroyView/#/PointingToDeclaration/app/com.example.cuisinele/-cuisinele/on-destroy-view.html
+$dokka.location:com.example.cuisinele/Cuisinele/onViewCreated/#android.view.View#android.os.Bundle?/PointingToDeclaration/app/com.example.cuisinele/-cuisinele/on-view-created.html
+$dokka.location:com.example.cuisinele/Cuisinele/setKeyButtons/#/PointingToDeclaration/app/com.example.cuisinele/-cuisinele/set-key-buttons.html
+$dokka.location:com.example.cuisinele/Cuisinele/writeChar/#kotlin.String/PointingToDeclaration/app/com.example.cuisinele/-cuisinele/write-char.html
+$dokka.location:com.example.cuisinele/MainActivity///PointingToDeclaration/app/com.example.cuisinele/-main-activity/index.html
+$dokka.location:com.example.cuisinele/MainActivity/MainActivity/#/PointingToDeclaration/app/com.example.cuisinele/-main-activity/-main-activity.html
+$dokka.location:com.example.cuisinele/MainActivity/onCreateOptionsMenu/#android.view.Menu/PointingToDeclaration/app/com.example.cuisinele/-main-activity/on-create-options-menu.html
+$dokka.location:com.example.cuisinele/MainActivity/onOptionsItemSelected/#android.view.MenuItem/PointingToDeclaration/app/com.example.cuisinele/-main-activity/on-options-item-selected.html
+$dokka.location:com.example.cuisinele/MainActivity/onSupportNavigateUp/#/PointingToDeclaration/app/com.example.cuisinele/-main-activity/on-support-navigate-up.html
+$dokka.location:com.example.cuisinele/Tutorial///PointingToDeclaration/app/com.example.cuisinele/-tutorial/index.html
+$dokka.location:com.example.cuisinele/Tutorial/Tutorial/#/PointingToDeclaration/app/com.example.cuisinele/-tutorial/-tutorial.html
+$dokka.location:com.example.cuisinele/Tutorial/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.cuisinele/-tutorial/on-create-view.html
+$dokka.location:com.example.cuisinele/Tutorial/onDestroyView/#/PointingToDeclaration/app/com.example.cuisinele/-tutorial/on-destroy-view.html
+$dokka.location:com.example.cuisinele/Tutorial/onViewCreated/#android.view.View#android.os.Bundle?/PointingToDeclaration/app/com.example.cuisinele/-tutorial/on-view-created.html
+com.example.cuisinele
+com.example.cuisinele.data
+com.example.cuisinele.data.models
+
