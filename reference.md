@@ -1,12 +1,12 @@
-Code references:
+Code references: 
 
 
-Fact references:
+Fact references: \
 https://www.alt-codes.net/flags
 
 
-Image sites:
+Image sites: 
 
 
-Recipe references:
+Recipe references: 
 
