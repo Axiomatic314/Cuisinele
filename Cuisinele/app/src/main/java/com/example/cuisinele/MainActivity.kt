@@ -1,5 +1,6 @@
 package com.example.cuisinele
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import com.example.cuisinele.data.CuisineleDB
 import com.example.cuisinele.data.models.Country
 import android.view.WindowManager
 import androidx.navigation.ui.onNavDestinationSelected
+import com.example.cuisinele.data.CuisineleDAO
 import com.example.cuisinele.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -52,17 +54,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        var countries: List<Country> = listOf()
 
-        GlobalScope.launch(Dispatchers.IO) {
-            countries = CuisineleDB.getInstance(applicationContext).cuisineleDAO().getCountries()
-        }
-
-        if (countries != null) {
-            for (country in countries) {
-                Toast.makeText(applicationContext, country.CountryName, Toast.LENGTH_LONG)
-            }
-        }
     }
     /**
      * Creates the icons for the navigation bar.

@@ -4,6 +4,9 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
+/**
+ * Dish data class represents the Dish table in the database
+ */
 @Entity(tableName = "Dish")
 data class Dish(
     @PrimaryKey(autoGenerate = true)

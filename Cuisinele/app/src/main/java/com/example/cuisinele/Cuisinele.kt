@@ -5,7 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.example.cuisinele.data.ContextApplication
+import com.example.cuisinele.data.CuisineleDAO
+import com.example.cuisinele.data.CuisineleDB
+import com.example.cuisinele.data.models.Country
+import com.example.cuisinele.data.models.Dish
+import com.example.cuisinele.data.models.Hint
 import com.example.cuisinele.databinding.CuisineleBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.lang.Exception
+import java.lang.System.currentTimeMillis
 
 /**
  * A fragment class which acts as the main game page and the default navigation page.
@@ -17,6 +29,10 @@ class Cuisinele : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var dao: CuisineleDAO
+    private var dish: Dish? = null
+    private var hints: List<Hint>? = null
+    private var country: Country? = null
 
     /**
      * Method creates and returns the view hierarchy associated with this fragment and calls the keyboard setup function.
@@ -30,11 +46,46 @@ class Cuisinele : Fragment() {
         _binding = CuisineleBinding.inflate(inflater, container, false)
         setKeyButtons()
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getData()
+    }
+
+    /**
+     * This method gets an instance of CuisineleDAO and gets either
+     * the daily dish or all dishes along with the associated country and hints
+     */
+    private fun getData() {
+        GlobalScope.launch(Dispatchers.IO) {
+            dao = CuisineleDB.getInstance(ContextApplication.applicationContext()).cuisineleDAO()
+
+            if (Settings.dailyGames) {
+                // Convert current time since linux epoch from milliseconds to days
+                var currentDate = ((((currentTimeMillis() / 1000) / 60) / 60) / 24)
+                // The date we choose the dishes to start cycling from
+                var cycleStartDate = Settings.startDate.toEpochDay()
+                if (currentDate > cycleStartDate) {
+                    // calculate the day since the dish cycle begun and use modulus of the number of dishes to allow recycling of dishes
+                    var dishID: Int = ((currentDate - cycleStartDate) % dao.getDishes().size).toInt()
+                    dish = dao.getDishByID(dishID)
+                } else {
+                    // TODO: add message/exception for when the dish cycle hasnt begun (this should never occur)
+                }
+            } else {
+                var allDishes = dao.getDishes()
+                dish = (allDishes.filter { x -> !x.IsComplete }).first()
+            }
+
+            if (dish != null) {
+                country = dao.getCountryByID(dish!!.CountryID)
+                hints = dao.getHintsByDishID(dish!!.DishID)
+
+                // TODO: DELETE THIS LINE. It is for testing purposes
+                binding.textView.text = dish!!.DishName + " " + hints!![0].HintText + " " + country!!.CountryName
+            }
+        }
     }
 
     /**
