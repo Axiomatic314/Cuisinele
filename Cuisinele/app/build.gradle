@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
+apply plugin: "org.jetbrains.dokka"
 android {
     compileSdk 32
 
@@ -52,5 +53,5 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
-    implementation "org.jetbrains.dokka:kotlin-as-java-plugin:1.7.10"
+    dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.7.10")
 }
