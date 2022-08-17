@@ -96,7 +96,7 @@ jobs:
       - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 28
+          api-level: 29
           working-directory: ./Cuisinele
           script: ./gradlew jacocoCombinedTestReports # if your folder is in a path, change this to ./FolderName/gradleW
       - name: Upload coverage reports to Codecov
