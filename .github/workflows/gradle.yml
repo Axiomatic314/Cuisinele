@@ -92,12 +92,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Grant execute permission for gradlew
         working-directory: ./Cuisinele
-        run: chmod +x gradlew
+        run: chmod +x ./gradlew
       - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 29
-          script: ./Cuisinele/gradlew jacocoCombinedTestReports # if your folder is in a path, change this to ./FolderName/gradleW
+          api-level: 28
+          script: ./gradlew jacocoCombinedTestReports # if your folder is in a path, change this to ./FolderName/gradleW
       - name: Upload coverage reports to Codecov
         working-directory: ./Cuisinele
         run: | # if your project is hosted on a folder --> go to the folder before executing this
