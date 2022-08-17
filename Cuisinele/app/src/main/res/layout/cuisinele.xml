@@ -8,24 +8,22 @@
     tools:context=".Cuisinele"
     tools:ignore="SpeakableTextPresentCheck">
 
-    <!-- todo: replace this with an AutoCompleteTextView  -->
-    <!-- todo: add cursor functionality  -->
-    <!-- todo: disable keyboard popping up  -->
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/countryTextField"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
-        android:clickable="false"
-        android:textIsSelectable="true"
+        android:layout_height="48dp"
+        android:layout_marginBottom="40dp"
+        android:autofillHints="countryName"
+        android:clickable="true"
         android:cursorVisible="true"
         android:ems="10"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:inputType="text"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:hint="Enter Country..."
-        android:autofillHints="countryName"
-        app:layout_constraintBottom_toTopOf="@+id/keyboard"
+        android:inputType="text"
+        android:textColorHint="#8D6E63"
+        android:textIsSelectable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
@@ -38,7 +36,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
@@ -97,7 +95,7 @@
 
     <!--todo: add more feedback when typing -->
     <LinearLayout
-        android:id="@id/keyboard"
+        android:id="@+id/keyboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -105,7 +103,8 @@
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible">
 
         <LinearLayout
             android:id="@+id/keyboardTop"

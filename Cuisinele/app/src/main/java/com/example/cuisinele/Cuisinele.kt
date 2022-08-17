@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import com.example.cuisinele.data.ContextApplication
 import com.example.cuisinele.data.CuisineleDAO
@@ -50,6 +52,14 @@ class Cuisinele : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val textView = binding.countryTextField as AutoCompleteTextView
+        val countries: Array<out String> = resources.getStringArray(R.array.countries_array)
+        context?.let {
+            ArrayAdapter<String>(it, android.R.layout.simple_list_item_1,countries).also { adapter ->
+                textView.setAdapter(adapter)
+                textView.threshold = 1
+            }
+        }
         getData()
     }
 
