@@ -46,7 +46,7 @@ class Cuisinele : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = CuisineleBinding.inflate(inflater, container, false)
-        setKeyButtons()
+        //setKeyButtons()
         return binding.root
     }
 
@@ -106,12 +106,10 @@ class Cuisinele : Fragment() {
         _binding = null
     }
 
-    /**
-     * Sets up the keyboard listeners.
-     *
-     * Creates each individual button's listener with a call to the write method and sets up functionality for the clear and delete buttons.
-     */
-    fun setKeyButtons() {
+     //todo: remove
+     //Sets up the keyboard listeners.
+     //Creates each individual button's listener with a call to the write method and sets up functionality for the clear and delete buttons.
+    /*fun setKeyButtons() {
         binding.keyboardA.setOnClickListener {
             writeChar("A")
         }
@@ -204,7 +202,7 @@ class Cuisinele : Fragment() {
         binding.keyboardClear.setOnClickListener {
             binding.countryTextField.text.clear()
         }
-    }
+    }*/
 
     /**
      * Appends the input character to the text box display of the input.
