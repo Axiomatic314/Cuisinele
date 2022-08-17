@@ -1,4 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.jacocoVersion = '0.8.7'
+    dependencies {
+        classpath "org.jacoco:org.jacoco.core:$jacocoVersion"
+    }
+}
+
 plugins {
     id 'com.android.application' version '7.2.0' apply false
     id 'com.android.library' version '7.2.0' apply false

@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import com.example.cuisinele.data.ContextApplication
 import com.example.cuisinele.data.CuisineleDAO
 import com.example.cuisinele.data.CuisineleDB
@@ -16,7 +18,6 @@ import com.example.cuisinele.databinding.CuisineleBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import java.lang.System.currentTimeMillis
 
 /**
@@ -193,6 +194,16 @@ class Cuisinele : Fragment() {
         }
         binding.keyboardClear.setOnClickListener {
             binding.countryTextField.text.clear()
+        }
+
+        binding.keyboardEnter.setOnClickListener {
+            if (binding.countryTextField.text.isNotEmpty()){
+                if(country!!.CountryName == binding.countryTextField.text.toString()){
+
+                }
+            }
+
+
         }
     }
 
