@@ -137,7 +137,7 @@ class Cuisinele : Fragment() {
      * the daily dish or all dishes along with the associated country and hints
      */
     private fun getData() {
-        GlobalScope.launch(Dispatchers.IO) {
+        GlobalScope.async {
             dao = CuisineleDB.getInstance(ContextApplication.applicationContext()).cuisineleDAO()
 
             for (c in dao.getCountries().sortedBy { x -> x.CountryName }) {
@@ -164,12 +164,6 @@ class Cuisinele : Fragment() {
             }
 
             if (dish != null) {
-                val decodedString: ByteArray = Base64.decode(dish!!.ImageUrl.split(",")[1], Base64.DEFAULT)
-                val bitMap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
-
-                var imageView: ImageView = binding.cuisineleImage
-                imageView.setImageBitmap(bitMap)
-
                 country = dao.getCountryByID(dish!!.CountryID)
                 hints = dao.getHintsByDishID(dish!!.DishID)
                 if (dish!!.GuessOne != 0) {
@@ -200,6 +194,12 @@ class Cuisinele : Fragment() {
 
                 // TODO: DELETE THIS LINE. It is for testing purposes
                 binding.textView.text = dish!!.DishName + " " + hints!![0].HintText + " " + country!!.CountryName
+
+                val decodedString: ByteArray = Base64.decode(dish!!.ImageUrl.split(",")[1], Base64.DEFAULT)
+                val bitMap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+
+                var imageView: ImageView = binding.cuisineleImage
+                imageView.setImageBitmap(bitMap)
             }
         }
     }
