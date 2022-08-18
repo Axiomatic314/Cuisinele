@@ -55,6 +55,7 @@ class Cuisinele : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = CuisineleBinding.inflate(inflater, container, false)
+        //todo: remove
         //setKeyButtons()
 
         context?.let {
@@ -72,6 +73,7 @@ class Cuisinele : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        toggleGuesses()
     }
 
     private fun enterClicked(){
@@ -149,6 +151,21 @@ class Cuisinele : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    /**
+     * Method sets up the show/hide guess button.
+     */
+    private fun toggleGuesses(){
+        binding.displayGuessButton.setOnClickListener{
+            if (binding.guessDisplay.visibility == View.INVISIBLE) {
+                binding.guessDisplay.visibility = View.VISIBLE
+                binding.displayGuessButton.text = getString(R.string.HideGuess)
+            }else{
+                binding.guessDisplay.visibility = View.INVISIBLE
+                binding.displayGuessButton.text = getString(R.string.DisplayGuess)
+            }
+        }
     }
 
      //todo: remove
@@ -259,12 +276,11 @@ class Cuisinele : Fragment() {
         }
     }*/
 
-    /**
-     * Appends the input character to the text box display of the input.
-     *
-     * @param[char] single character input of the key pressed.
-     */
-    fun writeChar(char: String) {
-        binding.countryTextField.append(char)
-    }
+
+    //todo: remove
+     //Appends the input character to the text box display of the input.
+     //@param[char] single character input of the key pressed.
+//    fun writeChar(char: String) {
+//        binding.countryTextField.append(char)
+//    }
 }

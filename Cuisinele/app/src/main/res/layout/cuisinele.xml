@@ -48,13 +48,29 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/under_work" />
 
-            <!-- todo: fix the height when images are added properly    -->
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:layout_marginTop="10dp"
                 android:text="Hint" />
+
+            <Button
+                android:id="@+id/displayGuessButton"
+                android:text="@string/DisplayGuess"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:padding="10dp"
+                android:layout_gravity="center_horizontal"
+                style="@style/Widget.AppCompat.Button.Small" />
+
+            <!-- todo: fix the height when images are added properly    -->
+            <LinearLayout
+                android:id="@+id/guessDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="invisible">
 
             <TextView
                 android:id="@+id/guess1TextView"
@@ -100,6 +116,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/guessbox" />
         </LinearLayout>
+       </LinearLayout>
     </ScrollView>
 
 
