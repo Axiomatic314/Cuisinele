@@ -57,34 +57,44 @@
                 android:text="Hint" />
 
             <TextView
-                android:id="@+id/guessOneTextView"
+                android:id="@+id/guess1TextView"
+                android:textSize="18sp"
+                android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/guessbox" />
 
             <TextView
-                android:id="@+id/guessTwoTextView"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/guessbox" />
-
-            <TextView
-                android:id="@+id/guessThreeTextView"
+                android:id="@+id/guess2TextView"
+                android:textSize="18sp"
+                android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/guessbox" />
 
             <TextView
-                android:id="@+id/guessFourTextView"
+                android:id="@+id/guess3TextView"
+                android:textSize="18sp"
+                android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/guessbox" />
 
             <TextView
-                android:id="@+id/guessFiveTextView"
+                android:id="@+id/guess4TextView"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/guessbox" />
+
+            <TextView
+                android:id="@+id/guess5TextView"
+                android:textSize="18sp"
+                android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"

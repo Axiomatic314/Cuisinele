@@ -2,16 +2,16 @@ package com.example.cuisinele
 
 import android.os.Bundle
 import android.os.Looper
+import android.view.*
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.data.ContextApplication
 import com.example.cuisinele.data.CuisineleDAO
 import com.example.cuisinele.data.CuisineleDB
@@ -24,6 +24,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.lang.System.currentTimeMillis
+import java.security.Key
 import java.util.LinkedList
 
 /**
@@ -42,6 +43,7 @@ class Cuisinele : Fragment() {
     private var country: Country? = null
     private var countries: Array<String> = arrayOf()
     private lateinit var countryAdapter: ArrayAdapter<String>
+    private var guessNo = 0
 
     /**
      * Method creates and returns the view hierarchy associated with this fragment and calls the keyboard setup function.
@@ -61,14 +63,43 @@ class Cuisinele : Fragment() {
                 binding.countryTextField.threshold = 1
             }
         }
-
+        binding.countryTextField.setOnClickListener {
+            enterClicked()
+        }
         getData()
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun enterClicked(){
+        binding.countryTextField.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                if(binding.countryTextField.text.toString() == country!!.CountryName){
+                    findNavController().navigate(R.id.SuccessPage)
+                } else{
+                    guessNo++
+                    if(guessNo == 6){
+                        findNavController().navigate(R.id.FailurePage)
+                        binding.countryTextField.isEnabled = false
+                    } else if(guessNo == 1){
+                        binding.guess1TextView.text = binding.countryTextField.text
+                    } else if(guessNo == 2){
+                        binding.guess2TextView.text = binding.countryTextField.text
+                    } else if(guessNo == 3){
+                        binding.guess3TextView.text = binding.countryTextField.text
+                    } else if(guessNo == 4){
+                        binding.guess4TextView.text = binding.countryTextField.text
+                    } else if(guessNo == 5){
+                        binding.guess5TextView.text = binding.countryTextField.text
+                    }
+                }
+                return@OnKeyListener true
+            }
+            false
+        })
     }
 
     /**
