@@ -82,42 +82,42 @@ class Cuisinele : Fragment() {
                     if (dao.getCountryByName(binding.countryTextField.text.toString()) != null) {
                         if (guessNo == 1) {
                             binding.guess1TextView.text = binding.countryTextField.text
-                                dish!!.GuessOne =
-                                    dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                                dao.updateDish(dish!!)
+                            dish!!.GuessOne =
+                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dao.updateDish(dish!!)
                         } else if (guessNo == 2) {
                             binding.guess2TextView.text = binding.countryTextField.text
-                                dish!!.GuessTwo =
-                                    dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                                dao.updateDish(dish!!)
+                            dish!!.GuessTwo =
+                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dao.updateDish(dish!!)
                         } else if (guessNo == 3) {
                             binding.guess3TextView.text = binding.countryTextField.text
-                                dish!!.GuessThree =
-                                    dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                                dao.updateDish(dish!!)
+                            dish!!.GuessThree =
+                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dao.updateDish(dish!!)
                         } else if (guessNo == 4) {
                             binding.guess4TextView.text = binding.countryTextField.text
-                                dish!!.GuessFour =
-                                    dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                                dao.updateDish(dish!!)
+                            dish!!.GuessFour =
+                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dao.updateDish(dish!!)
                         } else if (guessNo == 5) {
                             binding.guess5TextView.text = binding.countryTextField.text
-                                dish!!.GuessFive =
-                                    dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                                dao.updateDish(dish!!)
+                            dish!!.GuessFive =
+                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dao.updateDish(dish!!)
                         } else if (guessNo == 6) {
-                                dish!!.GuessSix =
-                                    dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                                dao.updateDish(dish!!)
+                            dish!!.GuessSix =
+                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dao.updateDish(dish!!)
                         }
 
                         if (binding.countryTextField.text.toString() == country!!.CountryName) {
-                                dish!!.IsComplete = true;
-                                dao.updateDish(dish!!)
+                            dish!!.IsComplete = true;
+                            dao.updateDish(dish!!)
                             findNavController().navigate(R.id.SuccessPage)
                         } else if (guessNo == 6) {
-                                dish!!.IsComplete = true;
-                                dao.updateDish(dish!!)
+                            dish!!.IsComplete = true;
+                            dao.updateDish(dish!!)
 
                             binding.countryTextField.isEnabled = false
                             findNavController().navigate(R.id.FailurePage)
