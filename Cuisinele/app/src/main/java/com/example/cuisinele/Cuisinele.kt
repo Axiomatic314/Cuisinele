@@ -1,7 +1,9 @@
 package com.example.cuisinele
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Looper
+import android.text.InputType
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
@@ -63,15 +65,13 @@ class Cuisinele : Fragment() {
                     binding.countryTextField.threshold = 1
                 }
         }
-
-        enterClicked()
-
         getData()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        enterClicked()
         toggleGuesses()
     }
 
@@ -126,7 +126,11 @@ class Cuisinele : Fragment() {
                         }
 
                         binding.countryTextField.text.clear()
+                        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        val view = activity?.currentFocus as View
+                        imm.hideSoftInputFromWindow(view.windowToken, 0)
                     }
+
                 }
 
                 return@OnKeyListener true
