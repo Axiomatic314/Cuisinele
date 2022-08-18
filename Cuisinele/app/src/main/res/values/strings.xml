@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Cuisinele</string>
     <string name="action_settings">Settings</string>
-    <string name="action_tutorial">/?</string>
+    <string name="action_tutorial">?</string>
     <!-- Strings used for fragments for navigation -->
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -16,6 +16,8 @@
     <string name="success">Success!</string>
     <string name="failure">Failure...</string>
     <string name="continueButton">Continue</string>
+    <string name="DisplayGuess">Show Guesses</string>
+    <string name="HideGuess">Hide Guesses</string>
     <string-array name="countries_array">
         <item>Afghanistan</item>
         <item>Albania</item>
