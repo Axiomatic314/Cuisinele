@@ -82,58 +82,42 @@ class Cuisinele : Fragment() {
                     if (dao.getCountryByName(binding.countryTextField.text.toString()) != null) {
                         if (guessNo == 1) {
                             binding.guess1TextView.text = binding.countryTextField.text
-                            GlobalScope.async {
                                 dish!!.GuessOne =
                                     dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                                 dao.updateDish(dish!!)
-                            }
                         } else if (guessNo == 2) {
                             binding.guess2TextView.text = binding.countryTextField.text
-                            GlobalScope.async {
                                 dish!!.GuessTwo =
                                     dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                                 dao.updateDish(dish!!)
-                            }
                         } else if (guessNo == 3) {
                             binding.guess3TextView.text = binding.countryTextField.text
-                            GlobalScope.async {
                                 dish!!.GuessThree =
                                     dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                                 dao.updateDish(dish!!)
-                            }
                         } else if (guessNo == 4) {
                             binding.guess4TextView.text = binding.countryTextField.text
-                            GlobalScope.async {
                                 dish!!.GuessFour =
                                     dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                                 dao.updateDish(dish!!)
-                            }
                         } else if (guessNo == 5) {
                             binding.guess5TextView.text = binding.countryTextField.text
-                            GlobalScope.async {
                                 dish!!.GuessFive =
                                     dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                                 dao.updateDish(dish!!)
-                            }
                         } else if (guessNo == 6) {
-                            GlobalScope.async {
                                 dish!!.GuessSix =
                                     dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                                 dao.updateDish(dish!!)
-                            }
                         }
 
                         if (binding.countryTextField.text.toString() == country!!.CountryName) {
-                            GlobalScope.async {
                                 dish!!.IsComplete = true;
                                 dao.updateDish(dish!!)
-                            }
                             findNavController().navigate(R.id.SuccessPage)
                         } else if (guessNo == 6) {
-                            GlobalScope.async {
                                 dish!!.IsComplete = true;
                                 dao.updateDish(dish!!)
-                            }
 
                             binding.countryTextField.isEnabled = false
                             findNavController().navigate(R.id.FailurePage)
