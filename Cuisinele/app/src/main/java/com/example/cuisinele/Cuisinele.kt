@@ -43,7 +43,7 @@ class Cuisinele : Fragment() {
     private var country: Country? = null
     private var countries: Array<String> = arrayOf()
     private lateinit var countryAdapter: ArrayAdapter<String>
-    private var guessNo = 0
+    private var guessNo = 1
 
     /**
      * Method creates and returns the view hierarchy associated with this fragment and calls the keyboard setup function.
@@ -55,18 +55,17 @@ class Cuisinele : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = CuisineleBinding.inflate(inflater, container, false)
-        //todo: remove
-        //setKeyButtons()
 
         context?.let {
-            countryAdapter = ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, LinkedList<String>()).also { adapter ->
-                binding.countryTextField.setAdapter(adapter)
-                binding.countryTextField.threshold = 1
-            }
+            countryAdapter =
+                ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, LinkedList<String>()).also { adapter ->
+                    binding.countryTextField.setAdapter(adapter)
+                    binding.countryTextField.threshold = 1
+                }
         }
-        binding.countryTextField.setOnClickListener {
-            enterClicked()
-        }
+
+        enterClicked()
+
         getData()
         return binding.root
     }
@@ -76,28 +75,76 @@ class Cuisinele : Fragment() {
         toggleGuesses()
     }
 
-    private fun enterClicked(){
+    private fun enterClicked() {
         binding.countryTextField.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
-                if(binding.countryTextField.text.toString() == country!!.CountryName){
-                    findNavController().navigate(R.id.SuccessPage)
-                } else{
-                    guessNo++
-                    if(guessNo == 6){
-                        findNavController().navigate(R.id.FailurePage)
-                        binding.countryTextField.isEnabled = false
-                    } else if(guessNo == 1){
-                        binding.guess1TextView.text = binding.countryTextField.text
-                    } else if(guessNo == 2){
-                        binding.guess2TextView.text = binding.countryTextField.text
-                    } else if(guessNo == 3){
-                        binding.guess3TextView.text = binding.countryTextField.text
-                    } else if(guessNo == 4){
-                        binding.guess4TextView.text = binding.countryTextField.text
-                    } else if(guessNo == 5){
-                        binding.guess5TextView.text = binding.countryTextField.text
+                GlobalScope.async {
+                    if (dao.getCountryByName(binding.countryTextField.text.toString()) != null) {
+                        if (guessNo == 1) {
+                            binding.guess1TextView.text = binding.countryTextField.text
+                            GlobalScope.async {
+                                dish!!.GuessOne =
+                                    dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                                dao.updateDish(dish!!)
+                            }
+                        } else if (guessNo == 2) {
+                            binding.guess2TextView.text = binding.countryTextField.text
+                            GlobalScope.async {
+                                dish!!.GuessTwo =
+                                    dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                                dao.updateDish(dish!!)
+                            }
+                        } else if (guessNo == 3) {
+                            binding.guess3TextView.text = binding.countryTextField.text
+                            GlobalScope.async {
+                                dish!!.GuessThree =
+                                    dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                                dao.updateDish(dish!!)
+                            }
+                        } else if (guessNo == 4) {
+                            binding.guess4TextView.text = binding.countryTextField.text
+                            GlobalScope.async {
+                                dish!!.GuessFour =
+                                    dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                                dao.updateDish(dish!!)
+                            }
+                        } else if (guessNo == 5) {
+                            binding.guess5TextView.text = binding.countryTextField.text
+                            GlobalScope.async {
+                                dish!!.GuessFive =
+                                    dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                                dao.updateDish(dish!!)
+                            }
+                        } else if (guessNo == 6) {
+                            GlobalScope.async {
+                                dish!!.GuessSix =
+                                    dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                                dao.updateDish(dish!!)
+                            }
+                        }
+
+                        if (binding.countryTextField.text.toString() == country!!.CountryName) {
+                            GlobalScope.async {
+                                dish!!.IsComplete = true;
+                                dao.updateDish(dish!!)
+                            }
+                            findNavController().navigate(R.id.SuccessPage)
+                        } else if (guessNo == 6) {
+                            GlobalScope.async {
+                                dish!!.IsComplete = true;
+                                dao.updateDish(dish!!)
+                            }
+
+                            binding.countryTextField.isEnabled = false
+                            findNavController().navigate(R.id.FailurePage)
+                        } else {
+                            guessNo++
+                        }
+
+                        binding.countryTextField.text.clear()
                     }
                 }
+
                 return@OnKeyListener true
             }
             false
@@ -138,6 +185,31 @@ class Cuisinele : Fragment() {
             if (dish != null) {
                 country = dao.getCountryByID(dish!!.CountryID)
                 hints = dao.getHintsByDishID(dish!!.DishID)
+                if (dish!!.GuessOne != 0) {
+                    guessNo = 2
+                    binding.guess1TextView.text = dao.getCountryByID(dish!!.GuessOne)!!.CountryName
+                }
+                if (dish!!.GuessTwo != 0) {
+                    guessNo = 3
+                    binding.guess2TextView.text = dao.getCountryByID(dish!!.GuessTwo)!!.CountryName
+                }
+                if (dish!!.GuessThree != 0) {
+                    guessNo = 4
+                    binding.guess3TextView.text = dao.getCountryByID(dish!!.GuessThree)!!.CountryName
+                }
+                if (dish!!.GuessFour != 0) {
+                    guessNo = 5
+                    binding.guess4TextView.text = dao.getCountryByID(dish!!.GuessFour)!!.CountryName
+                }
+                if (dish!!.GuessFive != 0) {
+                    guessNo = 6
+                    binding.guess5TextView.text = dao.getCountryByID(dish!!.GuessFive)!!.CountryName
+                }
+
+                if (dish!!.IsComplete) {
+                    // TODO: Add message/behaviour for when this dish has already been played
+
+                }
 
                 // TODO: DELETE THIS LINE. It is for testing purposes
                 binding.textView.text = dish!!.DishName + " " + hints!![0].HintText + " " + country!!.CountryName
@@ -156,131 +228,15 @@ class Cuisinele : Fragment() {
     /**
      * Method sets up the show/hide guess button.
      */
-    private fun toggleGuesses(){
-        binding.displayGuessButton.setOnClickListener{
+    private fun toggleGuesses() {
+        binding.displayGuessButton.setOnClickListener {
             if (binding.guessDisplay.visibility == View.INVISIBLE) {
                 binding.guessDisplay.visibility = View.VISIBLE
                 binding.displayGuessButton.text = getString(R.string.HideGuess)
-            }else{
+            } else {
                 binding.guessDisplay.visibility = View.INVISIBLE
                 binding.displayGuessButton.text = getString(R.string.DisplayGuess)
             }
         }
     }
-
-     //todo: remove
-     //Sets up the keyboard listeners.
-     //Creates each individual button's listener with a call to the write method and sets up functionality for the clear and delete buttons.
-    /*fun setKeyButtons() {
-        binding.keyboardA.setOnClickListener {
-            writeChar("A")
-        }
-        binding.keyboardB.setOnClickListener {
-            writeChar("B")
-        }
-        binding.keyboardC.setOnClickListener {
-            writeChar("C")
-        }
-        binding.keyboardD.setOnClickListener {
-            writeChar("D")
-        }
-        binding.keyboardE.setOnClickListener {
-            writeChar("E")
-        }
-        binding.keyboardF.setOnClickListener {
-            writeChar("F")
-        }
-        binding.keyboardG.setOnClickListener {
-            writeChar("G")
-        }
-        binding.keyboardH.setOnClickListener {
-            writeChar("H")
-        }
-        binding.keyboardI.setOnClickListener {
-            writeChar("I")
-        }
-        binding.keyboardJ.setOnClickListener {
-            writeChar("J")
-        }
-        binding.keyboardK.setOnClickListener {
-            writeChar("K")
-        }
-        binding.keyboardL.setOnClickListener {
-            writeChar("L")
-        }
-        binding.keyboardM.setOnClickListener {
-            writeChar("M")
-        }
-        binding.keyboardN.setOnClickListener {
-            writeChar("N")
-        }
-        binding.keyboardO.setOnClickListener {
-            writeChar("O")
-        }
-        binding.keyboardP.setOnClickListener {
-            writeChar("P")
-        }
-        binding.keyboardQ.setOnClickListener {
-            writeChar("Q")
-        }
-        binding.keyboardR.setOnClickListener {
-            writeChar("R")
-        }
-        binding.keyboardS.setOnClickListener {
-            writeChar("S")
-        }
-        binding.keyboardT.setOnClickListener {
-            writeChar("T")
-        }
-        binding.keyboardU.setOnClickListener {
-            writeChar("U")
-        }
-        binding.keyboardV.setOnClickListener {
-            writeChar("V")
-        }
-        binding.keyboardW.setOnClickListener {
-            writeChar("W")
-        }
-        binding.keyboardX.setOnClickListener {
-            writeChar("X")
-        }
-        binding.keyboardY.setOnClickListener {
-            writeChar("Y")
-        }
-        binding.keyboardZ.setOnClickListener {
-            writeChar("Z")
-        }
-        binding.keyboardSpace.setOnClickListener {
-            writeChar(" ")
-        }
-
-        binding.keyboardBackspace.setOnClickListener {
-            if (binding.countryTextField.text.isNotEmpty())
-                binding.countryTextField.text.delete(
-                    binding.countryTextField.text.length - 1,
-                    binding.countryTextField.text.length
-                )
-        }
-        binding.keyboardClear.setOnClickListener {
-            binding.countryTextField.text.clear()
-        }
-
-        binding.keyboardEnter.setOnClickListener {
-            if (binding.countryTextField.text.isNotEmpty()){
-                if(country!!.CountryName == binding.countryTextField.text.toString()){
-
-                }
-            }
-
-
-        }
-    }*/
-
-
-    //todo: remove
-     //Appends the input character to the text box display of the input.
-     //@param[char] single character input of the key pressed.
-//    fun writeChar(char: String) {
-//        binding.countryTextField.append(char)
-//    }
 }

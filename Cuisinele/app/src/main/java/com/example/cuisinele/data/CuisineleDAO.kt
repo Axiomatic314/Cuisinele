@@ -39,21 +39,28 @@ interface CuisineleDAO {
      * @param countryID
      */
     @Query("SELECT c.* FROM Country as c WHERE CountryID = :countryID")
-    fun getCountryByID(countryID: Int): Country
+    fun getCountryByID(countryID: Int): Country?
+
+    /**
+     * SQL SELECT query to get a country by the country name
+     * @param countryName
+     */
+    @Query("SELECT c.* FROM Country as c WHERE CountryName = :countryName")
+    fun getCountryByName(countryName: String): Country?
 
     /**
      * SQL SELECT query to get a dish by id
      * @param dishID
      */
     @Query("SELECT d.* FROM Dish as d WHERE DishID = :dishID")
-    fun getDishByID(dishID: Int): Dish
+    fun getDishByID(dishID: Int): Dish?
 
     /**
      * SQL SELECT query to get a hint by id
      * @param hintID
      */
     @Query("SELECT h.* FROM Hint as h WHERE HintID = :hintID")
-    fun getHintByID(hintID: Int): Hint
+    fun getHintByID(hintID: Int): Hint?
 
     /**
      * SQL SELECT query to get all countries
