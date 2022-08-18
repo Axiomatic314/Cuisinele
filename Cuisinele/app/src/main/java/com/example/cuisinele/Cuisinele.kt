@@ -52,7 +52,6 @@ class Cuisinele : Fragment() {
     ): View? {
         _binding = CuisineleBinding.inflate(inflater, container, false)
         //setKeyButtons()
-        setKeyButtons()
 
         context?.let {
             countryAdapter = ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, LinkedList<String>()).also { adapter ->
