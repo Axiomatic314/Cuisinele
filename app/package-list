@@ -56,7 +56,6 @@ $dokka.location:com.example.cuisinele/Cuisinele/Cuisinele/#/PointingToDeclaratio
 $dokka.location:com.example.cuisinele/Cuisinele/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.cuisinele/-cuisinele/on-create-view.html
 $dokka.location:com.example.cuisinele/Cuisinele/onDestroyView/#/PointingToDeclaration/app/com.example.cuisinele/-cuisinele/on-destroy-view.html
 $dokka.location:com.example.cuisinele/Cuisinele/onViewCreated/#android.view.View#android.os.Bundle?/PointingToDeclaration/app/com.example.cuisinele/-cuisinele/on-view-created.html
-$dokka.location:com.example.cuisinele/Cuisinele/setKeyButtons/#/PointingToDeclaration/app/com.example.cuisinele/-cuisinele/set-key-buttons.html
 $dokka.location:com.example.cuisinele/Cuisinele/writeChar/#kotlin.String/PointingToDeclaration/app/com.example.cuisinele/-cuisinele/write-char.html
 $dokka.location:com.example.cuisinele/Failure///PointingToDeclaration/app/com.example.cuisinele/-failure/index.html
 $dokka.location:com.example.cuisinele/Failure/Failure/#/PointingToDeclaration/app/com.example.cuisinele/-failure/-failure.html
