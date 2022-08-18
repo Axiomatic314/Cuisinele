@@ -1,6 +1,7 @@
 package com.example.cuisinele
 
 import android.os.Bundle
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,9 +18,11 @@ import com.example.cuisinele.data.models.Hint
 import com.example.cuisinele.databinding.CuisineleBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.lang.System.currentTimeMillis
+import java.util.LinkedList
 
 /**
  * A fragment class which acts as the main game page and the default navigation page.
@@ -35,6 +38,8 @@ class Cuisinele : Fragment() {
     private var dish: Dish? = null
     private var hints: List<Hint>? = null
     private var country: Country? = null
+    private var countries: Array<String> = arrayOf()
+    private lateinit var countryAdapter: ArrayAdapter<String>
 
     /**
      * Method creates and returns the view hierarchy associated with this fragment and calls the keyboard setup function.
@@ -47,20 +52,21 @@ class Cuisinele : Fragment() {
     ): View? {
         _binding = CuisineleBinding.inflate(inflater, container, false)
         setKeyButtons()
+
+        context?.let {
+            countryAdapter = ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, LinkedList<String>()).also { adapter ->
+                binding.countryTextField.setAdapter(adapter)
+                binding.countryTextField.threshold = 1
+            }
+        }
+
+        getData()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val textView = binding.countryTextField as AutoCompleteTextView
-        val countries: Array<out String> = resources.getStringArray(R.array.countries_array)
-        context?.let {
-            ArrayAdapter<String>(it, android.R.layout.simple_list_item_1,countries).also { adapter ->
-                textView.setAdapter(adapter)
-                textView.threshold = 1
-            }
-        }
-        getData()
     }
 
     /**
@@ -70,6 +76,12 @@ class Cuisinele : Fragment() {
     private fun getData() {
         GlobalScope.launch(Dispatchers.IO) {
             dao = CuisineleDB.getInstance(ContextApplication.applicationContext()).cuisineleDAO()
+
+            for (c in dao.getCountries().sortedBy { x -> x.CountryName }) {
+                countryAdapter.add(c.CountryName)
+            }
+            countryAdapter.notifyDataSetChanged()
+
 
             if (Settings.dailyGames) {
                 // Convert current time since linux epoch from milliseconds to days
