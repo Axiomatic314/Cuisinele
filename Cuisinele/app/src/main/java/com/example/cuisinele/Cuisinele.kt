@@ -22,6 +22,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.lang.System.currentTimeMillis
+import java.time.LocalDate
 import java.util.*
 
 
@@ -156,7 +157,7 @@ class Cuisinele : Fragment() {
 
             if (Settings.dailyGames) {
                 // Convert current time since linux epoch from milliseconds to days
-                var currentDate = ((((currentTimeMillis() / 1000) / 60) / 60) / 24)
+                var currentDate = LocalDate.now().toEpochDay()
                 // The date we choose the dishes to start cycling from
                 var cycleStartDate = Settings.startDate.toEpochDay()
                 if (currentDate > cycleStartDate) {

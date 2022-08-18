@@ -1,7 +1,5 @@
 package com.example.cuisinele
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -19,6 +17,6 @@ class Settings {
         /**
          * Date we decide daily dishes begin
          */
-        val startDate: LocalDate = LocalDate.parse("20220815", DateTimeFormatter.BASIC_ISO_DATE)
+        val startDate: LocalDate = LocalDate.parse("2022-08-15", DateTimeFormatter.ISO_LOCAL_DATE)
     }
 }
