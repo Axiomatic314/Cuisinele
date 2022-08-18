@@ -71,6 +71,14 @@ class Cuisinele : Fragment() {
         toggleGuesses()
     }
 
+    /**
+     * If application is resumed from background the data needs to be fetched in case the time has changed
+     */
+    override fun onResume() {
+        super.onResume()
+        getData()
+    }
+
     private fun enterClicked() {
         binding.countryTextField.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
