@@ -1,18 +1,14 @@
 package com.example.cuisinele
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.os.Looper
-import android.text.InputType
+import android.util.Base64
 import android.view.*
 import android.view.inputmethod.InputMethodManager
-import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Toast
+import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.data.ContextApplication
 import com.example.cuisinele.data.CuisineleDAO
@@ -26,8 +22,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.lang.System.currentTimeMillis
-import java.security.Key
-import java.util.LinkedList
+import java.util.*
+
 
 /**
  * A fragment class which acts as the main game page and the default navigation page.
@@ -82,13 +78,11 @@ class Cuisinele : Fragment() {
                     if (dao.getCountryByName(binding.countryTextField.text.toString()) != null) {
                         if (guessNo == 1) {
                             binding.guess1TextView.text = binding.countryTextField.text
-                            dish!!.GuessOne =
-                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dish!!.GuessOne = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         } else if (guessNo == 2) {
                             binding.guess2TextView.text = binding.countryTextField.text
-                            dish!!.GuessTwo =
-                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dish!!.GuessTwo = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         } else if (guessNo == 3) {
                             binding.guess3TextView.text = binding.countryTextField.text
@@ -106,8 +100,7 @@ class Cuisinele : Fragment() {
                                 dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         } else if (guessNo == 6) {
-                            dish!!.GuessSix =
-                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dish!!.GuessSix = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         }
 
@@ -171,6 +164,12 @@ class Cuisinele : Fragment() {
             }
 
             if (dish != null) {
+                val decodedString: ByteArray = Base64.decode(dish!!.ImageUrl.split(",")[1], Base64.DEFAULT)
+                val bitMap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+
+                var imageView: ImageView = binding.cuisineleImage
+                imageView.setImageBitmap(bitMap)
+
                 country = dao.getCountryByID(dish!!.CountryID)
                 hints = dao.getHintsByDishID(dish!!.DishID)
                 if (dish!!.GuessOne != 0) {
