@@ -46,8 +46,7 @@
                 android:minHeight="250dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@null"
-                android:scaleType="centerCrop"
-                android:src="@drawable/under_work" />
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/textView"
