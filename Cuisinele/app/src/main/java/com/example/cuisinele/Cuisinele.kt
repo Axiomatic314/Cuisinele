@@ -132,7 +132,6 @@ class Cuisinele : Fragment() {
                         val view = activity?.currentFocus as View
                         imm.hideSoftInputFromWindow(view.windowToken, 0)
                     }
-
                 }
 
                 return@OnKeyListener true
@@ -150,7 +149,8 @@ class Cuisinele : Fragment() {
             dao = CuisineleDB.getInstance(ContextApplication.applicationContext()).cuisineleDAO()
 
             for (c in dao.getCountries().sortedBy { x -> x.CountryName }) {
-                countryAdapter.add(c.CountryName)
+                if (countryAdapter.getPosition(c.CountryName) == -1)
+                    countryAdapter.add(c.CountryName)
             }
             countryAdapter.notifyDataSetChanged()
 
@@ -173,6 +173,7 @@ class Cuisinele : Fragment() {
             }
 
             if (dish != null) {
+                guessNo = 1
                 country = dao.getCountryByID(dish!!.CountryID)
                 hints = dao.getHintsByDishID(dish!!.DishID)
                 if (dish!!.GuessOne != 0) {
