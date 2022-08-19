@@ -27,6 +27,7 @@ class Success : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        MainActivity.canGoBack = false
         _binding = SuccessPageBinding.inflate(inflater, container, false)
         setContinue()
         return binding.root
@@ -48,6 +49,7 @@ class Success : Fragment() {
      * Method destroys the view and unsets the binding variable.
      */
     override fun onDestroyView() {
+        MainActivity.canGoBack = true
         super.onDestroyView()
         _binding = null
     }

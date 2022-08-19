@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    companion object {
+        var canGoBack: Boolean = true
+    }
 
     /**
      * Creates the navigation bar.
@@ -51,7 +54,10 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        appBarConfiguration = AppBarConfiguration(setOf(
+            R.id.SuccessPage, R.id.FailurePage,
+            R.id.Home))
+
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
     /**
@@ -84,5 +90,11 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        if (canGoBack) {
+            super.onBackPressed()
+        }
     }
 }
