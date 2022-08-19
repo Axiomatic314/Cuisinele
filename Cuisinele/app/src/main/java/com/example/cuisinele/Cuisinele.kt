@@ -211,7 +211,7 @@ class Cuisinele : Fragment() {
                     }
                 }
 
-                // TODO: DELETE THIS LINE. It is for testing purposes
+                // TODO: DELETE THIS LINE. It is for testing purposes :)
                 binding.textView.text = dish!!.DishName + " " + hints!![0].HintText + " " + country!!.CountryName
 
                 populateImage()
