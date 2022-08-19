@@ -21,6 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.lang.System.currentTimeMillis
 import java.time.LocalDate
 import java.util.*
@@ -62,7 +63,7 @@ class Cuisinele : Fragment() {
                     binding.countryTextField.threshold = 1
                 }
         }
-        getData()
+        //getData()
         return binding.root
     }
 
@@ -95,15 +96,18 @@ class Cuisinele : Fragment() {
                             dao.updateDish(dish!!)
                         } else if (guessNo == 3) {
                             binding.guess3TextView.text = binding.countryTextField.text
-                            dish!!.GuessThree = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dish!!.GuessThree =
+                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         } else if (guessNo == 4) {
                             binding.guess4TextView.text = binding.countryTextField.text
-                            dish!!.GuessFour = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dish!!.GuessFour =
+                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         } else if (guessNo == 5) {
                             binding.guess5TextView.text = binding.countryTextField.text
-                            dish!!.GuessFive = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dish!!.GuessFive =
+                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         } else if (guessNo == 6) {
                             dish!!.GuessSix = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
@@ -113,17 +117,13 @@ class Cuisinele : Fragment() {
                         if (binding.countryTextField.text.toString() == country!!.CountryName) {
                             dish!!.IsComplete = true;
                             dao.updateDish(dish!!)
-                            GlobalScope.launch(Dispatchers.Main) {
-                                findNavController().navigate(R.id.SuccessPage)
-                            }
+                            findNavController().navigate(R.id.SuccessPage)
                         } else if (guessNo == 6) {
                             dish!!.IsComplete = true;
                             dao.updateDish(dish!!)
 
                             binding.countryTextField.isEnabled = false
-                            GlobalScope.launch(Dispatchers.Main) {
-                                findNavController().navigate(R.id.FailurePage)
-                            }
+                            findNavController().navigate(R.id.FailurePage)
                         } else {
                             guessNo++
                         }
@@ -174,6 +174,7 @@ class Cuisinele : Fragment() {
             }
 
             if (dish != null) {
+                populateImage()
                 guessNo = 1
                 country = dao.getCountryByID(dish!!.CountryID)
                 hints = dao.getHintsByDishID(dish!!.DishID)
@@ -215,7 +216,6 @@ class Cuisinele : Fragment() {
                 // TODO: DELETE THIS LINE. It is for testing purposes
                 binding.textView.text = dish!!.DishName + " " + hints!![0].HintText + " " + country!!.CountryName
 
-                populateImage()
             }
         }
     }
@@ -227,7 +227,6 @@ class Cuisinele : Fragment() {
         GlobalScope.launch(Dispatchers.Main) {
             val decodedString: ByteArray = Base64.decode(dish!!.ImageUrl.split(",")[1], Base64.DEFAULT)
             val bitMap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
-
             var imageView: ImageView = binding.cuisineleImage
             imageView.setImageBitmap(bitMap)
         }
