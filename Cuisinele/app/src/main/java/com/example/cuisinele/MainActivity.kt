@@ -95,6 +95,9 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (canGoBack) {
             super.onBackPressed()
+        } else {
+            finish()
+            System.out.close()
         }
     }
 }
