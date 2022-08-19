@@ -243,7 +243,7 @@ class Cuisinele : Fragment() {
     /**
      * Method sets up the show/hide guess button.
      */
-    private fun toggleGuesses() {
+    fun toggleGuesses() {
         binding.displayGuessButton.setOnClickListener {
             if (binding.guessDisplay.visibility == View.INVISIBLE) {
                 binding.guessDisplay.visibility = View.VISIBLE
