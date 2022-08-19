@@ -197,8 +197,17 @@ class Cuisinele : Fragment() {
                 }
 
                 if (dish!!.IsComplete) {
-                    // TODO: Add message/behaviour for when this dish has already been played
-
+                    GlobalScope.launch(Dispatchers.Main) {
+                        if (dish!!.GuessSix != 0) {
+                            if (dish!!.GuessSix == dish!!.CountryID) {
+                                findNavController().navigate(R.id.SuccessPage)
+                            } else {
+                                findNavController().navigate(R.id.FailurePage)
+                            }
+                        } else {
+                            findNavController().navigate(R.id.SuccessPage)
+                        }
+                    }
                 }
 
                 // TODO: DELETE THIS LINE. It is for testing purposes
