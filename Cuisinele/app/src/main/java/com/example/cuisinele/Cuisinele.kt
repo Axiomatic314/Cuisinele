@@ -165,7 +165,7 @@ class Cuisinele : Fragment() {
                     var dishID: Int = ((currentDate - cycleStartDate) % dao.getDishes().size).toInt()
                     dish = dao.getDishByID(dishID)
                 } else {
-                    // TODO: add message/exception for when the dish cycle hasnt begun (this should never occur)
+                    // TODO: add message/exception for when the dish cycle hasn't begun (this should never occur)
                 }
             } else {
                 var allDishes = dao.getDishes()
