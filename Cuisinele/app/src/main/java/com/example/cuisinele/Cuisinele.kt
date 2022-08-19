@@ -8,6 +8,7 @@ import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.data.ContextApplication
@@ -119,8 +120,7 @@ class Cuisinele : Fragment() {
                         } else if (guessNo == 6) {
                             dish!!.IsComplete = true;
                             dao.updateDish(dish!!)
-
-                            binding.countryTextField.isEnabled = false
+//                            binding.countryTextField.isEnabled = false
                             GlobalScope.launch(Dispatchers.Main) {
                                 findNavController().navigate(R.id.FailurePage)
                             }
