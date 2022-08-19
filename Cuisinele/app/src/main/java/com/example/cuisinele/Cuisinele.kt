@@ -108,11 +108,7 @@ class Cuisinele : Fragment() {
                             dish!!.GuessFive =
                                 dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
-                        } else if (guessNo == 6) {
-                            dish!!.GuessSix = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                            dao.updateDish(dish!!)
                         }
-
                         if (binding.countryTextField.text.toString() == country!!.CountryName) {
                             dish!!.IsComplete = true;
                             dao.updateDish(dish!!)
