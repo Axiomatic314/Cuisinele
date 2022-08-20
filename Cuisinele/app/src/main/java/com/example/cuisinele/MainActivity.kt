@@ -2,6 +2,7 @@ package com.example.cuisinele
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     companion object {
         var canGoBack: Boolean = true
+        var prefs: SharedPreferences? = null
     }
 
     /**
@@ -55,6 +57,17 @@ class MainActivity : AppCompatActivity() {
             R.id.Home, R.id.Tut))
 
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        prefs = getSharedPreferences("custom", MODE_PRIVATE)
+        if (prefs != null) {
+            var isNotFirstLoad = prefs!!.getBoolean("isNotFirstLoad", false)
+            if (!isNotFirstLoad) {
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.Tut)
+            }
+        } else {
+            findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.Tut)
+
+        }
     }
     /**
      * Creates the icons for the navigation bar.

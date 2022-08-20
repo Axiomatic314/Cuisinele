@@ -18,6 +18,7 @@ class Tutorial : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
     /**
      * Method creates and returns the view hierarchy associated with this fragment and inflates the page to be viewed.
      * @return the full xml page to be displayed.
@@ -33,10 +34,18 @@ class Tutorial : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
+
     /**
      * Method destroys the view and unsets the binding variable.
      */
     override fun onDestroyView() {
+        if (MainActivity.prefs != null && !MainActivity.prefs!!.getBoolean("isNotFirstLoad", true)) {
+            var prefEdit = MainActivity.prefs!!.edit()
+            prefEdit.apply {
+                putBoolean("isNotFirstLoad", true)
+                apply()
+            }
+        }
         super.onDestroyView()
         _binding = null
     }
