@@ -150,9 +150,6 @@ class Cuisinele : Fragment() {
             for (c in dao.getCountries().sortedBy { x -> x.CountryName }) {
                 if (countryAdapter.getPosition(c.CountryName) == -1)
                     countryAdapter.add(c.CountryName)
-                else {
-                    println(c.CountryName)
-                }
             }
             countryAdapter.notifyDataSetChanged()
 
