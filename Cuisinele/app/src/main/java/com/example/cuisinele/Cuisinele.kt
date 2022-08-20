@@ -57,14 +57,6 @@ class Cuisinele : Fragment() {
     ): View? {
         _binding = CuisineleBinding.inflate(inflater, container, false)
 
-        context?.let {
-            countryAdapter =
-                ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, LinkedList<String>()).also { adapter ->
-                    binding.countryTextField.setAdapter(adapter)
-                    binding.countryTextField.threshold = 1
-                }
-        }
-        //getData()
         return binding.root
     }
 
@@ -80,6 +72,13 @@ class Cuisinele : Fragment() {
      */
     override fun onResume() {
         super.onResume()
+        context?.let {
+            countryAdapter =
+                ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, LinkedList<String>()).also { adapter ->
+                    binding.countryTextField.setAdapter(adapter)
+                    binding.countryTextField.threshold = 1
+                }
+        }
         getData()
     }
 
@@ -146,13 +145,11 @@ class Cuisinele : Fragment() {
         GlobalScope.launch(Dispatchers.IO) {
             dao = CuisineleDB.getInstance(ContextApplication.applicationContext()).cuisineleDAO()
 
-            countryAdapter.clear()
             for (c in dao.getCountries().sortedBy { x -> x.CountryName }) {
                 if (countryAdapter.getPosition(c.CountryName) == -1)
                     countryAdapter.add(c.CountryName)
             }
             countryAdapter.notifyDataSetChanged()
-
 
             if (Settings.dailyGames) {
                 // Convert current time since linux epoch from milliseconds to days
