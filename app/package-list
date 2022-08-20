@@ -71,7 +71,9 @@ $dokka.location:com.example.cuisinele/Failure/onCreateView/#android.view.LayoutI
 $dokka.location:com.example.cuisinele/Failure/onDestroyView/#/PointingToDeclaration/app/com.example.cuisinele/-failure/on-destroy-view.html
 $dokka.location:com.example.cuisinele/MainActivity.Companion///PointingToDeclaration/app/com.example.cuisinele/-main-activity/-companion/index.html
 $dokka.location:com.example.cuisinele/MainActivity.Companion/getCanGoBack/#/PointingToDeclaration/app/com.example.cuisinele/-main-activity/-companion/get-can-go-back.html
+$dokka.location:com.example.cuisinele/MainActivity.Companion/getPrefs/#/PointingToDeclaration/app/com.example.cuisinele/-main-activity/-companion/get-prefs.html
 $dokka.location:com.example.cuisinele/MainActivity.Companion/setCanGoBack/#kotlin.Boolean/PointingToDeclaration/app/com.example.cuisinele/-main-activity/-companion/set-can-go-back.html
+$dokka.location:com.example.cuisinele/MainActivity.Companion/setPrefs/#android.content.SharedPreferences?/PointingToDeclaration/app/com.example.cuisinele/-main-activity/-companion/set-prefs.html
 $dokka.location:com.example.cuisinele/MainActivity///PointingToDeclaration/app/com.example.cuisinele/-main-activity/index.html
 $dokka.location:com.example.cuisinele/MainActivity/MainActivity/#/PointingToDeclaration/app/com.example.cuisinele/-main-activity/-main-activity.html
 $dokka.location:com.example.cuisinele/MainActivity/onBackPressed/#/PointingToDeclaration/app/com.example.cuisinele/-main-activity/on-back-pressed.html
