@@ -42,7 +42,7 @@ class Cuisinele : Fragment() {
     private var dish: Dish? = null
     private var hints: List<Hint>? = null
     private var country: Country? = null
-    private var countries: Array<String> = arrayOf()
+    //private var countries: Array<String> = arrayOf()
     private lateinit var countryAdapter: ArrayAdapter<String>
     private var guessNo = 1
 
@@ -72,6 +72,7 @@ class Cuisinele : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         enterClicked()
         toggleGuesses()
+        populateHint()
     }
 
     /**
@@ -210,8 +211,26 @@ class Cuisinele : Fragment() {
                 }
 
                 // TODO: DELETE THIS LINE. It is for testing purposes
-                binding.textView.text = dish!!.DishName + " " + hints!![0].HintText + " " + country!!.CountryName
+               // binding.hintDisplay.text = dish!!.DishName + " " + hints!![0].HintText + " " + country!!.CountryName
 
+            }
+        }
+    }
+
+    private fun populateHint(){
+        var hintNumber = 0
+        binding.displayHintButton.setOnClickListener {
+            if (hintNumber == 0) {
+                binding.hintDisplay1.text = hints!![hintNumber].HintText
+                hintNumber++
+            } else if (hintNumber == 1) {
+                binding.hintDisplay2.text = hints!![hintNumber].HintText
+                hintNumber++
+            } else if (hintNumber == 2) {
+                binding.hintDisplay3.text = hints!![hintNumber].HintText
+                hintNumber++
+            } else {
+                Toast.makeText(context, "Out of hints!", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -250,4 +269,5 @@ class Cuisinele : Fragment() {
             }
         }
     }
+
 }

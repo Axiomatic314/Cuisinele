@@ -18,4 +18,5 @@
     <string name="continueButton">Continue</string>
     <string name="DisplayGuess">Show Guesses</string>
     <string name="HideGuess">Hide Guesses</string>
+    <string name="GetHint">Get Hint</string>
 </resources>

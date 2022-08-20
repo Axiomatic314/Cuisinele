@@ -22,7 +22,6 @@
         android:hint="Enter Country..."
         android:inputType="text"
         android:textColorHint="#8D6E63"
-        android:textIsSelectable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -48,12 +47,44 @@
                 android:contentDescription="@null"
                 android:scaleType="centerCrop" />
 
-            <TextView
-                android:id="@+id/textView"
+            <!--todo: fix sizing and placement -->
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:layout_marginTop="10dp"
-                android:text="Hint" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/hintDisplay1"
+                    android:layout_width="0dp"
+                    android:textAlignment="center"
+                    android:textSize="40sp"
+                    android:layout_weight="1"
+                    android:layout_height="75dp"/>
+                <TextView
+                    android:id="@+id/hintDisplay2"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="75dp" />
+                <TextView
+                    android:id="@+id/hintDisplay3"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="75dp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/displayHintButton"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="@string/GetHint"
+                android:padding="10dp"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_gravity="center_horizontal"/>
 
             <Button
                 android:id="@+id/displayGuessButton"
@@ -64,7 +95,6 @@
                 android:layout_gravity="center_horizontal"
                 style="@style/Widget.AppCompat.Button.Small" />
 
-            <!-- todo: fix the height when images are added properly    -->
             <LinearLayout
                 android:id="@+id/guessDisplay"
                 android:layout_width="match_parent"
@@ -119,489 +149,4 @@
        </LinearLayout>
     </ScrollView>
 
-
-    <!--todo: add more feedback when typing -->
-    <LinearLayout
-        android:id="@+id/keyboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:visibility="invisible">
-
-        <LinearLayout
-            android:id="@+id/keyboardTop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/keyboardMiddle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <Button
-                android:id="@+id/keyboardQ"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="Q"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/keyboardW"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="W"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardE"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="E"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardR"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="R"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardT"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="T"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardY"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="Y"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardU"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="U"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardI"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="I"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardO"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="O"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardP"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="P"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/keyboardMiddle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/keyboardBottom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <Button
-                android:id="@+id/keyboardA"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="A"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardS"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="S"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardD"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="D"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardF"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="F"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardG"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="G"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardH"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="H"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardJ"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="J"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardK"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="K"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardL"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="L"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/keyboardBottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/keyboardControls"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/keyboardZ"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="Z"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardX"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="X"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardC"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="C"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardV"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="V"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardB"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="B"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardN"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="N"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardM"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0sp"
-                android:text="M"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <Button
-                android:id="@+id/keyboardBackspace"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.2"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:padding="0dp"
-                android:paddingBottom="0dp"
-                android:text="⌫"
-                android:textSize="16sp"
-                app:iconPadding="0dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/keyboardControls"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/keyboardBottom">
-
-            <Button
-                android:id="@+id/keyboardClear"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Clear"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Button
-                android:id="@+id/keyboardSpace"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="Space"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/keyboardEnter"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/keyboardClear" />
-
-            <Button
-                android:id="@+id/keyboardEnter"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Enter"
-                android:textSize="14sp"
-                app:iconPadding="2dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-        </LinearLayout>
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
