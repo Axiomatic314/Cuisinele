@@ -39,7 +39,7 @@ class Tutorial : Fragment() {
      * Method destroys the view and unsets the binding variable.
      */
     override fun onDestroyView() {
-        if (MainActivity.prefs != null && !MainActivity.prefs!!.getBoolean("isNotFirstLoad", true)) {
+        if (MainActivity.prefs != null && !MainActivity.prefs!!.getBoolean("isNotFirstLoad", false)) {
             var prefEdit = MainActivity.prefs!!.edit()
             prefEdit.apply {
                 putBoolean("isNotFirstLoad", true)

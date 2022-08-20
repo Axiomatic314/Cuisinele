@@ -146,9 +146,13 @@ class Cuisinele : Fragment() {
         GlobalScope.launch(Dispatchers.IO) {
             dao = CuisineleDB.getInstance(ContextApplication.applicationContext()).cuisineleDAO()
 
+            countryAdapter.clear()
             for (c in dao.getCountries().sortedBy { x -> x.CountryName }) {
                 if (countryAdapter.getPosition(c.CountryName) == -1)
                     countryAdapter.add(c.CountryName)
+                else {
+                    println(c.CountryName)
+                }
             }
             countryAdapter.notifyDataSetChanged()
 
