@@ -75,7 +75,7 @@ class Cuisinele : Fragment() {
     }
 
     /**
-     * If application is resumed from background the data needs to be fetched in case the time has changed
+     * If application is resumed from background the data needs to be fetched in case the time has changed.
      */
     override fun onResume() {
         super.onResume()
