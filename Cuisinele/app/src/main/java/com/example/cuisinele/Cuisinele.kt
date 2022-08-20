@@ -47,7 +47,7 @@ class Cuisinele : Fragment() {
     private var guessNo = 1
 
     /**
-     * Method creates and returns the view hierarchy associated with this fragment and calls the keyboard setup function.
+     * Method creates and returns the view hierarchy associated with this fragment and sets up the AutoComplete.
      *
      * @return the full xml page to be displayed.
      */
