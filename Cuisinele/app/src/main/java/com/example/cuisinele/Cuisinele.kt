@@ -18,6 +18,7 @@ import com.example.cuisinele.data.models.Country
 import com.example.cuisinele.data.models.Dish
 import com.example.cuisinele.data.models.Hint
 import com.example.cuisinele.databinding.CuisineleBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -125,9 +126,12 @@ class Cuisinele : Fragment() {
                         }
 
                         binding.countryTextField.text.clear()
-                        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                        val view = activity?.currentFocus as View
-                        imm.hideSoftInputFromWindow(view.windowToken, 0)
+//                        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+//                        val view = activity?.currentFocus as View
+//                        imm.hideSoftInputFromWindow(view.windowToken, 0)
+                        Snackbar.make(requireActivity().findViewById(R.id.countryTextField), "Incorrect...", Snackbar.LENGTH_SHORT).apply {
+                            anchorView = requireActivity().findViewById(R.id.countryTextField)
+                        }.show()
                     }
                 }
 
@@ -225,7 +229,10 @@ class Cuisinele : Fragment() {
                 binding.hintDisplay3.text = hints!![hintNumber].HintText
                 hintNumber++
             } else {
-                Toast.makeText(context, "Out of hints!", Toast.LENGTH_SHORT).show()
+                Snackbar.make(requireActivity().findViewById(R.id.countryTextField), "Out of hints!", Snackbar.LENGTH_SHORT).apply {
+                    anchorView = requireActivity().findViewById(R.id.countryTextField)
+                }.show()
+                //binding.displayHintButton.visibility = View.INVISIBLE
             }
         }
     }
