@@ -1,11 +1,18 @@
 package com.example.cuisinele
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.SuccessPageBinding
+import com.google.android.material.snackbar.Snackbar
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.ZoneOffset
+import kotlin.math.floor
 
 /**
  * Fragment class for the success page.
@@ -29,8 +36,33 @@ class Success : Fragment() {
     ): View {
         MainActivity.canGoBack = false
         _binding = SuccessPageBinding.inflate(inflater, container, false)
-        setContinue()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setCountDown()
+        setContinue()
+    }
+
+    //todo: stop the timer on page change, or check if on page before trying to write to textfield
+    private fun setCountDown() {
+        if (Settings.dailyGames) {
+            val currentTime = LocalTime.now().toSecondOfDay()
+            val secondsInDay = 86400
+            val millisInFuture = ((secondsInDay - currentTime) *1000).toLong()
+            val timer = object : CountDownTimer(millisInFuture, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    var message = "seconds remaining " + ((millisUntilFinished) / 1000).toString()
+                    binding.countdownTimer.text = message
+                }
+
+                override fun onFinish() {
+                    binding.continueButton.visibility = View.VISIBLE
+                }
+
+            }.start()
+        }
     }
 
 
@@ -38,10 +70,11 @@ class Success : Fragment() {
      * Displays the continue button if the game is not restricted to daily mode.
      */
     private fun setContinue() {
-        binding.continueButton.setOnClickListener{
-            if(!Settings.dailyGames) {
-                binding.continueButton.visibility = View.VISIBLE
-            }
+        if (!Settings.dailyGames) {
+            binding.continueButton.visibility = View.VISIBLE
+        }
+        binding.continueButton.setOnClickListener {
+            findNavController().navigate(R.id.Home)
         }
     }
 
