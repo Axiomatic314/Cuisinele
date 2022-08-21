@@ -18,8 +18,7 @@
                 android:name=".MainActivity"
                 android:exported="true"
                 android:label="@string/app_name"
-                android:theme="@style/Theme.Cuisinele"
-                android:windowSoftInputMode="stateAlwaysHidden">
+                android:theme="@style/Theme.Cuisinele">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
