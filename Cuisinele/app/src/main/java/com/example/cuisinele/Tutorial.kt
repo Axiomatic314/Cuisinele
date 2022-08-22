@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.TutorialPageBinding
 
 /**
@@ -28,6 +29,10 @@ class Tutorial : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = TutorialPageBinding.inflate(inflater, container, false)
+        binding.continueBtn.setOnClickListener {
+            findNavController().navigate(R.id.Home)
+        }
+
         return binding.root
     }
 
