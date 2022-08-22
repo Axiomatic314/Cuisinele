@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.FailurePageBinding
+import java.lang.String
 import java.time.LocalTime
+import java.util.concurrent.TimeUnit
 
 /**
  * Fragment class for the failure page.
@@ -47,12 +49,16 @@ class Failure : Fragment() {
             val millisInFuture = ((secondsInDay - currentTime) *1000).toLong()
             timer = object : CountDownTimer(millisInFuture, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
-                    var message = "seconds remaining " + ((millisUntilFinished) / 1000).toString()
+                    var message = String.format("Next Cuisinele in\n%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
+                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) % TimeUnit.HOURS.toMinutes(1),
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % TimeUnit.MINUTES.toSeconds(1)
+                    )
                     binding.countdownTimer.text = message
                 }
 
                 override fun onFinish() {
                     binding.continueButton.visibility = View.VISIBLE
+                    binding.countdownTimer.visibility = View.INVISIBLE
                 }
 
             }.start()
