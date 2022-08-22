@@ -10,13 +10,16 @@
     <string name="ExampleString">Example:</string>
     <string name="HintStringExample">Hint</string>
     <string name="HintDescription">In this case, the correct answer was:</string>
-    <string name="DishNameExample">Name</string>
+    <string name="DishNameExample">Sushi</string>
     <string name="AvailableEachDay">A new CUISINELE will be available each day!</string>
-    <string name="ExampleAnswer">Answer</string>
+    <string name="ExampleAnswer">Japan</string>
     <string name="success">Success!</string>
     <string name="failure">Failure...</string>
     <string name="continueButton">Continue</string>
     <string name="DisplayGuess">Show Guesses</string>
     <string name="HideGuess">Hide Guesses</string>
     <string name="GetHint">Get Hint</string>
+    <string name="tutorialHintFlag">🇯🇵</string>
+    <string name="tutorialHintLetter">Starts with: J</string>
+    <string name="tutorialHintRegion">Region: Asia</string>
 </resources>
