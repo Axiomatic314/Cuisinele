@@ -19,6 +19,7 @@ class Failure : Fragment() {
 
     //This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
+    private lateinit var timer : CountDownTimer
 
     /**
      * Method creates and returns the view hierarchy associated with this fragment and inflates the page to be viewed.
@@ -44,7 +45,7 @@ class Failure : Fragment() {
             val currentTime = LocalTime.now().toSecondOfDay()
             val secondsInDay = 86400
             val millisInFuture = ((secondsInDay - currentTime) *1000).toLong()
-            val timer = object : CountDownTimer(millisInFuture, 1000) {
+            timer = object : CountDownTimer(millisInFuture, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
                     var message = "seconds remaining " + ((millisUntilFinished) / 1000).toString()
                     binding.countdownTimer.text = message
@@ -74,6 +75,7 @@ class Failure : Fragment() {
      * Method destroys the view and unsets the binding variable.
      */
     override fun onDestroyView() {
+        timer.cancel()
         MainActivity.canGoBack = true
         super.onDestroyView()
         _binding = null
