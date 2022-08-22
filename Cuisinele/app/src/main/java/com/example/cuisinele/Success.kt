@@ -23,6 +23,7 @@ class Success : Fragment() {
 
     //This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
+    private lateinit var timer : CountDownTimer
 
     /**
      * Method creates and returns the view hierarchy associated with this fragment and inflates the page to be viewed.
@@ -45,13 +46,12 @@ class Success : Fragment() {
         setContinue()
     }
 
-    //todo: stop the timer on page change, or check if on page before trying to write to textfield
     private fun setCountDown() {
         if (Settings.dailyGames) {
             val currentTime = LocalTime.now().toSecondOfDay()
             val secondsInDay = 86400
             val millisInFuture = ((secondsInDay - currentTime) *1000).toLong()
-            val timer = object : CountDownTimer(millisInFuture, 1000) {
+            timer = object : CountDownTimer(millisInFuture, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
                     var message = "seconds remaining " + ((millisUntilFinished) / 1000).toString()
                     binding.countdownTimer.text = message
@@ -64,7 +64,6 @@ class Success : Fragment() {
             }.start()
         }
     }
-
 
     /**
      * Displays the continue button if the game is not restricted to daily mode.
@@ -82,6 +81,7 @@ class Success : Fragment() {
      * Method destroys the view and unsets the binding variable.
      */
     override fun onDestroyView() {
+        timer.cancel()
         MainActivity.canGoBack = true
         super.onDestroyView()
         _binding = null
