@@ -185,33 +185,32 @@ class Cuisinele : Fragment() {
                             findNavController().navigate(R.id.SuccessPage)
                         }
                     }
+                } else {
+                    populateImage()
+                    guessNo = 1
+                    country = dao.getCountryByID(dish!!.CountryID)
+                    hints = dao.getHintsByDishID(dish!!.DishID)
+                    if (dish!!.GuessOne != 0) {
+                        guessNo = 2
+                        binding.guess1TextView.text = dao.getCountryByID(dish!!.GuessOne)!!.CountryName
+                    }
+                    if (dish!!.GuessTwo != 0) {
+                        guessNo = 3
+                        binding.guess2TextView.text = dao.getCountryByID(dish!!.GuessTwo)!!.CountryName
+                    }
+                    if (dish!!.GuessThree != 0) {
+                        guessNo = 4
+                        binding.guess3TextView.text = dao.getCountryByID(dish!!.GuessThree)!!.CountryName
+                    }
+                    if (dish!!.GuessFour != 0) {
+                        guessNo = 5
+                        binding.guess4TextView.text = dao.getCountryByID(dish!!.GuessFour)!!.CountryName
+                    }
+                    if (dish!!.GuessFive != 0) {
+                        guessNo = 6
+                        binding.guess5TextView.text = dao.getCountryByID(dish!!.GuessFive)!!.CountryName
+                    }
                 }
-
-                populateImage()
-                guessNo = 1
-                country = dao.getCountryByID(dish!!.CountryID)
-                hints = dao.getHintsByDishID(dish!!.DishID)
-                if (dish!!.GuessOne != 0) {
-                    guessNo = 2
-                    binding.guess1TextView.text = dao.getCountryByID(dish!!.GuessOne)!!.CountryName
-                }
-                if (dish!!.GuessTwo != 0) {
-                    guessNo = 3
-                    binding.guess2TextView.text = dao.getCountryByID(dish!!.GuessTwo)!!.CountryName
-                }
-                if (dish!!.GuessThree != 0) {
-                    guessNo = 4
-                    binding.guess3TextView.text = dao.getCountryByID(dish!!.GuessThree)!!.CountryName
-                }
-                if (dish!!.GuessFour != 0) {
-                    guessNo = 5
-                    binding.guess4TextView.text = dao.getCountryByID(dish!!.GuessFour)!!.CountryName
-                }
-                if (dish!!.GuessFive != 0) {
-                    guessNo = 6
-                    binding.guess5TextView.text = dao.getCountryByID(dish!!.GuessFive)!!.CountryName
-                }
-
             }
         }
     }
