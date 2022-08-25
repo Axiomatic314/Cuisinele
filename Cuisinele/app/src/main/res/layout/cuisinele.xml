@@ -43,7 +43,15 @@
                 android:contentDescription="@null"
                 android:scaleType="centerCrop" />
 
-            <!--todo: fix sizing and placement -->
+            <TextView
+                android:id="@+id/dishName"
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"

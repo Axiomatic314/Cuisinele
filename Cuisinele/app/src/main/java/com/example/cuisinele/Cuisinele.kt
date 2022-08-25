@@ -190,6 +190,7 @@ class Cuisinele : Fragment() {
                     guessNo = 1
                     country = dao.getCountryByID(dish!!.CountryID)
                     hints = dao.getHintsByDishID(dish!!.DishID)
+                    binding.dishName.text = dish!!.DishName
                     if (dish!!.GuessOne != 0) {
                         guessNo = 2
                         binding.guess1TextView.text = dao.getCountryByID(dish!!.GuessOne)!!.CountryName
