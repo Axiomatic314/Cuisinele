@@ -17,6 +17,6 @@ class Settings {
         /**
          * Date we decide daily dishes begin
          */
-        val startDate: LocalDate = LocalDate.parse("2022-08-20", DateTimeFormatter.ISO_LOCAL_DATE)
+        val startDate: LocalDate = LocalDate.parse("2022-08-24", DateTimeFormatter.ISO_LOCAL_DATE)
     }
 }
