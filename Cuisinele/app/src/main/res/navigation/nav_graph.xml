@@ -3,7 +3,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/nav_graph"
-            app:startDestination="@id/Home">
+            app:startDestination="@id/LoadingPage">
 
     <fragment
             android:id="@+id/Home"
@@ -21,10 +21,29 @@
             app:destination="@id/FailurePage" />
     </fragment>
     <fragment
+        android:id="@+id/LoadingPage"
+        android:name="com.example.cuisinele.Loading"
+        android:label="@string/app_name"
+        tools:layout="@layout/loading_page" >
+        <action
+            android:id="@+id/action_LoadingPage_to_Home"
+            app:destination="@id/Home" />
+        <action
+            android:id="@+id/action_LoadingPage_to_FailurePage"
+            app:destination="@id/FailurePage" />
+        <action
+            android:id="@+id/action_LoadingPage_to_SuccessPage"
+            app:destination="@id/SuccessPage" />
+    </fragment>
+    <fragment
         android:id="@+id/Tut"
         android:name="com.example.cuisinele.Tutorial"
         android:label="@string/app_name"
-        tools:layout="@layout/tutorial_page"/>
+        tools:layout="@layout/tutorial_page">
+        <action
+            android:id="@+id/action_Tut_to_LoadingPage2"
+            app:destination="@id/LoadingPage" />
+    </fragment>
     <fragment
         android:id="@+id/SuccessPage"
         android:name="com.example.cuisinele.Success"

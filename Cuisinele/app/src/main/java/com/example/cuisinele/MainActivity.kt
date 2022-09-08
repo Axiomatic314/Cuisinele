@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(setOf(
             R.id.SuccessPage, R.id.FailurePage,
-            R.id.Home, R.id.Tut))
+            R.id.Home, R.id.Tut, R.id.LoadingPage))
 
         setupActionBarWithNavController(navController, appBarConfiguration)
 
@@ -103,7 +103,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         if (canGoBack) {
-            super.onBackPressed()
+//            super.onBackPressed()
+            findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.LoadingPage)
         } else {
             finish()
             System.out.close()

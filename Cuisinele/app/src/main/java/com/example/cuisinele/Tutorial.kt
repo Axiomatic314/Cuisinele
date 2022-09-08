@@ -30,7 +30,8 @@ class Tutorial : Fragment() {
     ): View? {
         _binding = TutorialPageBinding.inflate(inflater, container, false)
         binding.continueBtn.setOnClickListener {
-            findNavController().navigate(R.id.Home)
+//            findNavController().navigate(R.id.Home)
+            findNavController().navigate(R.id.LoadingPage)
         }
 
         return binding.root
