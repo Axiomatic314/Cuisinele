@@ -25,7 +25,7 @@ abstract class CuisineleDB : RoomDatabase() {
                 INSTANCE = Room.databaseBuilder(
                     context.applicationContext,
                     CuisineleDB::class.java, "CuisineleDB.db"
-                ).createFromAsset("prepopulated.db").build()
+                ).createFromAsset("prepopulated.db").allowMainThreadQueries().build()
             }
             return INSTANCE!!
         }
