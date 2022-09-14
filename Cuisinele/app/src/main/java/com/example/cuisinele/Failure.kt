@@ -40,6 +40,11 @@ class Failure : Fragment() {
         return binding.root
     }
 
+    override fun onPause() {
+        super.onPause()
+        findNavController().navigate(R.id.LoadingPage)
+    }
+
 
     //todo: stop the timer on page change, or check if on page before trying to write to textfield
     private fun setCountDown() {

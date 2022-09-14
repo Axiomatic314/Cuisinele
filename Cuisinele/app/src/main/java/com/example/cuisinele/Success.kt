@@ -35,13 +35,14 @@ class Success : Fragment() {
     ): View {
         MainActivity.canGoBack = false
         _binding = SuccessPageBinding.inflate(inflater, container, false)
+        setCountDown()
+        setContinue()
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setCountDown()
-        setContinue()
+    override fun onPause() {
+        super.onPause()
+        findNavController().navigate(R.id.LoadingPage)
     }
 
     private fun setCountDown() {
