@@ -4,6 +4,7 @@
 [![codecov](https://codecov.io/gh/Axiomatic314/Cuisinele/branch/master/graph/badge.svg?token=F5AI9XYK7D)](https://codecov.io/gh/Axiomatic314/Cuisinele)
 
 ## How to run
+
 -   First clone the github repository into your android studio or other appropriate IDE  
 
 -   Open the Cuisinele/Cuisinele folder  
@@ -13,9 +14,10 @@
 -   Build and run  
 
 ## Potential cool points
+
 -  We have created a web application that lets us add dishes and hint information to a database file that we can then download and add into our project.  
 
 ![image](https://user-images.githubusercontent.com/109326678/186302609-5c364924-b4c5-486b-a162-94c9473971dd.png)
    
 ## References
--   Please refer to the [references](reference.md) file to see where content was sourced.  
+-   Please refer to the [references](reference.md) file to see where content was sourced.
