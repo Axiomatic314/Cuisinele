@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.data.ContextApplication
@@ -217,23 +218,20 @@ class Cuisinele : Fragment() {
     }
 
     private fun populateHint(){
-        var hintNumber = 0
-        binding.displayHintButton.setOnClickListener {
-            if (hintNumber == 0) {
-                binding.hintDisplay1.text = hints!![hintNumber].HintText
-                hintNumber++
-            } else if (hintNumber == 1) {
-                binding.hintDisplay2.text = hints!![hintNumber].HintText
-                hintNumber++
-            } else if (hintNumber == 2) {
-                binding.hintDisplay3.text = hints!![hintNumber].HintText
-                hintNumber++
-            } else {
-                Snackbar.make(requireActivity().findViewById(R.id.countryTextField), "Out of hints!", Snackbar.LENGTH_SHORT).apply {
-                    anchorView = requireActivity().findViewById(R.id.countryTextField)
-                }.show()
-                //binding.displayHintButton.visibility = View.INVISIBLE
-            }
+        binding.hintButtonDisplay1.setOnClickListener {
+            binding.hintButtonDisplay1.visibility = View.GONE
+            binding.hintDisplay1.visibility = View.VISIBLE
+            binding.hintDisplay1.text = hints!![0].HintText
+        }
+        binding.hintButtonDisplay2.setOnClickListener {
+            binding.hintButtonDisplay2.visibility = View.GONE
+            binding.hintDisplay2.visibility = View.VISIBLE
+            binding.hintDisplay2.text = hints!![1].HintText
+        }
+        binding.hintButtonDisplay3.setOnClickListener {
+            binding.hintButtonDisplay3.visibility = View.GONE
+            binding.hintDisplay3.visibility = View.VISIBLE
+            binding.hintDisplay3.text = hints!![2].HintText
         }
     }
 
