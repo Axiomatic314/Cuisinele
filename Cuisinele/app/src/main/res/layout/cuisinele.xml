@@ -109,7 +109,6 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="55dp" />
-
             </LinearLayout>
 <!--            <Button-->
 <!--                android:id="@+id/displayGuessButton"-->
@@ -140,7 +139,7 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_margin="1dp"
                         android:layout_column="0"
-                        android:background="#FFFFFF"
+                        android:background="@color/blue"
                         android:gravity="center"
                         android:id="@+id/guess1TextView"
                         android:textSize="18sp"
@@ -152,7 +151,7 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_margin="1dp"
                         android:layout_column="0"
-                        android:background="#FFFFFF"
+                        android:background="@color/blue"
                         android:gravity="center"
                         android:id="@+id/guess2TextView"
                         android:textSize="18sp"
@@ -172,7 +171,7 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_margin="1dp"
                         android:layout_column="0"
-                        android:background="#FFFFFF"
+                        android:background="@color/blue"
                         android:gravity="center"
                         android:id="@+id/guess3TextView"
                         android:textSize="18sp"
@@ -185,7 +184,7 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_margin="1dp"
                         android:layout_column="0"
-                        android:background="#FFFFFF"
+                        android:background="@color/blue"
                         android:gravity="center"
                         android:id="@+id/guess4TextView"
                         android:textSize="18sp"
@@ -205,7 +204,7 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_margin="1dp"
                         android:layout_column="0"
-                        android:background="#FFFFFF"
+                        android:background="@color/blue"
                         android:gravity="center"
                         android:id="@+id/guess5TextView"
                         android:textSize="18sp"
@@ -217,7 +216,7 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_margin="1dp"
                         android:layout_column="0"
-                        android:background="#FFFFFF"
+                        android:background="@color/blue"
                         android:gravity="center"
                         android:id="@+id/guess6TextView"
                         android:textSize="18sp"
