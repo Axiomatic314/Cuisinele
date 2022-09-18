@@ -65,7 +65,7 @@ class Cuisinele : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         enterClicked()
-        toggleGuesses()
+//        toggleGuesses()
         populateHint()
     }
 
@@ -255,19 +255,19 @@ class Cuisinele : Fragment() {
         _binding = null
     }
 
-    /**
-     * Method sets up the show/hide guess button.
-     */
-    private fun toggleGuesses() {
-        binding.displayGuessButton.setOnClickListener {
-            if (binding.guessDisplay.visibility == View.INVISIBLE) {
-                binding.guessDisplay.visibility = View.VISIBLE
-                binding.displayGuessButton.text = getString(R.string.HideGuess)
-            } else {
-                binding.guessDisplay.visibility = View.INVISIBLE
-                binding.displayGuessButton.text = getString(R.string.DisplayGuess)
-            }
-        }
-    }
+//    /**
+//     * Method sets up the show/hide guess button.
+//     */
+//    private fun toggleGuesses() {
+//        binding.displayGuessButton.setOnClickListener {
+//            if (binding.guessDisplay.visibility == View.INVISIBLE) {
+//                binding.guessDisplay.visibility = View.VISIBLE
+//                binding.displayGuessButton.text = getString(R.string.HideGuess)
+//            } else {
+//                binding.guessDisplay.visibility = View.INVISIBLE
+//                binding.displayGuessButton.text = getString(R.string.DisplayGuess)
+//            }
+//        }
+//    }
 
 }
