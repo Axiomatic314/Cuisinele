@@ -122,6 +122,7 @@
             <TableLayout
                 android:id="@+id/guessDisplay"
                 android:layout_width="fill_parent"
+                android:layout_marginTop="10dp"
                 android:layout_height="200dp"
                 android:stretchColumns="0,1"
                 android:gravity="center">
@@ -130,7 +131,9 @@
                     android:background="#000000"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     >
                     <TextView
@@ -161,8 +164,11 @@
                 <TableRow
                     android:background="#000000"
                     android:layout_width="fill_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
                     android:layout_height="0dp"
-                    android:layout_margin="1dp"
                     android:layout_weight="1"
                     >
                     <TextView
@@ -194,8 +200,11 @@
                 <TableRow
                     android:background="#000000"
                     android:layout_width="fill_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
                     android:layout_height="0dp"
-                    android:layout_margin="1dp"
                     android:layout_weight="1"
                     >
                     <TextView
