@@ -88,6 +88,7 @@
                     android:id="@+id/hintDisplay2"
                     android:visibility="gone"
                     android:gravity="center"
+                    android:layout_gravity="fill"
                     android:textSize="16sp"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -104,6 +105,7 @@
                 <TextView
                     android:id="@+id/hintDisplay3"
                     android:visibility="gone"
+                    android:layout_gravity="fill"
                     android:gravity="center"
                     android:textSize="16sp"
                     android:layout_width="0dp"
