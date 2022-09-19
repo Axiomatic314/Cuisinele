@@ -22,4 +22,6 @@
     <string name="tutorialHintFlag">🇯🇵</string>
     <string name="tutorialHintLetter">Starts with: J</string>
     <string name="tutorialHintRegion">Region: Asia</string>
+    <string name="answerString">The correct country was:</string>
+    <string name="guessesString">Your Guesses:</string>
 </resources>

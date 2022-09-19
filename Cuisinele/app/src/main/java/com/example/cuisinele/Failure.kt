@@ -130,6 +130,7 @@ class Failure : Fragment() {
             if (dish != null) {
                 country = dao.getCountryByID(dish!!.CountryID)
                 hints = dao.getHintsByDishID(dish!!.DishID)
+                binding.correctAnswer.text = country!!.CountryName
                 binding.guess1TextView.text = dao.getCountryByID(dish!!.GuessOne)!!.CountryName
                 binding.guess2TextView.text = dao.getCountryByID(dish!!.GuessTwo)!!.CountryName
                 binding.guess3TextView.text = dao.getCountryByID(dish!!.GuessThree)!!.CountryName
