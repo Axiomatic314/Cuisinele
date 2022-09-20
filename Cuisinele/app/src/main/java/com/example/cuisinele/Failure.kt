@@ -55,12 +55,18 @@ class Failure : Fragment() {
         return binding.root
     }
 
+    /**
+     * Navigates to the loading page if the app is paused.
+     */
     override fun onPause() {
         super.onPause()
         findNavController().navigate(R.id.LoadingPage)
     }
 
-
+    /**
+     * Function gets the time from the current system time to the next day and displays it.
+     * Once the time passes midnight, a continue button is displayed
+     */
     //todo: stop the timer on page change, or check if on page before trying to write to textfield
     private fun setCountDown() {
         if (Settings.dailyGames) {
@@ -106,7 +112,9 @@ class Failure : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
+    /**
+     * Function gets the current dish and uses it to display the users guesses on for the day in a table.
+     */
     private fun getData() {
         GlobalScope.launch(Dispatchers.IO) {
             dao = CuisineleDB.getInstance(ContextApplication.applicationContext()).cuisineleDAO()

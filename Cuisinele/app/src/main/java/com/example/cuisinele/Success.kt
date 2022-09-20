@@ -1,5 +1,6 @@
 package com.example.cuisinele
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -54,12 +55,18 @@ class Success : Fragment() {
         setContinue()
         return binding.root
     }
-
+    /**
+     * Navigates to the loading page if the app is paused.
+     */
     override fun onPause() {
         super.onPause()
         findNavController().navigate(R.id.LoadingPage)
     }
 
+    /**
+     * Function gets the time from the current system time to the next day and displays it.
+     * Once the time passes midnight, a continue button is displayed
+     */
     private fun setCountDown() {
         if (Settings.dailyGames) {
             val currentTime = LocalTime.now().toSecondOfDay()
@@ -105,6 +112,9 @@ class Success : Fragment() {
         _binding = null
     }
 
+    /**
+     * Function gets the current dish and uses it to display the users guesses on for the day in a table.
+     */
     private fun getData() {
         GlobalScope.launch(Dispatchers.IO) {
             dao = CuisineleDB.getInstance(ContextApplication.applicationContext()).cuisineleDAO()
@@ -129,7 +139,6 @@ class Success : Fragment() {
                 country = dao.getCountryByID(dish!!.CountryID)
                 hints = dao.getHintsByDishID(dish!!.DishID)
                 binding.correctAnswer.text = country!!.CountryName
-
                 if (dish!!.GuessOne != 0) {
                     binding.guess1TextView.text = dao.getCountryByID(dish!!.GuessOne)!!.CountryName
                 }

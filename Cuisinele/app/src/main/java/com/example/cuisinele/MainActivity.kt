@@ -95,12 +95,22 @@ class MainActivity : AppCompatActivity() {
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 
+    /**
+     * Handles navigation when the user wants to move up the hierarchy
+     *
+     * @return true if the user has been navigated.
+     */
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
 
+    /**
+     * Handles clicks of the android back button.
+     *
+     * Attempts to move the user the the previous page and if there is none not closes the app.
+     */
     override fun onBackPressed() {
         if (canGoBack) {
 //            super.onBackPressed()
