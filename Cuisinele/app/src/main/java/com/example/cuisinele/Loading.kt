@@ -18,7 +18,10 @@ class Loading : Fragment(R.layout.loading_page) {
         getData()
     }
 
-    //need to find out if they have finished the cuisinele for the day
+    /**
+     * Get the current days dish and uses it to check if the current game is completed
+     * and navigates accordingly.
+     */
     private fun getData() {
         dao = CuisineleDB.getInstance(ContextApplication.applicationContext()).cuisineleDAO()
         if (Settings.dailyGames) {
@@ -51,7 +54,9 @@ class Loading : Fragment(R.layout.loading_page) {
         }
 
     }
-
+    /**
+     * Method destroys the view and unsets the binding variable.
+     */
     override fun onDestroyView() {
         super.onDestroyView()
     }
