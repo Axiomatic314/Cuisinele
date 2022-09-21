@@ -9,7 +9,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.data.ContextApplication
@@ -44,7 +43,6 @@ class Cuisinele : Fragment() {
     private var dish: Dish? = null
     private var hints: List<Hint>? = null
     private var country: Country? = null
-
     //private var countries: Array<String> = arrayOf()
     private lateinit var countryAdapter: ArrayAdapter<String>
     private var guessNo = 1
@@ -66,7 +64,7 @@ class Cuisinele : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         enterClicked()
-//        toggleGuesses()
+        toggleGuesses()
         populateHint()
     }
 
@@ -77,11 +75,7 @@ class Cuisinele : Fragment() {
         super.onResume()
         context?.let {
             countryAdapter =
-                ArrayAdapter<String>(
-                    it,
-                    android.R.layout.simple_list_item_1,
-                    LinkedList<String>()
-                ).also { adapter ->
+                ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, LinkedList<String>()).also { adapter ->
                     binding.countryTextField.setAdapter(adapter)
                     binding.countryTextField.threshold = 1
                 }
@@ -89,10 +83,6 @@ class Cuisinele : Fragment() {
         getData()
     }
 
-    /**
-     * Function sets listener for the enter key. Updates the guesses in database and guess boxes with input
-     * and navigates to success/failure page upon completion of the day's level
-     */
     private fun enterClicked() {
         binding.countryTextField.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
@@ -100,32 +90,26 @@ class Cuisinele : Fragment() {
                     if (dao.getCountryByName(binding.countryTextField.text.toString()) != null) {
                         if (guessNo == 1) {
                             binding.guess1TextView.text = binding.countryTextField.text
-                            dish!!.GuessOne =
-                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dish!!.GuessOne = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         } else if (guessNo == 2) {
                             binding.guess2TextView.text = binding.countryTextField.text
-                            dish!!.GuessTwo =
-                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dish!!.GuessTwo = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         } else if (guessNo == 3) {
                             binding.guess3TextView.text = binding.countryTextField.text
-                            dish!!.GuessThree =
-                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dish!!.GuessThree = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         } else if (guessNo == 4) {
                             binding.guess4TextView.text = binding.countryTextField.text
-                            dish!!.GuessFour =
-                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dish!!.GuessFour = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         } else if (guessNo == 5) {
                             binding.guess5TextView.text = binding.countryTextField.text
-                            dish!!.GuessFive =
-                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dish!!.GuessFive = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         } else if (guessNo == 6) {
-                            dish!!.GuessSix =
-                                dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
+                            dish!!.GuessSix = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
                             dao.updateDish(dish!!)
                         }
 
@@ -140,16 +124,12 @@ class Cuisinele : Fragment() {
                         } else {
                             guessNo++
                         }
-                        /** clears the input box after each incorrect guess and displays an 'incorrect' message to the user */
+
                         binding.countryTextField.text.clear()
 //                        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 //                        val view = activity?.currentFocus as View
 //                        imm.hideSoftInputFromWindow(view.windowToken, 0)
-                        Snackbar.make(
-                            requireActivity().findViewById(R.id.countryTextField),
-                            "Incorrect...",
-                            Snackbar.LENGTH_SHORT
-                        ).apply {
+                        Snackbar.make(requireActivity().findViewById(R.id.countryTextField), "Incorrect...", Snackbar.LENGTH_SHORT).apply {
                             anchorView = requireActivity().findViewById(R.id.countryTextField)
                         }.show()
                     }
@@ -182,8 +162,7 @@ class Cuisinele : Fragment() {
                 var cycleStartDate = Settings.startDate.toEpochDay()
                 if (currentDate > cycleStartDate) {
                     // calculate the day since the dish cycle begun and use modulus of the number of dishes to allow recycling of dishes
-                    var dishID: Int =
-                        ((currentDate - cycleStartDate) % dao.getDishes().size).toInt()
+                    var dishID: Int = ((currentDate - cycleStartDate) % dao.getDishes().size).toInt()
                     dish = dao.getDishByID(dishID)
                 } else {
                     // TODO: add message/exception for when the dish cycle hasn't begun (this should never occur)
@@ -207,7 +186,6 @@ class Cuisinele : Fragment() {
                         }
                     }
                 } else {
-                    //fills the previous guess fields with old guesses store in the database
                     populateImage()
                     guessNo = 1
                     country = dao.getCountryByID(dish!!.CountryID)
@@ -215,53 +193,47 @@ class Cuisinele : Fragment() {
                     binding.dishName.text = dish!!.DishName
                     if (dish!!.GuessOne != 0) {
                         guessNo = 2
-                        binding.guess1TextView.text =
-                            dao.getCountryByID(dish!!.GuessOne)!!.CountryName
+                        binding.guess1TextView.text = dao.getCountryByID(dish!!.GuessOne)!!.CountryName
                     }
                     if (dish!!.GuessTwo != 0) {
                         guessNo = 3
-                        binding.guess2TextView.text =
-                            dao.getCountryByID(dish!!.GuessTwo)!!.CountryName
+                        binding.guess2TextView.text = dao.getCountryByID(dish!!.GuessTwo)!!.CountryName
                     }
                     if (dish!!.GuessThree != 0) {
                         guessNo = 4
-                        binding.guess3TextView.text =
-                            dao.getCountryByID(dish!!.GuessThree)!!.CountryName
+                        binding.guess3TextView.text = dao.getCountryByID(dish!!.GuessThree)!!.CountryName
                     }
                     if (dish!!.GuessFour != 0) {
                         guessNo = 5
-                        binding.guess4TextView.text =
-                            dao.getCountryByID(dish!!.GuessFour)!!.CountryName
+                        binding.guess4TextView.text = dao.getCountryByID(dish!!.GuessFour)!!.CountryName
                     }
                     if (dish!!.GuessFive != 0) {
                         guessNo = 6
-                        binding.guess5TextView.text =
-                            dao.getCountryByID(dish!!.GuessFive)!!.CountryName
+                        binding.guess5TextView.text = dao.getCountryByID(dish!!.GuessFive)!!.CountryName
                     }
                 }
             }
         }
     }
 
-    /**
-     * Function sets listeners for the three reveal hint buttons
-     * and upon clicking hides them and reveals and displays the hint
-     */
-    private fun populateHint() {
-        binding.hintButtonDisplay1.setOnClickListener {
-            binding.hintButtonDisplay1.visibility = View.GONE
-            binding.hintDisplay1.visibility = View.VISIBLE
-            binding.hintDisplay1.text = hints!![0].HintText
-        }
-        binding.hintButtonDisplay2.setOnClickListener {
-            binding.hintButtonDisplay2.visibility = View.GONE
-            binding.hintDisplay2.visibility = View.VISIBLE
-            binding.hintDisplay2.text = hints!![1].HintText
-        }
-        binding.hintButtonDisplay3.setOnClickListener {
-            binding.hintButtonDisplay3.visibility = View.GONE
-            binding.hintDisplay3.visibility = View.VISIBLE
-            binding.hintDisplay3.text = hints!![2].HintText
+    private fun populateHint(){
+        var hintNumber = 0
+        binding.displayHintButton.setOnClickListener {
+            if (hintNumber == 0) {
+                binding.hintDisplay1.text = hints!![hintNumber].HintText
+                hintNumber++
+            } else if (hintNumber == 1) {
+                binding.hintDisplay2.text = hints!![hintNumber].HintText
+                hintNumber++
+            } else if (hintNumber == 2) {
+                binding.hintDisplay3.text = hints!![hintNumber].HintText
+                hintNumber++
+            } else {
+                Snackbar.make(requireActivity().findViewById(R.id.countryTextField), "Out of hints!", Snackbar.LENGTH_SHORT).apply {
+                    anchorView = requireActivity().findViewById(R.id.countryTextField)
+                }.show()
+                //binding.displayHintButton.visibility = View.INVISIBLE
+            }
         }
     }
 
@@ -270,8 +242,7 @@ class Cuisinele : Fragment() {
      */
     private fun populateImage() {
         GlobalScope.launch(Dispatchers.Main) {
-            val decodedString: ByteArray =
-                Base64.decode(dish!!.ImageUrl.split(",")[1], Base64.DEFAULT)
+            val decodedString: ByteArray = Base64.decode(dish!!.ImageUrl.split(",")[1], Base64.DEFAULT)
             val bitMap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
             var imageView: ImageView = binding.cuisineleImage
             imageView.setImageBitmap(bitMap)
@@ -286,19 +257,19 @@ class Cuisinele : Fragment() {
         _binding = null
     }
 
-//    /**
-//     * Method sets up the show/hide guess button.
-//     */
-//    private fun toggleGuesses() {
-//        binding.displayGuessButton.setOnClickListener {
-//            if (binding.guessDisplay.visibility == View.INVISIBLE) {
-//                binding.guessDisplay.visibility = View.VISIBLE
-//                binding.displayGuessButton.text = getString(R.string.HideGuess)
-//            } else {
-//                binding.guessDisplay.visibility = View.INVISIBLE
-//                binding.displayGuessButton.text = getString(R.string.DisplayGuess)
-//            }
-//        }
-//    }
+    /**
+     * Method sets up the show/hide guess button.
+     */
+    private fun toggleGuesses() {
+        binding.displayGuessButton.setOnClickListener {
+            if (binding.guessDisplay.visibility == View.INVISIBLE) {
+                binding.guessDisplay.visibility = View.VISIBLE
+                binding.displayGuessButton.text = getString(R.string.HideGuess)
+            } else {
+                binding.guessDisplay.visibility = View.INVISIBLE
+                binding.displayGuessButton.text = getString(R.string.DisplayGuess)
+            }
+        }
+    }
 
 }
