@@ -26,7 +26,7 @@ class Cuisinele : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
+    
     //private var countries: Array<String> = arrayOf()
     private lateinit var countryAdapter: ArrayAdapter<String>
     private var guessNo = 1
@@ -48,7 +48,7 @@ class Cuisinele : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         enterClicked()
-//        toggleGuesses()
+        toggleGuesses()
         populateHint()
     }
 
@@ -59,11 +59,7 @@ class Cuisinele : Fragment() {
         super.onResume()
         context?.let {
             countryAdapter =
-                ArrayAdapter<String>(
-                    it,
-                    android.R.layout.simple_list_item_1,
-                    LinkedList<String>()
-                ).also { adapter ->
+                ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, LinkedList<String>()).also { adapter ->
                     binding.countryTextField.setAdapter(adapter)
                     binding.countryTextField.threshold = 1
                 }
@@ -71,10 +67,6 @@ class Cuisinele : Fragment() {
         getData()
     }
 
-    /**
-     * Function sets listener for the enter key. Updates the guesses in database and guess boxes with input
-     * and navigates to success/failure page upon completion of the day's level
-     */
     private fun enterClicked() {
         binding.countryTextField.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
@@ -224,7 +216,6 @@ class Cuisinele : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 
 //    /**
 //     * Method sets up the show/hide guess button.

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.SuccessPageBinding
 
+
 /**
  * Fragment class for the success page.
  */

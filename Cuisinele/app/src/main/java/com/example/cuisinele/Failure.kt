@@ -18,6 +18,7 @@ class Failure : Fragment() {
     //This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
 
+
     /**
      * Method creates and returns the view hierarchy associated with this fragment and inflates the page to be viewed.
      *
@@ -34,13 +35,11 @@ class Failure : Fragment() {
             binding.guess3TextView, binding.guess4TextView,
             binding.guess5TextView, binding.guess6TextView)
         Loading.setCountDown(binding.countdownTimer, binding.continueButton)
+
         setContinue()
         return binding.root
     }
 
-    /**
-     * Navigates to the loading page if the app is paused.
-     */
     override fun onPause() {
         super.onPause()
         findNavController().navigate(R.id.LoadingPage)
