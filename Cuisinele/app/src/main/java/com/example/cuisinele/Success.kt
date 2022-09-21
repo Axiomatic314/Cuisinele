@@ -30,9 +30,15 @@ class Success : Fragment() {
     ): View {
         MainActivity.canGoBack = false
         _binding = SuccessPageBinding.inflate(inflater, container, false)
-        Loading.getGuessData(binding.correctAnswer, binding.guess1TextView, binding.guess2TextView,
-            binding.guess3TextView, binding.guess4TextView,
-            binding.guess5TextView, binding.guess6TextView)
+        Loading.getGuessData(
+            binding.correctAnswer,
+            binding.guess1TextView,
+            binding.guess2TextView,
+            binding.guess3TextView,
+            binding.guess4TextView,
+            binding.guess5TextView,
+            binding.guess6TextView
+        )
         Loading.setCountDown(binding.countdownTimer, binding.continueButton)
         setContinue()
         return binding.root
