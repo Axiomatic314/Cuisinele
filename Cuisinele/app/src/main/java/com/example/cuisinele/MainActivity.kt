@@ -1,7 +1,5 @@
 package com.example.cuisinele
 
-import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,18 +11,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
-//import androidx.room.Database
-import com.example.cuisinele.data.CuisineleDB
-import com.example.cuisinele.data.models.Country
-import android.view.WindowManager
-import androidx.core.view.children
 import androidx.navigation.ui.onNavDestinationSelected
-import com.example.cuisinele.data.CuisineleDAO
 import com.example.cuisinele.databinding.ActivityMainBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 /**
  * Class sets up the navigation bar and navigation between pages.
  */
@@ -74,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         prefs = getSharedPreferences("custom", MODE_PRIVATE)
         if (prefs != null) {
-            var isNotFirstLoad = prefs!!.getBoolean("isNotFirstLoad", false)
+            val isNotFirstLoad = prefs!!.getBoolean("isNotFirstLoad", false)
             if (!isNotFirstLoad) {
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.Tut)
             }

@@ -1,6 +1,5 @@
 package com.example.cuisinele
 
-import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.TextView
