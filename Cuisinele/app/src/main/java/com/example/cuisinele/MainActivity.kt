@@ -108,13 +108,20 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
-
+    /**
+     * Function handles upwards navigation from the action bar.
+     *
+     * @return true if it successfully navigates upwards.
+     */
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
-
+    /**
+     * Handles clicks of the android back button to either go to the previous page or close the
+     * app if no page is available.
+     */
     override fun onBackPressed() {
         if (canGoBack) {
 //            super.onBackPressed()

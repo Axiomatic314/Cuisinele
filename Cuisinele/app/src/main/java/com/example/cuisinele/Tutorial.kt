@@ -36,7 +36,9 @@ class Tutorial : Fragment() {
 
         return binding.root
     }
-
+    /**
+     * Method makes sure the view was fully created.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }

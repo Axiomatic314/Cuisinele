@@ -44,7 +44,9 @@ class Cuisinele : Fragment() {
 
         return binding.root
     }
-
+    /**
+     * Calls functions to set up input submission and hint set-up.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         enterClicked()

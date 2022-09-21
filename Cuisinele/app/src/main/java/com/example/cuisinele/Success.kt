@@ -43,7 +43,9 @@ class Success : Fragment() {
         setContinue()
         return binding.root
     }
-
+    /**
+     * Hides the top action bar when the app is resumed.
+     */
     override fun onResume() {
         super.onResume()
         MainActivity.hideTopBar()
