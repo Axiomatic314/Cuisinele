@@ -26,7 +26,7 @@ class Cuisinele : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    
+
     //private var countries: Array<String> = arrayOf()
     private lateinit var countryAdapter: ArrayAdapter<String>
     private var guessNo = 1
@@ -48,7 +48,7 @@ class Cuisinele : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         enterClicked()
-        toggleGuesses()
+//        toggleGuesses()
         populateHint()
     }
 
@@ -59,7 +59,11 @@ class Cuisinele : Fragment() {
         super.onResume()
         context?.let {
             countryAdapter =
-                ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, LinkedList<String>()).also { adapter ->
+                ArrayAdapter<String>(
+                    it,
+                    android.R.layout.simple_list_item_1,
+                    LinkedList<String>()
+                ).also { adapter ->
                     binding.countryTextField.setAdapter(adapter)
                     binding.countryTextField.threshold = 1
                 }
@@ -67,6 +71,10 @@ class Cuisinele : Fragment() {
         getData()
     }
 
+    /**
+     * Function sets listener for the enter key. Updates the guesses in database and guess boxes with input
+     * and navigates to success/failure page upon completion of the day's level
+     */
     private fun enterClicked() {
         binding.countryTextField.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
@@ -75,50 +83,40 @@ class Cuisinele : Fragment() {
                         1 -> {
                             binding.guess1TextView.text = binding.countryTextField.text
                             Loading.dish!!.GuessOne = Loading.getCountryID(binding.countryTextField.text.toString())
-                            Loading.updateDish()
                         }
                         2 -> {
                             binding.guess2TextView.text = binding.countryTextField.text
                             Loading.dish!!.GuessTwo = Loading.getCountryID(binding.countryTextField.text.toString())
-                            Loading.updateDish()
                         }
                         3 -> {
                             binding.guess3TextView.text = binding.countryTextField.text
                             Loading.dish!!.GuessThree = Loading.getCountryID(binding.countryTextField.text.toString())
-                            Loading.updateDish()
                         }
                         4 -> {
                             binding.guess4TextView.text = binding.countryTextField.text
                             Loading.dish!!.GuessFour = Loading.getCountryID(binding.countryTextField.text.toString())
-                            Loading.updateDish()
                         }
                         5 -> {
                             binding.guess5TextView.text = binding.countryTextField.text
                             Loading.dish!!.GuessFive = Loading.getCountryID(binding.countryTextField.text.toString())
-                            Loading.updateDish()
                         }
                         6 -> {
                             Loading.dish!!.GuessSix = Loading.getCountryID(binding.countryTextField.text.toString())
-                            Loading.updateDish()
                         }
                     }
 
                     if (binding.countryTextField.text.toString() == Loading.country!!.CountryName) {
                         Loading.dish!!.IsComplete = true
-                        Loading.updateDish()
                         findNavController().navigate(R.id.SuccessPage)
                     } else if (guessNo == 6) {
                         Loading.dish!!.IsComplete = true
-                        Loading.updateDish()
                         findNavController().navigate(R.id.FailurePage)
                     } else {
                         guessNo++
                     }
+                    Loading.updateDish()
                     /** clears the input box after each incorrect guess and displays an 'incorrect' message to the user */
                     binding.countryTextField.text.clear()
-//                        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//                        val view = activity?.currentFocus as View
-//                        imm.hideSoftInputFromWindow(view.windowToken, 0)
                     Snackbar.make(
                         requireActivity().findViewById(R.id.countryTextField),
                         "Incorrect...",
@@ -216,6 +214,7 @@ class Cuisinele : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 
 //    /**
 //     * Method sets up the show/hide guess button.

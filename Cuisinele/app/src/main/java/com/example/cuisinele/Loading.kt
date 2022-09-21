@@ -1,5 +1,6 @@
 package com.example.cuisinele
 
+import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.TextView
@@ -52,35 +53,32 @@ class Loading : Fragment(R.layout.loading_page) {
          * Returns country name from matching country id
          */
         fun getCountryName(guessID: Int): String {
-            return dao.getCountryByID(guessID)!!.CountryName
+            return if (guessID != 0) {
+                dao.getCountryByID(guessID)!!.CountryName
+            } else {
+                ""
+            }
         }
 
         /**
          * Function displays the users guesses on for the day in a table.
          */
-        fun getGuessData(correctAnswer: TextView, guess1TextView: TextView,
-                            guess2TextView: TextView, guess3TextView: TextView,
-                            guess4TextView: TextView, guess5TextView: TextView,
-                            guess6TextView: TextView) {
+        fun getGuessData(
+            correctAnswer: TextView,
+            guess1TextView: TextView,
+            guess2TextView: TextView,
+            guess3TextView: TextView,
+            guess4TextView: TextView,
+            guess5TextView: TextView,
+            guess6TextView: TextView
+        ) {
             correctAnswer.text = country!!.CountryName
-            if (dish!!.GuessOne != 0) {
-                guess1TextView.text = getCountryName(dish!!.GuessOne)
-            }
-            if (dish!!.GuessTwo != 0) {
-                guess2TextView.text = getCountryName(dish!!.GuessTwo)
-            }
-            if (dish!!.GuessThree != 0) {
-                guess3TextView.text = getCountryName(dish!!.GuessThree)
-            }
-            if (dish!!.GuessFour != 0) {
-                guess4TextView.text = getCountryName(dish!!.GuessFour)
-            }
-            if (dish!!.GuessFive != 0) {
-                guess5TextView.text = getCountryName(dish!!.GuessFive)
-            }
-            if (dish!!.GuessSix != 0) {
-                guess6TextView.text = getCountryName(dish!!.GuessSix)
-            }
+            guess1TextView.text = getCountryName(dish!!.GuessOne)
+            guess2TextView.text = getCountryName(dish!!.GuessTwo)
+            guess3TextView.text = getCountryName(dish!!.GuessThree)
+            guess4TextView.text = getCountryName(dish!!.GuessFour)
+            guess5TextView.text = getCountryName(dish!!.GuessFive)
+            guess6TextView.text = getCountryName(dish!!.GuessSix)
         }
 
         /**
@@ -114,7 +112,13 @@ class Loading : Fragment(R.layout.loading_page) {
 
     override fun onResume() {
         super.onResume()
+        MainActivity.hideTopBar()
         getData()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        MainActivity.showTopBar()
     }
 
     /**
@@ -145,6 +149,7 @@ class Loading : Fragment(R.layout.loading_page) {
 
             GlobalScope.launch(Dispatchers.Main) {
                 if (dish != null) {
+                    country = dao.getCountryByID(dish!!.CountryID)
                     if (dish!!.IsComplete) {
                         if (dish!!.GuessSix != 0) {
                             if (dish!!.GuessSix == dish!!.CountryID) {
@@ -157,7 +162,6 @@ class Loading : Fragment(R.layout.loading_page) {
                         }
                     } else {
                         countries = dao.getCountries()
-                        country = dao.getCountryByID(dish!!.CountryID)
                         hints = dao.getHintsByDishID(dish!!.DishID)
 
                         findNavController().navigate(R.id.Home)
