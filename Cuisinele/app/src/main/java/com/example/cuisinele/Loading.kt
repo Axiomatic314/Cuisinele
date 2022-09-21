@@ -1,5 +1,6 @@
 package com.example.cuisinele
 
+import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.TextView
@@ -111,7 +112,13 @@ class Loading : Fragment(R.layout.loading_page) {
 
     override fun onResume() {
         super.onResume()
+        MainActivity.hideTopBar()
         getData()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        MainActivity.showTopBar()
     }
 
     /**

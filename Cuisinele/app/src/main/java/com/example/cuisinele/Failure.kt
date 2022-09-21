@@ -30,6 +30,7 @@ class Failure : Fragment() {
     ): View {
         MainActivity.canGoBack = false
         _binding = FailurePageBinding.inflate(inflater, container, false)
+        MainActivity.hideTopBar()
         Loading.getGuessData(
             binding.correctAnswer,
             binding.guess1TextView,
@@ -44,11 +45,17 @@ class Failure : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        MainActivity.hideTopBar()
+    }
+
     /**
      * Navigates to the loading page if the app is paused.
      */
     override fun onPause() {
         super.onPause()
+        MainActivity.showTopBar()
         findNavController().navigate(R.id.LoadingPage)
     }
 
