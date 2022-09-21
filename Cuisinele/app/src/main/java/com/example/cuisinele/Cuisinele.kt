@@ -83,50 +83,40 @@ class Cuisinele : Fragment() {
                         1 -> {
                             binding.guess1TextView.text = binding.countryTextField.text
                             Loading.dish!!.GuessOne = Loading.getCountryID(binding.countryTextField.text.toString())
-                            Loading.updateDish()
                         }
                         2 -> {
                             binding.guess2TextView.text = binding.countryTextField.text
                             Loading.dish!!.GuessTwo = Loading.getCountryID(binding.countryTextField.text.toString())
-                            Loading.updateDish()
                         }
                         3 -> {
                             binding.guess3TextView.text = binding.countryTextField.text
                             Loading.dish!!.GuessThree = Loading.getCountryID(binding.countryTextField.text.toString())
-                            Loading.updateDish()
                         }
                         4 -> {
                             binding.guess4TextView.text = binding.countryTextField.text
                             Loading.dish!!.GuessFour = Loading.getCountryID(binding.countryTextField.text.toString())
-                            Loading.updateDish()
                         }
                         5 -> {
                             binding.guess5TextView.text = binding.countryTextField.text
                             Loading.dish!!.GuessFive = Loading.getCountryID(binding.countryTextField.text.toString())
-                            Loading.updateDish()
                         }
                         6 -> {
                             Loading.dish!!.GuessSix = Loading.getCountryID(binding.countryTextField.text.toString())
-                            Loading.updateDish()
                         }
                     }
 
                     if (binding.countryTextField.text.toString() == Loading.country!!.CountryName) {
                         Loading.dish!!.IsComplete = true
-                        Loading.updateDish()
                         findNavController().navigate(R.id.SuccessPage)
                     } else if (guessNo == 6) {
                         Loading.dish!!.IsComplete = true
-                        Loading.updateDish()
                         findNavController().navigate(R.id.FailurePage)
                     } else {
                         guessNo++
                     }
+                    Loading.updateDish()
                     /** clears the input box after each incorrect guess and displays an 'incorrect' message to the user */
                     binding.countryTextField.text.clear()
-//                        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//                        val view = activity?.currentFocus as View
-//                        imm.hideSoftInputFromWindow(view.windowToken, 0)
                     Snackbar.make(
                         requireActivity().findViewById(R.id.countryTextField),
                         "Incorrect...",
