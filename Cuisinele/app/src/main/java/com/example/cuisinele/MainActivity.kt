@@ -35,11 +35,15 @@ class MainActivity : AppCompatActivity() {
         var canGoBack: Boolean = true
         var prefs: SharedPreferences? = null
         private lateinit var binding: ActivityMainBinding
-
+        /**
+         * Function hides the top toolbar.
+         */
         fun hideTopBar() {
             binding.toolbar.visibility = View.INVISIBLE
         }
-
+        /**
+         * Function reveals the top toolbar.
+         */
         fun showTopBar() {
             binding.toolbar.visibility = View.VISIBLE
         }

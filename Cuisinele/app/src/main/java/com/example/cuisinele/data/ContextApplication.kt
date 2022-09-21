@@ -13,7 +13,9 @@ class ContextApplication: Application() {
 
     companion object {
         private var instance: ContextApplication? = null
-
+        /**
+         * returns an instance of an applicationContext
+         */
         fun applicationContext() : Context {
             return instance!!.applicationContext
         }

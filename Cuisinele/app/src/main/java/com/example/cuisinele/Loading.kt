@@ -19,7 +19,9 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.LocalTime
 import java.util.concurrent.TimeUnit
-
+/**
+ * Fragment class for the loading page.
+ */
 class Loading : Fragment(R.layout.loading_page) {
 
     /**
@@ -110,12 +112,17 @@ class Loading : Fragment(R.layout.loading_page) {
         }
     }
 
+    /**
+     * Hides top action bar and retrieves calls getData to redirect and get database data.
+     */
     override fun onResume() {
         super.onResume()
         MainActivity.hideTopBar()
         getData()
     }
-
+    /**
+     * Reveals top action bar when the app is paused.
+     */
     override fun onPause() {
         super.onPause()
         MainActivity.showTopBar()
