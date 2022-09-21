@@ -1,16 +1,12 @@
 package com.example.cuisinele
 
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.SuccessPageBinding
-import java.lang.String
-import java.time.LocalTime
-import java.util.concurrent.TimeUnit
 
 /**
  * Fragment class for the success page.
@@ -21,7 +17,6 @@ class Success : Fragment() {
 
     //This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
-    private lateinit var timer : CountDownTimer
 
     /**
      * Method creates and returns the view hierarchy associated with this fragment and inflates the page to be viewed.
@@ -35,37 +30,32 @@ class Success : Fragment() {
     ): View {
         MainActivity.canGoBack = false
         _binding = SuccessPageBinding.inflate(inflater, container, false)
-        setCountDown()
+        Loading.getGuessData(
+            binding.correctAnswer,
+            binding.guess1TextView,
+            binding.guess2TextView,
+            binding.guess3TextView,
+            binding.guess4TextView,
+            binding.guess5TextView,
+            binding.guess6TextView
+        )
+        Loading.setCountDown(binding.countdownTimer, binding.continueButton)
         setContinue()
         return binding.root
     }
 
-    override fun onPause() {
-        super.onPause()
-        findNavController().navigate(R.id.LoadingPage)
+    override fun onResume() {
+        super.onResume()
+        MainActivity.hideTopBar()
     }
 
-    private fun setCountDown() {
-        if (Settings.dailyGames) {
-            val currentTime = LocalTime.now().toSecondOfDay()
-            val secondsInDay = 86400
-            val millisInFuture = ((secondsInDay - currentTime) *1000).toLong()
-            timer = object : CountDownTimer(millisInFuture, 1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    var message = String.format("Next Cuisinele in\n%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
-                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) % TimeUnit.HOURS.toMinutes(1),
-                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % TimeUnit.MINUTES.toSeconds(1)
-                    )
-                    binding.countdownTimer.text = message
-                }
-
-                override fun onFinish() {
-                    binding.continueButton.visibility = View.VISIBLE
-                    binding.countdownTimer.visibility = View.INVISIBLE
-                }
-
-            }.start()
-        }
+    /**
+     * Navigates to the loading page if the app is paused.
+     */
+    override fun onPause() {
+        super.onPause()
+        MainActivity.showTopBar()
+        findNavController().navigate(R.id.LoadingPage)
     }
 
     /**
@@ -76,7 +66,7 @@ class Success : Fragment() {
             binding.continueButton.visibility = View.VISIBLE
         }
         binding.continueButton.setOnClickListener {
-            findNavController().navigate(R.id.Home)
+            findNavController().navigate(R.id.LoadingPage)
         }
     }
 
@@ -84,7 +74,7 @@ class Success : Fragment() {
      * Method destroys the view and unsets the binding variable.
      */
     override fun onDestroyView() {
-        timer.cancel()
+        Loading.timer.cancel()
         MainActivity.canGoBack = true
         super.onDestroyView()
         _binding = null

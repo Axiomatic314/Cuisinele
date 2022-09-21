@@ -12,11 +12,13 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 //import androidx.room.Database
 import com.example.cuisinele.data.CuisineleDB
 import com.example.cuisinele.data.models.Country
 import android.view.WindowManager
+import androidx.core.view.children
 import androidx.navigation.ui.onNavDestinationSelected
 import com.example.cuisinele.data.CuisineleDAO
 import com.example.cuisinele.databinding.ActivityMainBinding
@@ -29,10 +31,18 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
     companion object {
         var canGoBack: Boolean = true
         var prefs: SharedPreferences? = null
+        private lateinit var binding: ActivityMainBinding
+
+        fun hideTopBar() {
+            binding.toolbar.visibility = View.INVISIBLE
+        }
+
+        fun showTopBar() {
+            binding.toolbar.visibility = View.VISIBLE
+        }
     }
 
     /**

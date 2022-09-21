@@ -64,4 +64,5 @@ interface CuisineleDAO {
      */
     @Update
     fun updateDish(dish: Dish)
+
 }

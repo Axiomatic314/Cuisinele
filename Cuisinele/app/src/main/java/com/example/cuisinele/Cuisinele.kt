@@ -1,31 +1,18 @@
 package com.example.cuisinele
 
-import android.content.Context
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Base64
 import android.view.*
-import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.cuisinele.data.ContextApplication
-import com.example.cuisinele.data.CuisineleDAO
-import com.example.cuisinele.data.CuisineleDB
-import com.example.cuisinele.data.models.Country
-import com.example.cuisinele.data.models.Dish
-import com.example.cuisinele.data.models.Hint
 import com.example.cuisinele.databinding.CuisineleBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import java.lang.Exception
-import java.lang.System.currentTimeMillis
-import java.time.LocalDate
 import java.util.*
 
 
@@ -39,10 +26,7 @@ class Cuisinele : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private lateinit var dao: CuisineleDAO
-    private var dish: Dish? = null
-    private var hints: List<Hint>? = null
-    private var country: Country? = null
+
     //private var countries: Array<String> = arrayOf()
     private lateinit var countryAdapter: ArrayAdapter<String>
     private var guessNo = 1
@@ -55,7 +39,7 @@ class Cuisinele : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = CuisineleBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -64,7 +48,7 @@ class Cuisinele : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         enterClicked()
-        toggleGuesses()
+//        toggleGuesses()
         populateHint()
     }
 
@@ -75,7 +59,11 @@ class Cuisinele : Fragment() {
         super.onResume()
         context?.let {
             countryAdapter =
-                ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, LinkedList<String>()).also { adapter ->
+                ArrayAdapter<String>(
+                    it,
+                    android.R.layout.simple_list_item_1,
+                    LinkedList<String>()
+                ).also { adapter ->
                     binding.countryTextField.setAdapter(adapter)
                     binding.countryTextField.threshold = 1
                 }
@@ -83,56 +71,59 @@ class Cuisinele : Fragment() {
         getData()
     }
 
+    /**
+     * Function sets listener for the enter key. Updates the guesses in database and guess boxes with input
+     * and navigates to success/failure page upon completion of the day's level
+     */
     private fun enterClicked() {
         binding.countryTextField.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
-                GlobalScope.async {
-                    if (dao.getCountryByName(binding.countryTextField.text.toString()) != null) {
-                        if (guessNo == 1) {
+                if (Loading.countries.find { x -> x.CountryName == binding.countryTextField.text.toString() } != null) {
+                    when (guessNo) {
+                        1 -> {
                             binding.guess1TextView.text = binding.countryTextField.text
-                            dish!!.GuessOne = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                            dao.updateDish(dish!!)
-                        } else if (guessNo == 2) {
+                            Loading.dish!!.GuessOne = Loading.getCountryID(binding.countryTextField.text.toString())
+                        }
+                        2 -> {
                             binding.guess2TextView.text = binding.countryTextField.text
-                            dish!!.GuessTwo = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                            dao.updateDish(dish!!)
-                        } else if (guessNo == 3) {
+                            Loading.dish!!.GuessTwo = Loading.getCountryID(binding.countryTextField.text.toString())
+                        }
+                        3 -> {
                             binding.guess3TextView.text = binding.countryTextField.text
-                            dish!!.GuessThree = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                            dao.updateDish(dish!!)
-                        } else if (guessNo == 4) {
+                            Loading.dish!!.GuessThree = Loading.getCountryID(binding.countryTextField.text.toString())
+                        }
+                        4 -> {
                             binding.guess4TextView.text = binding.countryTextField.text
-                            dish!!.GuessFour = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                            dao.updateDish(dish!!)
-                        } else if (guessNo == 5) {
+                            Loading.dish!!.GuessFour = Loading.getCountryID(binding.countryTextField.text.toString())
+                        }
+                        5 -> {
                             binding.guess5TextView.text = binding.countryTextField.text
-                            dish!!.GuessFive = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                            dao.updateDish(dish!!)
-                        } else if (guessNo == 6) {
-                            dish!!.GuessSix = dao.getCountryByName(binding.countryTextField.text.toString())!!.CountryID
-                            dao.updateDish(dish!!)
+                            Loading.dish!!.GuessFive = Loading.getCountryID(binding.countryTextField.text.toString())
                         }
-
-                        if (binding.countryTextField.text.toString() == country!!.CountryName) {
-                            dish!!.IsComplete = true;
-                            dao.updateDish(dish!!)
-                            findNavController().navigate(R.id.SuccessPage)
-                        } else if (guessNo == 6) {
-                            dish!!.IsComplete = true;
-                            dao.updateDish(dish!!)
-                            findNavController().navigate(R.id.FailurePage)
-                        } else {
-                            guessNo++
+                        6 -> {
+                            Loading.dish!!.GuessSix = Loading.getCountryID(binding.countryTextField.text.toString())
                         }
-
-                        binding.countryTextField.text.clear()
-//                        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//                        val view = activity?.currentFocus as View
-//                        imm.hideSoftInputFromWindow(view.windowToken, 0)
-                        Snackbar.make(requireActivity().findViewById(R.id.countryTextField), "Incorrect...", Snackbar.LENGTH_SHORT).apply {
-                            anchorView = requireActivity().findViewById(R.id.countryTextField)
-                        }.show()
                     }
+
+                    if (binding.countryTextField.text.toString() == Loading.country!!.CountryName) {
+                        Loading.dish!!.IsComplete = true
+                        findNavController().navigate(R.id.SuccessPage)
+                    } else if (guessNo == 6) {
+                        Loading.dish!!.IsComplete = true
+                        findNavController().navigate(R.id.FailurePage)
+                    } else {
+                        guessNo++
+                    }
+                    Loading.updateDish()
+                    /** clears the input box after each incorrect guess and displays an 'incorrect' message to the user */
+                    binding.countryTextField.text.clear()
+                    Snackbar.make(
+                        requireActivity().findViewById(R.id.countryTextField),
+                        "Incorrect...",
+                        Snackbar.LENGTH_SHORT
+                    ).apply {
+                        anchorView = requireActivity().findViewById(R.id.countryTextField)
+                    }.show()
                 }
 
                 return@OnKeyListener true
@@ -142,98 +133,64 @@ class Cuisinele : Fragment() {
     }
 
     /**
-     * This method gets an instance of CuisineleDAO and gets either
-     * the daily dish or all dishes along with the associated country and hints
+     * This method uses data stored in Loading class to initialize game
      */
     private fun getData() {
-        GlobalScope.launch(Dispatchers.IO) {
-            dao = CuisineleDB.getInstance(ContextApplication.applicationContext()).cuisineleDAO()
+        for (c in Loading.countries.sortedBy { x -> x.CountryName }) {
+            if (countryAdapter.getPosition(c.CountryName) == -1)
+                countryAdapter.add(c.CountryName)
+        }
+        countryAdapter.notifyDataSetChanged()
 
-            for (c in dao.getCountries().sortedBy { x -> x.CountryName }) {
-                if (countryAdapter.getPosition(c.CountryName) == -1)
-                    countryAdapter.add(c.CountryName)
-            }
-            countryAdapter.notifyDataSetChanged()
-
-            if (Settings.dailyGames) {
-                // Convert current time since linux epoch from milliseconds to days
-                var currentDate = LocalDate.now().toEpochDay()
-                // The date we choose the dishes to start cycling from
-                var cycleStartDate = Settings.startDate.toEpochDay()
-                if (currentDate > cycleStartDate) {
-                    // calculate the day since the dish cycle begun and use modulus of the number of dishes to allow recycling of dishes
-                    var dishID: Int = ((currentDate - cycleStartDate) % dao.getDishes().size).toInt()
-                    dish = dao.getDishByID(dishID)
-                } else {
-                    // TODO: add message/exception for when the dish cycle hasn't begun (this should never occur)
+        if (Loading.dish != null) {
+            if (!Loading.dish!!.IsComplete) {
+                //fills the previous guess fields with old guesses store in the database
+                populateImage()
+                guessNo = 1
+                binding.dishName.text = Loading.dish!!.DishName
+                if (Loading.dish!!.GuessOne != 0) {
+                    guessNo = 2
+                    binding.guess1TextView.text = Loading.getCountryName(Loading.dish!!.GuessOne)
                 }
-            } else {
-                var allDishes = dao.getDishes()
-                dish = (allDishes.filter { x -> !x.IsComplete }).first()
-            }
-
-            if (dish != null) {
-                if (dish!!.IsComplete) {
-                    GlobalScope.launch(Dispatchers.Main) {
-                        if (dish!!.GuessSix != 0) {
-                            if (dish!!.GuessSix == dish!!.CountryID) {
-                                findNavController().navigate(R.id.SuccessPage)
-                            } else {
-                                findNavController().navigate(R.id.FailurePage)
-                            }
-                        } else {
-                            findNavController().navigate(R.id.SuccessPage)
-                        }
-                    }
-                } else {
-                    populateImage()
-                    guessNo = 1
-                    country = dao.getCountryByID(dish!!.CountryID)
-                    hints = dao.getHintsByDishID(dish!!.DishID)
-                    binding.dishName.text = dish!!.DishName
-                    if (dish!!.GuessOne != 0) {
-                        guessNo = 2
-                        binding.guess1TextView.text = dao.getCountryByID(dish!!.GuessOne)!!.CountryName
-                    }
-                    if (dish!!.GuessTwo != 0) {
-                        guessNo = 3
-                        binding.guess2TextView.text = dao.getCountryByID(dish!!.GuessTwo)!!.CountryName
-                    }
-                    if (dish!!.GuessThree != 0) {
-                        guessNo = 4
-                        binding.guess3TextView.text = dao.getCountryByID(dish!!.GuessThree)!!.CountryName
-                    }
-                    if (dish!!.GuessFour != 0) {
-                        guessNo = 5
-                        binding.guess4TextView.text = dao.getCountryByID(dish!!.GuessFour)!!.CountryName
-                    }
-                    if (dish!!.GuessFive != 0) {
-                        guessNo = 6
-                        binding.guess5TextView.text = dao.getCountryByID(dish!!.GuessFive)!!.CountryName
-                    }
+                if (Loading.dish!!.GuessTwo != 0) {
+                    guessNo = 3
+                    binding.guess2TextView.text = Loading.getCountryName(Loading.dish!!.GuessTwo)
+                }
+                if (Loading.dish!!.GuessThree != 0) {
+                    guessNo = 4
+                    binding.guess3TextView.text = Loading.getCountryName(Loading.dish!!.GuessThree)
+                }
+                if (Loading.dish!!.GuessFour != 0) {
+                    guessNo = 5
+                    binding.guess4TextView.text = Loading.getCountryName(Loading.dish!!.GuessFour)
+                }
+                if (Loading.dish!!.GuessFive != 0) {
+                    guessNo = 6
+                    binding.guess5TextView.text = Loading.getCountryName(Loading.dish!!.GuessFive)
                 }
             }
         }
     }
 
-    private fun populateHint(){
-        var hintNumber = 0
-        binding.displayHintButton.setOnClickListener {
-            if (hintNumber == 0) {
-                binding.hintDisplay1.text = hints!![hintNumber].HintText
-                hintNumber++
-            } else if (hintNumber == 1) {
-                binding.hintDisplay2.text = hints!![hintNumber].HintText
-                hintNumber++
-            } else if (hintNumber == 2) {
-                binding.hintDisplay3.text = hints!![hintNumber].HintText
-                hintNumber++
-            } else {
-                Snackbar.make(requireActivity().findViewById(R.id.countryTextField), "Out of hints!", Snackbar.LENGTH_SHORT).apply {
-                    anchorView = requireActivity().findViewById(R.id.countryTextField)
-                }.show()
-                //binding.displayHintButton.visibility = View.INVISIBLE
-            }
+    /**
+     * Function sets listeners for the three reveal hint buttons
+     * and upon clicking hides them and reveals and displays the hint
+     */
+    private fun populateHint() {
+        binding.hintButtonDisplay1.setOnClickListener {
+            binding.hintButtonDisplay1.visibility = View.GONE
+            binding.hintDisplay1.visibility = View.VISIBLE
+            binding.hintDisplay1.text = Loading.hints!![0].HintText
+        }
+        binding.hintButtonDisplay2.setOnClickListener {
+            binding.hintButtonDisplay2.visibility = View.GONE
+            binding.hintDisplay2.visibility = View.VISIBLE
+            binding.hintDisplay2.text = Loading.hints!![1].HintText
+        }
+        binding.hintButtonDisplay3.setOnClickListener {
+            binding.hintButtonDisplay3.visibility = View.GONE
+            binding.hintDisplay3.visibility = View.VISIBLE
+            binding.hintDisplay3.text = Loading.hints!![2].HintText
         }
     }
 
@@ -242,7 +199,8 @@ class Cuisinele : Fragment() {
      */
     private fun populateImage() {
         GlobalScope.launch(Dispatchers.Main) {
-            val decodedString: ByteArray = Base64.decode(dish!!.ImageUrl.split(",")[1], Base64.DEFAULT)
+            val decodedString: ByteArray =
+                Base64.decode(Loading.dish!!.ImageUrl.split(",")[1], Base64.DEFAULT)
             val bitMap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
             var imageView: ImageView = binding.cuisineleImage
             imageView.setImageBitmap(bitMap)
@@ -257,19 +215,20 @@ class Cuisinele : Fragment() {
         _binding = null
     }
 
-    /**
-     * Method sets up the show/hide guess button.
-     */
-    private fun toggleGuesses() {
-        binding.displayGuessButton.setOnClickListener {
-            if (binding.guessDisplay.visibility == View.INVISIBLE) {
-                binding.guessDisplay.visibility = View.VISIBLE
-                binding.displayGuessButton.text = getString(R.string.HideGuess)
-            } else {
-                binding.guessDisplay.visibility = View.INVISIBLE
-                binding.displayGuessButton.text = getString(R.string.DisplayGuess)
-            }
-        }
-    }
+
+//    /**
+//     * Method sets up the show/hide guess button.
+//     */
+//    private fun toggleGuesses() {
+//        binding.displayGuessButton.setOnClickListener {
+//            if (binding.guessDisplay.visibility == View.INVISIBLE) {
+//                binding.guessDisplay.visibility = View.VISIBLE
+//                binding.displayGuessButton.text = getString(R.string.HideGuess)
+//            } else {
+//                binding.guessDisplay.visibility = View.INVISIBLE
+//                binding.displayGuessButton.text = getString(R.string.DisplayGuess)
+//            }
+//        }
+//    }
 
 }

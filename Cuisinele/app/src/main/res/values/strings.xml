@@ -18,8 +18,11 @@
     <string name="continueButton">Continue</string>
     <string name="DisplayGuess">Show Guesses</string>
     <string name="HideGuess">Hide Guesses</string>
-    <string name="GetHint">Get Hint</string>
+    <string name="GetHint">Reveal Hint</string>
     <string name="tutorialHintFlag">🇯🇵</string>
     <string name="tutorialHintLetter">Starts with: J</string>
     <string name="tutorialHintRegion">Region: Asia</string>
+    <string name="correctAnswerString">You correctly guessed today\'s Cuisinele:</string>
+    <string name="answerString">The correct country was:</string>
+    <string name="guessesString">Your Guesses:</string>
 </resources>
