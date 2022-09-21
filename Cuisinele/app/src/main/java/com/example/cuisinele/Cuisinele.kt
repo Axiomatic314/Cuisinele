@@ -48,8 +48,15 @@ class Cuisinele : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         enterClicked()
-//        toggleGuesses()
         populateHint()
+    }
+
+    /**
+     * If the application is minimised, we should navigate to the LoadingPage in case the day ticks over before the app is opened again.
+     */
+    override fun onPause() {
+        super.onPause()
+        findNavController().navigate(R.id.LoadingPage)
     }
 
     /**
@@ -214,21 +221,5 @@ class Cuisinele : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
-//    /**
-//     * Method sets up the show/hide guess button.
-//     */
-//    private fun toggleGuesses() {
-//        binding.displayGuessButton.setOnClickListener {
-//            if (binding.guessDisplay.visibility == View.INVISIBLE) {
-//                binding.guessDisplay.visibility = View.VISIBLE
-//                binding.displayGuessButton.text = getString(R.string.HideGuess)
-//            } else {
-//                binding.guessDisplay.visibility = View.INVISIBLE
-//                binding.displayGuessButton.text = getString(R.string.DisplayGuess)
-//            }
-//        }
-//    }
 
 }
