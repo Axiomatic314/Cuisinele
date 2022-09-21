@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nestedScrollView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Failure"
-    tools:ignore="SpeakableTextPresentCheck">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:id="@+id/nestedScrollView"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".Failure"
+                                                   tools:ignore="SpeakableTextPresentCheck">
 
     <TextView
-        android:id="@+id/failureMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/failure"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/failureMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/failure"
+            android:textSize="50sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/countdownTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="testing"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/failureMessage" />
+            android:id="@+id/countdownTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="testing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/failureMessage"/>
 
 
     <!-- todo: add the user's guesses   -->
@@ -37,163 +37,164 @@
 
     <!-- only use for unlimited games, todo: remove when finalising app -->
     <Button
-        android:id="@+id/continueButton"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/continueButton"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/failureMessage" />
+            android:id="@+id/continueButton"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/continueButton"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/failureMessage"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="10dp">
-
-        <TextView
-            android:id="@+id/answerText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/answerString"
-            android:textAlignment="center"
-            android:textSize="18sp" />
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="10dp">
 
         <TextView
-            android:id="@+id/correctAnswer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=""
-            android:textAlignment="center"
-            android:textSize="30sp" />
+                android:id="@+id/answerText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/answerString"
+                android:textAlignment="center"
+                android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/guessesText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/guessesString"
-            android:textAlignment="center"
-            android:textSize="18sp" />
+                android:id="@+id/correctAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="30sp"/>
+
+        <TextView
+                android:id="@+id/guessesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/guessesString"
+                android:textAlignment="center"
+                android:textSize="18sp"/>
 
         <TableLayout
-            android:id="@+id/guessDisplay"
-            android:layout_width="fill_parent"
-            android:layout_height="200dp"
-            android:gravity="center"
-            android:stretchColumns="0,1"
-            app:layout_constraintTop_toBottomOf="@+id/correctAnswer">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="1dp"
+                android:id="@+id/guessDisplay"
+                android:layout_width="fill_parent"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="#000000">
-
-                <TextView
-                    android:id="@+id/guess1TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_column="0"
-                    android:layout_margin="1dp"
-                    android:background="@color/blue"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/guess2TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_column="0"
-                    android:layout_margin="1dp"
-                    android:background="@color/blue"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
-            </TableRow>
+                android:layout_height="200dp"
+                android:stretchColumns="0,1"
+                android:gravity="center">
 
             <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="#000000">
-
+                    android:background="@android:color/transparent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+            >
                 <TextView
-                    android:id="@+id/guess3TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_column="0"
-                    android:layout_margin="1dp"
-                    android:background="@color/blue"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
-
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_margin="3dp"
+                        android:layout_column="0"
+                        android:background="@color/blue"
+                        android:gravity="center"
+                        android:id="@+id/guess1TextView"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:layout_weight="1"/>
                 <TextView
-                    android:id="@+id/guess4TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_column="0"
-                    android:layout_margin="1dp"
-                    android:background="@color/blue"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_margin="3dp"
+                        android:layout_column="0"
+                        android:background="@color/blue"
+                        android:gravity="center"
+                        android:id="@+id/guess2TextView"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:layout_weight="1" android:padding="10sp"/>
             </TableRow>
-
             <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="#000000">
+                    android:background="@android:color/transparent"
+                    android:layout_width="fill_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+            >
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_margin="3dp"
+                        android:layout_column="0"
+                        android:background="@color/blue"
+                        android:gravity="center"
+                        android:id="@+id/guess3TextView"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:layout_weight="1" android:padding="10sp"/>
 
                 <TextView
-                    android:id="@+id/guess5TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_column="0"
-                    android:layout_margin="1dp"
-                    android:background="@color/blue"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
-
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_margin="3dp"
+                        android:layout_column="0"
+                        android:background="@color/blue"
+                        android:gravity="center"
+                        android:id="@+id/guess4TextView"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:layout_weight="1" android:padding="10sp"/>
+            </TableRow>
+            <TableRow
+                    android:background="@android:color/transparent"
+                    android:layout_width="fill_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+            >
                 <TextView
-                    android:id="@+id/guess6TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_column="0"
-                    android:layout_margin="1dp"
-                    android:background="@color/blue"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_margin="3dp"
+                        android:layout_column="0"
+                        android:background="@color/blue"
+                        android:gravity="center"
+                        android:id="@+id/guess5TextView"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:layout_weight="1" android:padding="10sp"/>
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_margin="3dp"
+                        android:layout_column="0"
+                        android:background="@color/blue"
+                        android:gravity="center"
+                        android:id="@+id/guess6TextView"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:layout_weight="1" android:padding="10sp"/>
             </TableRow>
         </TableLayout>
     </LinearLayout>
