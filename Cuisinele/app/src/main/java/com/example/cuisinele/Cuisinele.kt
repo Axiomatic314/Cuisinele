@@ -17,7 +17,9 @@ import java.util.*
 
 
 /**
- * A fragment class which acts as the main game page and the default navigation page.
+ * A fragment class which acts as the main game page.
+ *
+ * This class sets up the game of Cuisinele, and handles the user input.
  */
 class Cuisinele : Fragment() {
 
@@ -26,8 +28,6 @@ class Cuisinele : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
-    //private var countries: Array<String> = arrayOf()
     private lateinit var countryAdapter: ArrayAdapter<String>
     private var guessNo = 1
 
@@ -44,8 +44,9 @@ class Cuisinele : Fragment() {
 
         return binding.root
     }
+
     /**
-     * Calls functions to set up input submission and hint set-up.
+     * Ensures that the input submission and hints are set up.
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,8 +74,10 @@ class Cuisinele : Fragment() {
     }
 
     /**
-     * Function sets listener for the enter key. Updates the guesses in database and guess boxes with input
-     * and navigates to success/failure page upon completion of the day's level
+     * This function sets a listener for the enter key.
+     *
+     * Updates the guesses in the database and fills the guess boxes with the user input. Also
+     * navigates to success/failure page upon completion of the day's level.
      */
     private fun enterClicked() {
         binding.countryTextField.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
@@ -116,7 +119,7 @@ class Cuisinele : Fragment() {
                         guessNo++
                     }
                     Loading.updateDish()
-                    /** clears the input box after each incorrect guess and displays an 'incorrect' message to the user */
+                    // clears the input box after each incorrect guess and displays an 'incorrect' message to the user
                     binding.countryTextField.text.clear()
                     Snackbar.make(
                         requireActivity().findViewById(R.id.countryTextField),
@@ -134,7 +137,7 @@ class Cuisinele : Fragment() {
     }
 
     /**
-     * This method uses data stored in Loading class to initialize game
+     * This method uses data stored in the Loading class to initialize the game.
      */
     private fun getData() {
         for (c in Loading.countries.sortedBy { x -> x.CountryName }) {
@@ -174,8 +177,9 @@ class Cuisinele : Fragment() {
     }
 
     /**
-     * Function sets listeners for the three reveal hint buttons
-     * and upon clicking hides them and reveals and displays the hint
+     * This function sets listeners for the three reveal hint buttons.
+     *
+     * When the buttons are clicked, they will be hidden and the hint displayed.
      */
     private fun populateHint() {
         binding.hintButtonDisplay1.setOnClickListener {
@@ -196,7 +200,7 @@ class Cuisinele : Fragment() {
     }
 
     /**
-     * Populates imageview
+     * Populates the image of the current dish.
      */
     private fun populateImage() {
         GlobalScope.launch(Dispatchers.Main) {
@@ -209,7 +213,7 @@ class Cuisinele : Fragment() {
     }
 
     /**
-     * Method destroys the view and unsets the binding variable.
+     * This method destroys the view and unsets the binding variable.
      */
     override fun onDestroyView() {
         super.onDestroyView()

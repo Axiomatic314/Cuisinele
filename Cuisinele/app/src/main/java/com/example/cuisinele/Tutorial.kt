@@ -10,6 +10,8 @@ import com.example.cuisinele.databinding.TutorialPageBinding
 
 /**
  * Fragment class for the tutorial page.
+ *
+ * This class is used to display the rules of the game.
  */
 class Tutorial : Fragment() {
 
@@ -29,21 +31,23 @@ class Tutorial : Fragment() {
     ): View? {
         _binding = TutorialPageBinding.inflate(inflater, container, false)
         binding.continueBtn.setOnClickListener {
-//            findNavController().navigate(R.id.Home)
             findNavController().navigate(R.id.LoadingPage)
         }
 
         return binding.root
     }
+
     /**
-     * Method makes sure the view was fully created.
+     * This method ensures that the view is fully created.
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
 
     /**
-     * Method destroys the view and unsets the binding variable.
+     * This method destroys the view and unsets the binding variable.
+     *
+     * Also responsible for recording whether or not this was the first time the user opened the app.
      */
     override fun onDestroyView() {
         if (MainActivity.prefs != null && !MainActivity.prefs!!.getBoolean("isNotFirstLoad", false)) {

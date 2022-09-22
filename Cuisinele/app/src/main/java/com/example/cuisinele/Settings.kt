@@ -4,7 +4,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 /**
- * Settings class to hold static values
+ * Settings class to hold static values.
  */
 class Settings {
     companion object {
