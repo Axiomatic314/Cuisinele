@@ -112,7 +112,6 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onBackPressed() {
         if (canGoBack) {
-//            super.onBackPressed()
             findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.LoadingPage)
         } else {
             finish()
