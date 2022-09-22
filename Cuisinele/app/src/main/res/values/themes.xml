@@ -2,8 +2,10 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Cuisinele" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/orange</item>
+        <item name="colorOnPrimary">@color/onOrange</item>
         <item name="colorPrimaryVariant">@color/orangeDark</item>
         <item name="colorSecondary">@color/blue</item>
+        <item name="colorOnSecondary">@color/onBlue</item>
         <item name="colorSecondaryVariant">@color/blueDark</item>
     </style>
     <style name="Theme.Cuisinele" parent="Base.Theme.Cuisinele"/>

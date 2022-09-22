@@ -3,11 +3,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <!-- main app theme colors below (all dark variants)-->
-    <color name="orange">#ffb300</color>
-    <color name="orangeDark">#c68400</color>
-    <color name="textOnOrange">#b3000000</color>
-    <color name="blue">#004cff</color>
-    <color name="blueDark">#0024ca</color>
+    <color name="orange">#ffb84d</color>
+    <color name="onOrange">#96000000</color>
+    <color name="orangeDark">#c88819</color>
+    <color name="blue">#4d94ff</color>
+    <color name="onBlue">#B0000000</color>
+    <color name="blueDark">#0067cb</color>
     <color name="textOnBlue">#d2ffffff</color>
 
 </resources>

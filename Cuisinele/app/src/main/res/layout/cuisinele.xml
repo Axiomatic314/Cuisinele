@@ -64,7 +64,8 @@
                         android:layout_height="55dp"
                         android:text="@string/GetHint"
                         android:padding="10dp"
-                        style="@style/Widget.AppCompat.Button.Small"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:textColor="?attr/colorOnPrimary"
                         android:layout_gravity="center_horizontal"/>
                 <TextView
                     android:id="@+id/hintDisplay1"
@@ -82,7 +83,8 @@
                         android:layout_height="55dp"
                         android:text="@string/GetHint"
                         android:padding="10dp"
-                        style="@style/Widget.AppCompat.Button.Small"
+
+                        style="@style/Widget.MaterialComponents.Button"
                         android:layout_gravity="center_horizontal"/>
                 <TextView
                     android:id="@+id/hintDisplay2"
@@ -100,7 +102,7 @@
                         android:layout_height="55dp"
                         android:text="@string/GetHint"
                         android:padding="10dp"
-                        style="@style/Widget.AppCompat.Button.Small"
+                        style="@style/Widget.MaterialComponents.Button"
                         android:layout_gravity="center_horizontal"/>
                 <TextView
                     android:id="@+id/hintDisplay3"
