@@ -2,8 +2,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/guess_box"
     android:shape="rectangle">
-    <stroke android:width="1dp" android:color="@color/blue"/>
-    <solid android:color="@color/blue"/>
+    <stroke android:width="1dp" android:color="?attr/colorPrimaryVariant"/>
+    <solid android:color="?attr/colorPrimaryVariant"/>
     <corners android:radius="15dp"/>
     <padding android:left="5dp" android:bottom="5dp" android:right="5dp" android:top="5dp" />
 </shape>
