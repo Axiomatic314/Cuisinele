@@ -43,6 +43,9 @@ $dokka.location:com.example.cuisinele.data/CuisineleDAO/getCountryByName/#kotlin
 $dokka.location:com.example.cuisinele.data/CuisineleDAO/getDishByID/#kotlin.Int/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/get-dish-by-i-d.html
 $dokka.location:com.example.cuisinele.data/CuisineleDAO/getDishes/#/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/get-dishes.html
 $dokka.location:com.example.cuisinele.data/CuisineleDAO/getHintsByDishID/#kotlin.Int/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/get-hints-by-dish-i-d.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/insertCountry/#com.example.cuisinele.data.models.Country/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/insert-country.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/insertDish/#com.example.cuisinele.data.models.Dish/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/insert-dish.html
+$dokka.location:com.example.cuisinele.data/CuisineleDAO/insertHint/#com.example.cuisinele.data.models.Hint/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/insert-hint.html
 $dokka.location:com.example.cuisinele.data/CuisineleDAO/updateDish/#com.example.cuisinele.data.models.Dish/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-a-o/update-dish.html
 $dokka.location:com.example.cuisinele.data/CuisineleDB.Companion///PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-b/-companion/index.html
 $dokka.location:com.example.cuisinele.data/CuisineleDB.Companion/getINSTANCE/#/PointingToDeclaration/app/com.example.cuisinele.data/-cuisinele-d-b/-companion/get-i-n-s-t-a-n-c-e.html
