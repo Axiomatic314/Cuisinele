@@ -10,6 +10,9 @@ import com.example.cuisinele.databinding.FailurePageBinding
 
 /**
  * Fragment class for the failure page.
+ *
+ * This class is responsible for displaying the user's guesses, the correct answer, and the time
+ * remaining until the next Cuisinele if the user was unable to correctly guess the given Cuisinele.
  */
 class Failure : Fragment() {
 
@@ -45,6 +48,9 @@ class Failure : Fragment() {
         return binding.root
     }
 
+    /**
+     * Hides the top action bar when the app is resumed.
+     */
     override fun onResume() {
         super.onResume()
         MainActivity.hideTopBar()
@@ -52,6 +58,8 @@ class Failure : Fragment() {
 
     /**
      * Navigates to the loading page if the app is paused.
+     *
+     * This ensures that the dish is updated if the day has changed.
      */
     override fun onPause() {
         super.onPause()
@@ -60,7 +68,10 @@ class Failure : Fragment() {
     }
 
     /**
-     * Displays the continue button if the game is not restricted to daily mode.
+     * Displays the continue button.
+     *
+     * If the game is not restricted to daily mode, it will immediately display the continue button.
+     * Otherwise, it will wait for the countdown to end.
      */
     private fun setContinue() {
         if (!Settings.dailyGames) {
@@ -72,7 +83,8 @@ class Failure : Fragment() {
     }
 
     /**
-     * Method destroys the view and unsets the binding variable.
+     * This method destroys the view, cancels the timer, and unsets the binding variable.
+     *
      */
     override fun onDestroyView() {
         Loading.timer.cancel()
