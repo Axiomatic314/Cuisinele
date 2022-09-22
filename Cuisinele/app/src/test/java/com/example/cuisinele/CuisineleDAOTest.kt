@@ -3,7 +3,6 @@ package com.example.cuisinele
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.cuisinele.data.ContextApplication
 import com.example.cuisinele.data.CuisineleDAO
 import com.example.cuisinele.data.CuisineleDB
 import com.example.cuisinele.data.models.Country
@@ -48,58 +47,58 @@ class CuisineleDAOTest: TestCase() {
         testUpdateDish()
     }
 
-    fun testGetCountries() {
+    private fun testGetCountries() {
         var newCountryToAdd = Country(1, "New Zealand")
         dao.insertCountry(newCountryToAdd)
 
         newCountryToAdd = Country(2, "Australia")
         dao.insertCountry(newCountryToAdd)
 
-        var countries = dao.getCountries()
+        val countries = dao.getCountries()
 
         Assert.assertTrue("DAO getCountries method returned empty", countries.isNotEmpty())
-        var country = countries.first()
+        val country = countries.first()
 
-        var dishToAdd = Dish(1, "Test dish", "image_url", country.CountryID, false, 0, 0, 0, 0, 0, 0)
+        val dishToAdd = Dish(1, "Test dish", "image_url", country.CountryID, false, 0, 0, 0, 0, 0, 0)
         dao.insertDish(dishToAdd)
 
-        var hintToAdd = Hint(1, "Test hint", country.CountryID)
+        val hintToAdd = Hint(1, "Test hint", country.CountryID)
         dao.insertHint(hintToAdd)
 
-        var countryByID = dao.getCountryByID(country.CountryID)
+        val countryByID = dao.getCountryByID(country.CountryID)
         Assert.assertTrue("Country with ID: ${country.CountryID} was not returned from DAO", countryByID != null)
 
-        var countryByCountryName = dao.getCountryByName(country.CountryName)
+        val countryByCountryName = dao.getCountryByName(country.CountryName)
         Assert.assertTrue("Country with name: ${country.CountryName} was not returned from DAO", countryByCountryName != null)
     }
 
-    fun testGetDishes() {
-        var dishes = dao.getDishes()
+    private fun testGetDishes() {
+        val dishes = dao.getDishes()
         Assert.assertTrue("DAO getDishes method returned empty", dishes.isNotEmpty())
     }
 
-    fun testGetDishById() {
-        var dishes = dao.getDishes()
+    private fun testGetDishById() {
+        val dishes = dao.getDishes()
         Assert.assertTrue("DAO getDishes method returned empty", dishes.isNotEmpty())
-        var dish = dao.getDishByID(dishes.first().DishID)
+        val dish = dao.getDishByID(dishes.first().DishID)
         Assert.assertTrue("Dish with ID: 1 was not returned from DAO", dish != null)
     }
 
-    fun testGetHints() {
-        var dishes = dao.getDishes()
+    private fun testGetHints() {
+        val dishes = dao.getDishes()
         Assert.assertTrue("DAO getDishes method returned empty", dishes.isNotEmpty())
-        var hints = dao.getHintsByDishID(dishes.first().DishID)
+        val hints = dao.getHintsByDishID(dishes.first().DishID)
         Assert.assertTrue("No hints were returned for dish ID: 1", hints.isNotEmpty())
     }
 
-    fun testUpdateDish() {
-        var dishes = dao.getDishes()
+    private fun testUpdateDish() {
+        val dishes = dao.getDishes()
         Assert.assertTrue("DAO getDishes method returned empty", dishes.isNotEmpty())
         var dish = dao.getDishByID(dishes.first().DishID)
         Assert.assertTrue("Dish with ID: 1 was not returned from DAO", dish != null)
 
-        var originalValue = dish!!.IsComplete
-        dish!!.IsComplete = !dish!!.IsComplete
+        val originalValue = dish!!.IsComplete
+        dish.IsComplete = !dish.IsComplete
         dao.updateDish(dish)
 
         dish = dao.getDishByID(1)
@@ -108,7 +107,7 @@ class CuisineleDAOTest: TestCase() {
 
         Assert.assertTrue("Dish isComplete was not changed using updateDish DAO method", dish!!.IsComplete == !originalValue)
 
-        dish!!.IsComplete = !dish!!.IsComplete
+        dish.IsComplete = !dish.IsComplete
         dao.updateDish(dish)
     }
 }
