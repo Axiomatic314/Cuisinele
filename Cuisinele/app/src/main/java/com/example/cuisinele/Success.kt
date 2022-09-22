@@ -10,6 +10,9 @@ import com.example.cuisinele.databinding.SuccessPageBinding
 
 /**
  * Fragment class for the success page.
+ *
+ * This class acts as an end-screen if the user has successfully guessed the Cuisinele. It provides
+ * the user's guesses and will show a countdown until the next Cuisinele.
  */
 class Success : Fragment() {
 
@@ -43,6 +46,7 @@ class Success : Fragment() {
         setContinue()
         return binding.root
     }
+
     /**
      * Hides the top action bar when the app is resumed.
      */
@@ -53,6 +57,8 @@ class Success : Fragment() {
 
     /**
      * Navigates to the loading page if the app is paused.
+     *
+     * This ensures that the dish is updated if the date has changed.
      */
     override fun onPause() {
         super.onPause()
@@ -61,7 +67,10 @@ class Success : Fragment() {
     }
 
     /**
-     * Displays the continue button if the game is not restricted to daily mode.
+     * Displays the continue button.
+     *
+     * If the game is not restricted to daily mode, it will immediately display the continue button.
+     * Otherwise, it will wait for the countdown to end.
      */
     private fun setContinue() {
         if (!Settings.dailyGames) {
@@ -73,7 +82,7 @@ class Success : Fragment() {
     }
 
     /**
-     * Method destroys the view and unsets the binding variable.
+     * Method destroys the view, unsets the binding variable, and ensures the timer is cancelled.
      */
     override fun onDestroyView() {
         Loading.timer.cancel()
