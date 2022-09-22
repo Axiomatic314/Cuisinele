@@ -10,7 +10,9 @@ import com.example.cuisinele.data.models.Hint
 import kotlin.coroutines.CoroutineContext
 
 @Database(entities = [Country::class, Dish::class, Hint::class], version = 1)
+/** Class creates and populates the database. */
 abstract class CuisineleDB : RoomDatabase() {
+    /** Creates an instance of the DAO class */
     abstract fun cuisineleDAO(): CuisineleDAO
 
     companion object {

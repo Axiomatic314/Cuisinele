@@ -44,11 +44,12 @@ class Cuisinele : Fragment() {
 
         return binding.root
     }
-
+    /**
+     * Calls functions to set up input submission and hint set-up.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         enterClicked()
-//        toggleGuesses()
         populateHint()
     }
 
@@ -214,21 +215,5 @@ class Cuisinele : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
-//    /**
-//     * Method sets up the show/hide guess button.
-//     */
-//    private fun toggleGuesses() {
-//        binding.displayGuessButton.setOnClickListener {
-//            if (binding.guessDisplay.visibility == View.INVISIBLE) {
-//                binding.guessDisplay.visibility = View.VISIBLE
-//                binding.displayGuessButton.text = getString(R.string.HideGuess)
-//            } else {
-//                binding.guessDisplay.visibility = View.INVISIBLE
-//                binding.displayGuessButton.text = getString(R.string.DisplayGuess)
-//            }
-//        }
-//    }
 
 }

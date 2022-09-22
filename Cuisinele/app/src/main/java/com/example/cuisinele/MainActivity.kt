@@ -1,7 +1,5 @@
 package com.example.cuisinele
 
-import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,18 +11,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
-//import androidx.room.Database
-import com.example.cuisinele.data.CuisineleDB
-import com.example.cuisinele.data.models.Country
-import android.view.WindowManager
-import androidx.core.view.children
 import androidx.navigation.ui.onNavDestinationSelected
-import com.example.cuisinele.data.CuisineleDAO
 import com.example.cuisinele.databinding.ActivityMainBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 /**
  * Class sets up the navigation bar and navigation between pages.
  */
@@ -35,11 +23,15 @@ class MainActivity : AppCompatActivity() {
         var canGoBack: Boolean = true
         var prefs: SharedPreferences? = null
         private lateinit var binding: ActivityMainBinding
-
+        /**
+         * Function hides the top toolbar.
+         */
         fun hideTopBar() {
             binding.toolbar.visibility = View.INVISIBLE
         }
-
+        /**
+         * Function reveals the top toolbar.
+         */
         fun showTopBar() {
             binding.toolbar.visibility = View.VISIBLE
         }
@@ -70,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         prefs = getSharedPreferences("custom", MODE_PRIVATE)
         if (prefs != null) {
-            var isNotFirstLoad = prefs!!.getBoolean("isNotFirstLoad", false)
+            val isNotFirstLoad = prefs!!.getBoolean("isNotFirstLoad", false)
             if (!isNotFirstLoad) {
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.Tut)
             }
@@ -104,16 +96,22 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
-
+    /**
+     * Function handles upwards navigation from the action bar.
+     *
+     * @return true if it successfully navigates upwards.
+     */
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
-
+    /**
+     * Handles clicks of the android back button to either go to the previous page or close the
+     * app if no page is available.
+     */
     override fun onBackPressed() {
         if (canGoBack) {
-//            super.onBackPressed()
             findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.LoadingPage)
         } else {
             finish()

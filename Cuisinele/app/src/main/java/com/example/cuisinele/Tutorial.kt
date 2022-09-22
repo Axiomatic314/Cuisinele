@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.TutorialPageBinding
@@ -36,7 +35,9 @@ class Tutorial : Fragment() {
 
         return binding.root
     }
-
+    /**
+     * Method makes sure the view was fully created.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
@@ -46,7 +47,7 @@ class Tutorial : Fragment() {
      */
     override fun onDestroyView() {
         if (MainActivity.prefs != null && !MainActivity.prefs!!.getBoolean("isNotFirstLoad", false)) {
-            var prefEdit = MainActivity.prefs!!.edit()
+            val prefEdit = MainActivity.prefs!!.edit()
             prefEdit.apply {
                 putBoolean("isNotFirstLoad", true)
                 apply()
