@@ -97,9 +97,9 @@ class CuisineleDAOTest: TestCase() {
      */
     private fun testGetDishById() {
         val dishes = dao.getDishes()
-        Assert.assertTrue("DAO getDishes method returned empty", dishes.isNotEmpty())
+        Assert.assertTrue("DAO getDishes method returned an empty list", dishes.isNotEmpty())
         val dish = dao.getDishByID(dishes.first().DishID)
-        Assert.assertTrue("Dish with ID: 1 was not returned from DAO", dish != null)
+        Assert.assertTrue("Dish with ID: ${dishes.first().DishID} was not returned from DAO", dish != null)
     }
 
     /**
@@ -109,7 +109,7 @@ class CuisineleDAOTest: TestCase() {
         val dishes = dao.getDishes()
         Assert.assertTrue("DAO getDishes method returned empty", dishes.isNotEmpty())
         val hints = dao.getHintsByDishID(dishes.first().DishID)
-        Assert.assertTrue("No hints were returned for dish ID: 1", hints.isNotEmpty())
+        Assert.assertTrue("No hints were returned for dish ID: ${dishes.first().DishID}", hints.isNotEmpty())
     }
 
     /**
@@ -117,9 +117,9 @@ class CuisineleDAOTest: TestCase() {
      */
     private fun testUpdateDish() {
         val dishes = dao.getDishes()
-        Assert.assertTrue("DAO getDishes method returned empty", dishes.isNotEmpty())
+        Assert.assertTrue("DAO getDishes method returned nothing", dishes.isNotEmpty())
         var dish = dao.getDishByID(dishes.first().DishID)
-        Assert.assertTrue("Dish with ID: 1 was not returned from DAO", dish != null)
+        Assert.assertTrue("Dish with ID: ${dishes.first().DishID} was not returned from DAO", dish != null)
 
         val originalValue = dish!!.IsComplete
         dish.IsComplete = !dish.IsComplete
