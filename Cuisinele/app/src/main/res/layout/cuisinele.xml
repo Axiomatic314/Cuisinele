@@ -8,25 +8,13 @@
     tools:context=".Cuisinele"
     tools:ignore="SpeakableTextPresentCheck">
 
-    <AutoCompleteTextView
-        android:id="@+id/countryTextField"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginBottom="40dp"
-        android:autofillHints="countryName"
-        android:ems="10"
-        android:hint="Enter Country..."
-        android:inputType="text"
-        android:textColorHint="#8D6E63"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/countryTextField"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -38,204 +26,261 @@
                 android:id="@+id/cuisineleImage"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:minHeight="250dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="12dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@null"
+                android:minHeight="250dp"
                 android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/dishName"
-                android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_marginTop="10dp"
+                android:text=""
+                android:layout_marginBottom="10dp"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:orientation="horizontal">
 
                 <Button
-                        android:id="@+id/hintButtonDisplay1"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="55dp"
-                        android:text="@string/GetHint"
-                        android:padding="10dp"
-                        style="@style/Widget.AppCompat.Button.Small"
-                        android:layout_gravity="center_horizontal"/>
+                    android:id="@+id/hintButtonDisplay1"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="62dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:text="@string/GetHint"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
+
                 <TextView
                     android:id="@+id/hintDisplay1"
-                    android:visibility="gone"
                     android:layout_width="0dp"
-                    android:gravity="center"
+                    android:layout_height="62dp"
                     android:layout_gravity="fill"
-                    android:textSize="40sp"
                     android:layout_weight="1"
-                    android:layout_height="55dp"/>
+                    android:gravity="center"
+                    android:textSize="40sp"
+                    android:visibility="gone" />
+
                 <Button
-                        android:id="@+id/hintButtonDisplay2"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="55dp"
-                        android:text="@string/GetHint"
-                        android:padding="10dp"
-                        style="@style/Widget.AppCompat.Button.Small"
-                        android:layout_gravity="center_horizontal"/>
+                    android:id="@+id/hintButtonDisplay2"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="62dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:text="@string/GetHint" />
+
                 <TextView
                     android:id="@+id/hintDisplay2"
-                    android:visibility="gone"
-                    android:gravity="center"
-                    android:layout_gravity="fill"
-                    android:textSize="16sp"
                     android:layout_width="0dp"
+                    android:layout_height="62dp"
+                    android:layout_gravity="fill"
                     android:layout_weight="1"
-                    android:layout_height="55dp" />
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+
                 <Button
-                        android:id="@+id/hintButtonDisplay3"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="55dp"
-                        android:text="@string/GetHint"
-                        android:padding="10dp"
-                        style="@style/Widget.AppCompat.Button.Small"
-                        android:layout_gravity="center_horizontal"/>
+                    android:id="@+id/hintButtonDisplay3"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="62dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:text="@string/GetHint" />
+
                 <TextView
                     android:id="@+id/hintDisplay3"
-                    android:visibility="gone"
+                    android:layout_width="0dp"
+                    android:layout_height="62dp"
                     android:layout_gravity="fill"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="55dp" />
+                    android:visibility="gone" />
             </LinearLayout>
-<!--            <Button-->
-<!--                android:id="@+id/displayGuessButton"-->
-<!--                android:text="@string/HideGuess"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="48dp"-->
-<!--                android:padding="10dp"-->
-<!--                android:layout_gravity="center_horizontal"-->
-<!--                style="@style/Widget.AppCompat.Button.Small" />-->
+            <!--            <Button-->
+            <!--                android:id="@+id/displayGuessButton"-->
+            <!--                android:text="@string/HideGuess"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="48dp"-->
+            <!--                android:padding="10dp"-->
+            <!--                android:layout_gravity="center_horizontal"-->
+            <!--                style="@style/Widget.AppCompat.Button.Small" />-->
 
             <TableLayout
                 android:id="@+id/guessDisplay"
                 android:layout_width="fill_parent"
-                android:layout_marginTop="10dp"
                 android:layout_height="200dp"
-                android:stretchColumns="0,1"
-                android:gravity="center">
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:stretchColumns="0,1">
 
                 <TableRow
-                        android:background="@android:color/transparent"
-                        android:layout_width="fill_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginLeft="1dp"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                >
-                    <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:layout_margin="3dp"
-                            android:layout_column="0"
-                            android:background="@color/blue"
-                            android:gravity="center"
-                            android:id="@+id/guess1TextView"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
-                            android:layout_weight="1"/>
-                    <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:layout_margin="3dp"
-                            android:layout_column="0"
-                            android:background="@color/blue"
-                            android:gravity="center"
-                            android:id="@+id/guess2TextView"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
-                            android:layout_weight="1" android:padding="10sp"/>
-                </TableRow>
-                <TableRow
-                        android:background="@android:color/transparent"
-                        android:layout_width="fill_parent"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="1dp"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginBottom="1dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                >
-                    <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:layout_margin="3dp"
-                            android:layout_column="0"
-                            android:background="@color/blue"
-                            android:gravity="center"
-                            android:id="@+id/guess3TextView"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
-                            android:layout_weight="1" android:padding="10sp"/>
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent">
 
                     <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:layout_margin="3dp"
-                            android:layout_column="0"
-                            android:background="@color/blue"
-                            android:gravity="center"
-                            android:id="@+id/guess4TextView"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
-                            android:layout_weight="1" android:padding="10sp"/>
-                </TableRow>
-                <TableRow
-                        android:background="@android:color/transparent"
-                        android:layout_width="fill_parent"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="1dp"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginBottom="1dp"
-                        android:layout_height="0dp"
+                        android:id="@+id/guess1TextView"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="6dp"
                         android:layout_weight="1"
-                >
+                        android:background="@color/orangeDarker"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="18sp" />
+
                     <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:layout_margin="3dp"
-                            android:layout_column="0"
-                            android:background="@color/blue"
-                            android:gravity="center"
-                            android:id="@+id/guess5TextView"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
-                            android:layout_weight="1" android:padding="10sp"/>
+                        android:id="@+id/guess2TextView"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_weight="1"
+                        android:background="@color/orangeDarker"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent">
+
                     <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:layout_margin="3dp"
-                            android:layout_column="0"
-                            android:background="@color/blue"
-                            android:gravity="center"
-                            android:id="@+id/guess6TextView"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
-                            android:layout_weight="1" android:padding="10sp"/>
+                        android:id="@+id/guess3TextView"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@color/orangeDarker"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/guess4TextView"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_weight="1"
+                        android:background="@color/orangeDarker"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent">
+
+                    <TextView
+                        android:id="@+id/guess5TextView"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@color/orangeDarker"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/guess6TextView"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_weight="1"
+                        android:background="@color/orangeDarker"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="18sp" />
                 </TableRow>
             </TableLayout>
-       </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/orange"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <AutoCompleteTextView
+            android:id="@+id/countryTextField"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:autofillHints="countryName"
+            android:background="@null"
+            android:ems="10"
+            android:hint="@string/enterCountry"
+            android:inputType="text"
+            android:textColor="#464646"
+            android:textColorHint="#373737" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

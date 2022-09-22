@@ -2,9 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blue">#3399ff</color>
-    <color name="primary">#673ab7</color>
-    <color name="primaryVariant">#320b86</color>
-    <color name="secondary">#cddc39</color>
-    <color name="secondaryVariant">#99aa00</color>
+    <!-- main app theme colors below (all dark variants)-->
+    <color name="orange">#ce8414</color>
+    <color name="onOrange">#96000000</color>
+    <color name="orangeDark">#985700</color>
+    <color name="orangeDarker">#54FFB84D</color>
+    <color name="green">#bbce14</color>
+    <color name="onBlue">#B0000000</color>
+    <color name="greenDark">#879d00</color>
+    <color name="textOnBlue">#d2ffffff</color>
+
+
 </resources>
