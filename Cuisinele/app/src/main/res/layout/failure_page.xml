@@ -46,7 +46,7 @@
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/failureMessage"/>
+            app:layout_constraintTop_toBottomOf="@id/failureMessage" android:layout_marginTop="17dp"/>
 
     <LinearLayout
             android:layout_width="match_parent"
