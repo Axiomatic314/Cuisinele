@@ -1,6 +1,7 @@
 package com.example.cuisinele.data
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.cuisinele.data.models.Country
@@ -12,6 +13,26 @@ import com.example.cuisinele.data.models.Hint
  */
 @Dao
 interface CuisineleDAO {
+    /**
+     * SQL Insert query to add
+     * @param country into the database
+     */
+    @Insert
+    fun insertCountry(country: Country)
+
+    /**
+     * SQL Insert query to add
+     * @param dish into the database
+     */
+    @Insert
+    fun insertDish(dish: Dish)
+
+    /**
+     * SQL Insert query to add
+     * @param hint into the database
+     */
+    @Insert
+    fun insertHint(hint: Hint)
 
     /**
      * SQL SELECT query to get a country by id
@@ -64,5 +85,4 @@ interface CuisineleDAO {
      */
     @Update
     fun updateDish(dish: Dish)
-
 }
