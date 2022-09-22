@@ -23,6 +23,9 @@ class CuisineleDAOTest: TestCase() {
     private lateinit var dao: CuisineleDAO
     private lateinit var database: CuisineleDB
 
+    /**
+     * Setup the database before any test is run
+     */
     @Before
     fun setupDatabase() {
         database = Room.inMemoryDatabaseBuilder(
@@ -33,11 +36,17 @@ class CuisineleDAOTest: TestCase() {
         dao = database.cuisineleDAO()
     }
 
+    /**
+     * Kill the database session if it is active then the tests are complete
+     */
     @After
     fun closeDatabase() {
         database.close()
     }
 
+    /**
+     * Run all the tests
+     */
     @Test
     fun testDatabase() {
         testGetCountries()
@@ -47,6 +56,9 @@ class CuisineleDAOTest: TestCase() {
         testUpdateDish()
     }
 
+    /**
+     * Test getting countries and setting all country related data
+     */
     private fun testGetCountries() {
         var newCountryToAdd = Country(1, "New Zealand")
         dao.insertCountry(newCountryToAdd)
@@ -72,11 +84,17 @@ class CuisineleDAOTest: TestCase() {
         Assert.assertTrue("Country with name: ${country.CountryName} was not returned from DAO", countryByCountryName != null)
     }
 
+    /**
+     * Test getting dishes
+     */
     private fun testGetDishes() {
         val dishes = dao.getDishes()
         Assert.assertTrue("DAO getDishes method returned empty", dishes.isNotEmpty())
     }
 
+    /**
+     * Test getting dish by its ID
+     */
     private fun testGetDishById() {
         val dishes = dao.getDishes()
         Assert.assertTrue("DAO getDishes method returned empty", dishes.isNotEmpty())
@@ -84,6 +102,9 @@ class CuisineleDAOTest: TestCase() {
         Assert.assertTrue("Dish with ID: 1 was not returned from DAO", dish != null)
     }
 
+    /**
+     * Test getting hints
+     */
     private fun testGetHints() {
         val dishes = dao.getDishes()
         Assert.assertTrue("DAO getDishes method returned empty", dishes.isNotEmpty())
@@ -91,6 +112,9 @@ class CuisineleDAOTest: TestCase() {
         Assert.assertTrue("No hints were returned for dish ID: 1", hints.isNotEmpty())
     }
 
+    /**
+     * Test updating a dish record
+     */
     private fun testUpdateDish() {
         val dishes = dao.getDishes()
         Assert.assertTrue("DAO getDishes method returned empty", dishes.isNotEmpty())
