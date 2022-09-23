@@ -82,6 +82,14 @@ class Loading : Fragment(R.layout.loading_page) {
 
         /**
          * This function displays the users guesses for the day in a table.
+         *
+         * @param[correctAnswer] the textview to hold the correct answer.
+         * @param[guess1TextView] the textview to hold the user's first guess.
+         * @param[guess2TextView] the textview to hold the user's second guess.
+         * @param[guess3TextView] the textview to hold the user's third guess.
+         * @param[guess4TextView] the textview to hold the user's fourth guess.
+         * @param[guess5TextView] the textview to hold the user's fifth guess.
+         * @param[guess6TextView] the textview to hold the user's sixth guess.
          */
         fun getGuessData(
             correctAnswer: TextView,
@@ -208,12 +216,5 @@ class Loading : Fragment(R.layout.loading_page) {
                 }
             }
         }
-    }
-
-    /**
-     * This method destroys the view.
-     */
-    override fun onDestroyView() {
-        super.onDestroyView()
     }
 }
