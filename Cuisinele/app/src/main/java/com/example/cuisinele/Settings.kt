@@ -15,7 +15,9 @@ class Settings {
         val dailyGames: Boolean = true
 
         /**
-         * Date we decide daily dishes begin
+         * This is the date the daily dishes begin from.
+         *
+         * This is used to ensure that all games are synced.
          */
         val startDate: LocalDate = LocalDate.parse("2022-09-13", DateTimeFormatter.ISO_LOCAL_DATE)
     }
