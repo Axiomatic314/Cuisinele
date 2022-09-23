@@ -21,6 +21,4 @@
  
 ## References
 
-<ul>
-   <li>Please refer to the [references](reference.md) file to see where content was sourced.</li>
-</ul>
+Please refer to the [references](reference.md) file to see where content was sourced.
