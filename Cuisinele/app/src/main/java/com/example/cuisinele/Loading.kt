@@ -44,7 +44,7 @@ class Loading : Fragment(R.layout.loading_page) {
         /** List of all valid countries to be used in the autocomplete.*/
         lateinit var countries: List<Country>
         /** Timer used to countdown to the next midnight.*/
-        lateinit var timer: CountDownTimer
+        var timer: CountDownTimer? = null
         /** The guesses for the current dish */
         var guesses: List<Guess> = listOf()
 

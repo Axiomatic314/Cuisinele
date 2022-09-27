@@ -86,7 +86,9 @@ class Failure : Fragment() {
      *
      */
     override fun onDestroyView() {
-        Loading.timer.cancel()
+        if (Loading.timer != null) {
+            Loading.timer!!.cancel()
+        }
         MainActivity.canGoBack = true
         super.onDestroyView()
         _binding = null

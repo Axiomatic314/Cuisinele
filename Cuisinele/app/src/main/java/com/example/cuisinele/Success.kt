@@ -84,7 +84,9 @@ class Success : Fragment() {
      * Method destroys the view, unsets the binding variable, and ensures the timer is cancelled.
      */
     override fun onDestroyView() {
-        Loading.timer.cancel()
+        if (Loading.timer != null) {
+            Loading.timer!!.cancel()
+        }
         MainActivity.canGoBack = true
         super.onDestroyView()
         _binding = null
