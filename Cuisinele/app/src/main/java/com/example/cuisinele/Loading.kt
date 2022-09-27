@@ -58,6 +58,15 @@ class Loading : Fragment(R.layout.loading_page) {
         }
 
         /**
+         * Updates a hint.
+         */
+        fun updateHint(hint: Hint) {
+            GlobalScope.async {
+                dao.updateHint(hint)
+            }
+        }
+
+        /**
          * Gets the country ID from the corresponding name.
          *
          * @param[guessName] the name of the country the user has guessed.
@@ -197,11 +206,16 @@ class Loading : Fragment(R.layout.loading_page) {
                     guesses = dao.getGuessesByDishID(dish!!.DishID)
                     if (dish!!.IsComplete) {
                         if (guesses.isNotEmpty()) {
-                            if (guesses[5].CountryID == dish!!.CountryID) {
+                            if (guesses.size < 6) {
                                 findNavController().navigate(R.id.SuccessPage)
                             } else {
-                                findNavController().navigate(R.id.FailurePage)
+                                if (guesses[5].CountryID == dish!!.CountryID) {
+                                    findNavController().navigate(R.id.SuccessPage)
+                                } else {
+                                    findNavController().navigate(R.id.FailurePage)
+                                }
                             }
+
                         } else {
                             findNavController().navigate(R.id.SuccessPage)
                         }

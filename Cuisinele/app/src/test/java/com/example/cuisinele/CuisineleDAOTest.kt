@@ -78,7 +78,7 @@ class CuisineleDAOTest: TestCase() {
         val guessToAdd = Guess(1, 1, country.CountryID)
         dao.insertGuess(guessToAdd)
 
-        val hintToAdd = Hint(1, "Test hint", country.CountryID)
+        val hintToAdd = Hint(1, "Test hint", country.CountryID, false)
         dao.insertHint(hintToAdd)
 
         val countryByID = dao.getCountryByID(country.CountryID)

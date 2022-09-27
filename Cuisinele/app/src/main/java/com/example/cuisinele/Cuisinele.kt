@@ -134,6 +134,30 @@ class Cuisinele : Fragment() {
                 populateImage()
                 guessNo = if (Loading.guesses.size == 6) Loading.guesses.size else Loading.guesses.size + 1
                 binding.dishName.text = Loading.dish!!.DishName
+                if (Loading.dish!!.HintCount > 0) {
+                    if (Loading.hints!![0].Activated) {
+                        binding.hintButtonDisplay1.visibility = View.GONE
+                        binding.hintDisplay1.visibility = View.VISIBLE
+                        binding.hintDisplay1.text = Loading.hints!![0].HintText
+                    }
+                    if (Loading.hints!![1].Activated) {
+                        binding.hintButtonDisplay2.visibility = View.GONE
+                        binding.hintDisplay2.visibility = View.VISIBLE
+                        binding.hintDisplay2.text = Loading.hints!![1].HintText
+                    }
+                    if (Loading.hints!![2].Activated) {
+                        binding.hintButtonDisplay3.visibility = View.GONE
+                        binding.hintDisplay3.visibility = View.VISIBLE
+                        binding.hintDisplay3.text = Loading.hints!![2].HintText
+                    }
+                } else {
+                    for (hint in Loading.hints!!) {
+                        if (hint.Activated) {
+                            hint.Activated = false
+                            Loading.updateHint(hint)
+                        }
+                    }
+                }
 
                 for (i in Loading.guesses.indices) {
                     textViews[i].text = Loading.getCountryName(Loading.guesses[i].CountryID)
@@ -152,16 +176,28 @@ class Cuisinele : Fragment() {
             binding.hintButtonDisplay1.visibility = View.GONE
             binding.hintDisplay1.visibility = View.VISIBLE
             binding.hintDisplay1.text = Loading.hints!![0].HintText
+            Loading.hints!![0].Activated = true
+            Loading.updateHint(Loading.hints!![0])
+            Loading.dish!!.HintCount = Loading.dish!!.HintCount + 1
+            Loading.updateDish()
         }
         binding.hintButtonDisplay2.setOnClickListener {
             binding.hintButtonDisplay2.visibility = View.GONE
             binding.hintDisplay2.visibility = View.VISIBLE
             binding.hintDisplay2.text = Loading.hints!![1].HintText
+            Loading.hints!![1].Activated = true
+            Loading.updateHint(Loading.hints!![1])
+            Loading.dish!!.HintCount = Loading.dish!!.HintCount + 1
+            Loading.updateDish()
         }
         binding.hintButtonDisplay3.setOnClickListener {
             binding.hintButtonDisplay3.visibility = View.GONE
             binding.hintDisplay3.visibility = View.VISIBLE
             binding.hintDisplay3.text = Loading.hints!![2].HintText
+            Loading.hints!![2].Activated = true
+            Loading.updateHint(Loading.hints!![2])
+            Loading.dish!!.HintCount = Loading.dish!!.HintCount + 1
+            Loading.updateDish()
         }
     }
 

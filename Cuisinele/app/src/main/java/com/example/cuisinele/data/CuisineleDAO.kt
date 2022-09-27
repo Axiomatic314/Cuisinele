@@ -100,4 +100,11 @@ interface CuisineleDAO {
      */
     @Update
     fun updateDish(dish: Dish)
+
+    /**
+     * SQL update query to update hint record
+     * @param hint
+     */
+    @Update
+    fun updateHint(hint: Hint)
 }
