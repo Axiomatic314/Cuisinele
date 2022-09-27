@@ -153,13 +153,16 @@ class Loading : Fragment(R.layout.loading_page) {
             }
         }
 
-        private fun calcScore(guesses: List<Guess>, hints: List<Hint>): Int {
+        private fun calcScore(guesses: List<Guess>, hints: List<Hint>?): Int {
             var score = 1050
-            for (hint: Hint in hints) {
-                if (hint.Activated) {
-                    score -= 100
+            if (hints != null) {
+                for (hint: Hint in hints) {
+                    if (hint.Activated) {
+                        score -= 100
+                    }
                 }
             }
+
             for (guess: Guess in guesses) {
                 score -= 50
             }
@@ -169,7 +172,7 @@ class Loading : Fragment(R.layout.loading_page) {
         fun setScore(won: Boolean, textView: TextView) {
             var score = 0
             if (won){
-                score = calcScore(guesses, hints!!)
+                score = calcScore(guesses, hints)
             }
             dish!!.Score = score
             textView.text = "Your score is: $score"
@@ -212,7 +215,12 @@ class Loading : Fragment(R.layout.loading_page) {
                 val cycleStartDate = Settings.startDate.toEpochDay()
                 if (currentDate > cycleStartDate) {
                     // calculate the day since the dish cycle begun and use modulus of the number of dishes to allow recycling of dishes
-                    val dishID: Int = ((currentDate - cycleStartDate) % dao.getDishes().size).toInt()
+                    val daysSinceStart = (currentDate - cycleStartDate).toInt()
+                    var dishID: Int = daysSinceStart % (dao.getDishes().size + 1)
+                    if (daysSinceStart >= dao.getDishes().size + 1) {
+                        dishID += 1
+                    }
+
                     dish = dao.getDishByID(dishID)
                 } else {
                     // TODO: add message/exception for when the dish cycle hasn't begun (this should never occur)

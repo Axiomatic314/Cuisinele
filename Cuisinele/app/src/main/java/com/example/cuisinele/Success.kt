@@ -36,10 +36,7 @@ class Success : Fragment() {
         MainActivity.canGoBack = false
         _binding = SuccessPageBinding.inflate(inflater, container, false)
         textViews = listOf(binding.guess1TextView, binding.guess2TextView, binding.guess3TextView, binding.guess4TextView, binding.guess5TextView, binding.guess6TextView)
-        Loading.getGuessData(
-            binding.correctAnswer,
-            textViews
-        )
+        Loading.getGuessData(binding.correctAnswer, textViews)
         Loading.setCountDown(binding.countdownTimer, binding.continueButton)
         setContinue()
         Loading.setScore(true, binding.scoreTextView)
