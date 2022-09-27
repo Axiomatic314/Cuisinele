@@ -31,7 +31,7 @@ class Cuisinele : Fragment() {
     private val binding get() = _binding!!
     private lateinit var countryAdapter: ArrayAdapter<String>
     private var guessNo = 1
-    private val textViews: List<TextView> = listOf(binding.guess1TextView, binding.guess2TextView, binding.guess3TextView, binding.guess4TextView, binding.guess5TextView, binding.guess6TextView)
+    private lateinit var textViews: List<TextView>
 
 
     /**
@@ -44,7 +44,7 @@ class Cuisinele : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = CuisineleBinding.inflate(inflater, container, false)
-
+        textViews = listOf(binding.guess1TextView, binding.guess2TextView, binding.guess3TextView, binding.guess4TextView, binding.guess5TextView, binding.guess6TextView)
         return binding.root
     }
 

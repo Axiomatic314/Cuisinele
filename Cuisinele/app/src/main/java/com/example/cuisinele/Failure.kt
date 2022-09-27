@@ -21,7 +21,7 @@ class Failure : Fragment() {
 
     //This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
-    private val textViews: List<TextView> = listOf(binding.guess1TextView, binding.guess2TextView, binding.guess3TextView, binding.guess4TextView, binding.guess5TextView, binding.guess6TextView)
+    private lateinit var textViews: List<TextView>
 
     /**
      * Method creates and returns the view hierarchy associated with this fragment and inflates the page to be viewed.
@@ -35,6 +35,7 @@ class Failure : Fragment() {
     ): View {
         MainActivity.canGoBack = false
         _binding = FailurePageBinding.inflate(inflater, container, false)
+        textViews = listOf(binding.guess1TextView, binding.guess2TextView, binding.guess3TextView, binding.guess4TextView, binding.guess5TextView, binding.guess6TextView)
         MainActivity.hideTopBar()
         Loading.getGuessData(
             binding.correctAnswer,
