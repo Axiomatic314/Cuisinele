@@ -201,6 +201,11 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="18sp" />
             </TableRow>
+            <TableRow>
+                <!-- todo: format the score display -->
+                <TextView
+                    android:id="@+id/scoreTextView" />
+            </TableRow>
         </TableLayout>
     </LinearLayout>
 

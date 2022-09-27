@@ -42,6 +42,7 @@ class Success : Fragment() {
         )
         Loading.setCountDown(binding.countdownTimer, binding.continueButton)
         setContinue()
+        Loading.setScore(true, binding.scoreTextView)
         return binding.root
     }
 

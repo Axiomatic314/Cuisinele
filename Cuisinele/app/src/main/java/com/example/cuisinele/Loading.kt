@@ -152,6 +152,28 @@ class Loading : Fragment(R.layout.loading_page) {
                 guesses = guesses.plus(newGuess)
             }
         }
+
+        private fun calcScore(guesses: List<Guess>, hints: List<Hint>): Int {
+            var score = 1050
+            for (hint: Hint in hints) {
+                if (hint.Activated) {
+                    score -= 100
+                }
+            }
+            for (guess: Guess in guesses) {
+                score -= 50
+            }
+            return score
+        }
+
+        fun setScore(won: Boolean, textView: TextView) {
+            var score = 0
+            if (won){
+                score = calcScore(guesses, hints!!)
+            }
+            dish!!.Score = score
+            textView.text = "Your score is: $score"
+        }
     }
 
     /**
