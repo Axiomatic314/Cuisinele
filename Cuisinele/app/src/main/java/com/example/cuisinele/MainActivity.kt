@@ -122,4 +122,13 @@ class MainActivity : AppCompatActivity() {
             System.out.close()
         }
     }
+
+    /**
+     * Handles clicks of the android home button/leaving the app to navigate to the loading page
+     * when the app is minimised in case the date/dish changes.
+     */
+    override fun onUserLeaveHint() {
+        super.onUserLeaveHint()
+        findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.LoadingPage)
+    }
 }
