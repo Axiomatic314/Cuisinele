@@ -15,10 +15,5 @@ data class Dish(
     val ImageUrl: String,
     val CountryID: Int,
     var IsComplete: Boolean,
-    var GuessOne: Int,
-    var GuessTwo: Int,
-    var GuessThree: Int,
-    var GuessFour: Int,
-    var GuessFive: Int,
-    var GuessSix: Int,
+    var HintCount: Int?,
 )

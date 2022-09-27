@@ -1,0 +1,154 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "e1d520a9d3d5d163b5f526f1b68ee0d8",
+    "entities": [
+      {
+        "tableName": "Country",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`CountryID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `CountryName` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "CountryID",
+            "columnName": "CountryID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "CountryName",
+            "columnName": "CountryName",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "CountryID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Dish",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`DishID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `DishName` TEXT NOT NULL, `ImageUrl` TEXT NOT NULL, `CountryID` INTEGER NOT NULL, `IsComplete` INTEGER NOT NULL, `HintCount` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "DishID",
+            "columnName": "DishID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "DishName",
+            "columnName": "DishName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ImageUrl",
+            "columnName": "ImageUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "CountryID",
+            "columnName": "CountryID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "IsComplete",
+            "columnName": "IsComplete",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "HintCount",
+            "columnName": "HintCount",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "DishID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Hint",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`HintID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `HintText` TEXT NOT NULL, `CountryID` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "HintID",
+            "columnName": "HintID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "HintText",
+            "columnName": "HintText",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "CountryID",
+            "columnName": "CountryID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "HintID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Guess",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`GuessID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `DishID` INTEGER NOT NULL, `CountryID` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "GuessID",
+            "columnName": "GuessID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "DishID",
+            "columnName": "DishID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "CountryID",
+            "columnName": "CountryID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "GuessID"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e1d520a9d3d5d163b5f526f1b68ee0d8')"
+    ]
+  }
+}

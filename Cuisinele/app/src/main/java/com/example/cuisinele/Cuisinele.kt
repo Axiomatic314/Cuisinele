@@ -6,6 +6,7 @@ import android.util.Base64
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.CuisineleBinding
@@ -30,6 +31,8 @@ class Cuisinele : Fragment() {
     private val binding get() = _binding!!
     private lateinit var countryAdapter: ArrayAdapter<String>
     private var guessNo = 1
+    private val textViews: List<TextView> = listOf(binding.guess1TextView, binding.guess2TextView, binding.guess3TextView, binding.guess4TextView, binding.guess5TextView, binding.guess6TextView)
+
 
     /**
      * Method creates and returns the view hierarchy associated with this fragment and sets up the AutoComplete.
@@ -83,30 +86,9 @@ class Cuisinele : Fragment() {
         binding.countryTextField.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
                 if (Loading.countries.find { x -> x.CountryName == binding.countryTextField.text.toString() } != null) {
-                    when (guessNo) {
-                        1 -> {
-                            binding.guess1TextView.text = binding.countryTextField.text
-                            Loading.dish!!.GuessOne = Loading.getCountryID(binding.countryTextField.text.toString())
-                        }
-                        2 -> {
-                            binding.guess2TextView.text = binding.countryTextField.text
-                            Loading.dish!!.GuessTwo = Loading.getCountryID(binding.countryTextField.text.toString())
-                        }
-                        3 -> {
-                            binding.guess3TextView.text = binding.countryTextField.text
-                            Loading.dish!!.GuessThree = Loading.getCountryID(binding.countryTextField.text.toString())
-                        }
-                        4 -> {
-                            binding.guess4TextView.text = binding.countryTextField.text
-                            Loading.dish!!.GuessFour = Loading.getCountryID(binding.countryTextField.text.toString())
-                        }
-                        5 -> {
-                            binding.guess5TextView.text = binding.countryTextField.text
-                            Loading.dish!!.GuessFive = Loading.getCountryID(binding.countryTextField.text.toString())
-                        }
-                        6 -> {
-                            Loading.dish!!.GuessSix = Loading.getCountryID(binding.countryTextField.text.toString())
-                        }
+                    if (guessNo <= 6) {
+                        textViews[guessNo - 1].text = binding.countryTextField.text
+                        Loading.addGuess(Loading.getCountryID(binding.countryTextField.text.toString()))
                     }
 
                     if (binding.countryTextField.text.toString() == Loading.country!!.CountryName) {
@@ -150,27 +132,11 @@ class Cuisinele : Fragment() {
             if (!Loading.dish!!.IsComplete) {
                 //fills the previous guess fields with old guesses store in the database
                 populateImage()
-                guessNo = 1
+                guessNo = if (Loading.guesses.size == 6) Loading.guesses.size else Loading.guesses.size + 1
                 binding.dishName.text = Loading.dish!!.DishName
-                if (Loading.dish!!.GuessOne != 0) {
-                    guessNo = 2
-                    binding.guess1TextView.text = Loading.getCountryName(Loading.dish!!.GuessOne)
-                }
-                if (Loading.dish!!.GuessTwo != 0) {
-                    guessNo = 3
-                    binding.guess2TextView.text = Loading.getCountryName(Loading.dish!!.GuessTwo)
-                }
-                if (Loading.dish!!.GuessThree != 0) {
-                    guessNo = 4
-                    binding.guess3TextView.text = Loading.getCountryName(Loading.dish!!.GuessThree)
-                }
-                if (Loading.dish!!.GuessFour != 0) {
-                    guessNo = 5
-                    binding.guess4TextView.text = Loading.getCountryName(Loading.dish!!.GuessFour)
-                }
-                if (Loading.dish!!.GuessFive != 0) {
-                    guessNo = 6
-                    binding.guess5TextView.text = Loading.getCountryName(Loading.dish!!.GuessFive)
+
+                for (i in Loading.guesses.indices) {
+                    textViews[i].text = Loading.getCountryName(Loading.guesses[i].CountryID)
                 }
             }
         }

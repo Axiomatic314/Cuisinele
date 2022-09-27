@@ -11,6 +11,7 @@ import com.example.cuisinele.data.CuisineleDAO
 import com.example.cuisinele.data.CuisineleDB
 import com.example.cuisinele.data.models.Country
 import com.example.cuisinele.data.models.Dish
+import com.example.cuisinele.data.models.Guess
 import com.example.cuisinele.data.models.Hint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -44,6 +45,8 @@ class Loading : Fragment(R.layout.loading_page) {
         lateinit var countries: List<Country>
         /** Timer used to countdown to the next midnight.*/
         lateinit var timer: CountDownTimer
+        /** The guesses for the current dish */
+        var guesses: List<Guess> = listOf()
 
         /**
          * Updates the current dish used throughout the app.
@@ -85,20 +88,12 @@ class Loading : Fragment(R.layout.loading_page) {
          */
         fun getGuessData(
             correctAnswer: TextView,
-            guess1TextView: TextView,
-            guess2TextView: TextView,
-            guess3TextView: TextView,
-            guess4TextView: TextView,
-            guess5TextView: TextView,
-            guess6TextView: TextView
+            textViews: List<TextView>
         ) {
             correctAnswer.text = country!!.CountryName
-            guess1TextView.text = getCountryName(dish!!.GuessOne)
-            guess2TextView.text = getCountryName(dish!!.GuessTwo)
-            guess3TextView.text = getCountryName(dish!!.GuessThree)
-            guess4TextView.text = getCountryName(dish!!.GuessFour)
-            guess5TextView.text = getCountryName(dish!!.GuessFive)
-            guess6TextView.text = getCountryName(dish!!.GuessSix)
+            for (i in guesses.indices) {
+                textViews[i].text = getCountryName(guesses[i].CountryID)
+            }
         }
 
         /**
@@ -135,6 +130,17 @@ class Loading : Fragment(R.layout.loading_page) {
                     }
 
                 }.start()
+            }
+        }
+
+        /**
+         * Adds a new guess record for the current dish
+         */
+        fun addGuess(guess: Int) {
+            GlobalScope.async {
+                val newGuess = Guess(0, dish!!.DishID, guess)
+                dao.insertGuess(newGuess)
+                guesses = guesses.plus(newGuess)
             }
         }
     }
@@ -175,8 +181,7 @@ class Loading : Fragment(R.layout.loading_page) {
                 val cycleStartDate = Settings.startDate.toEpochDay()
                 if (currentDate > cycleStartDate) {
                     // calculate the day since the dish cycle begun and use modulus of the number of dishes to allow recycling of dishes
-                    val dishID: Int =
-                        ((currentDate - cycleStartDate) % dao.getDishes().size).toInt()
+                    val dishID: Int = ((currentDate - cycleStartDate) % dao.getDishes().size).toInt()
                     dish = dao.getDishByID(dishID)
                 } else {
                     // TODO: add message/exception for when the dish cycle hasn't begun (this should never occur)
@@ -189,9 +194,10 @@ class Loading : Fragment(R.layout.loading_page) {
             GlobalScope.launch(Dispatchers.Main) {
                 if (dish != null) {
                     country = dao.getCountryByID(dish!!.CountryID)
+                    guesses = dao.getGuessesByDishID(dish!!.DishID)
                     if (dish!!.IsComplete) {
-                        if (dish!!.GuessSix != 0) {
-                            if (dish!!.GuessSix == dish!!.CountryID) {
+                        if (guesses.isNotEmpty()) {
+                            if (guesses[5].CountryID == dish!!.CountryID) {
                                 findNavController().navigate(R.id.SuccessPage)
                             } else {
                                 findNavController().navigate(R.id.FailurePage)

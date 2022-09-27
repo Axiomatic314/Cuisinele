@@ -6,6 +6,7 @@ import androidx.room.Query
 import androidx.room.Update
 import com.example.cuisinele.data.models.Country
 import com.example.cuisinele.data.models.Dish
+import com.example.cuisinele.data.models.Guess
 import com.example.cuisinele.data.models.Hint
 
 /**
@@ -35,6 +36,13 @@ interface CuisineleDAO {
     fun insertHint(hint: Hint)
 
     /**
+     * SQL Insert query to add
+     * @param guess into the database
+     */
+    @Insert
+    fun insertGuess(guess: Guess)
+
+    /**
      * SQL SELECT query to get a country by id
      * @param countryID
      */
@@ -54,6 +62,13 @@ interface CuisineleDAO {
      */
     @Query("SELECT d.* FROM Dish as d WHERE DishID = :dishID")
     fun getDishByID(dishID: Int): Dish?
+
+    /**
+     * SQL SELECT query to get guesses by a dish id
+     * @param dishID
+     */
+    @Query("SELECT g.* FROM Guess as g WHERE DishID = :dishID")
+    fun getGuessesByDishID(dishID: Int): List<Guess>
 
     /**
      * SQL SELECT query to get all countries
