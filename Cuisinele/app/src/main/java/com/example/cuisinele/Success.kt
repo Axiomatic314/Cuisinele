@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.SuccessPageBinding
@@ -20,6 +21,7 @@ class Success : Fragment() {
 
     //This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
+    private lateinit var textViews: List<TextView>
 
     /**
      * Method creates and returns the view hierarchy associated with this fragment and inflates the page to be viewed.
@@ -33,17 +35,11 @@ class Success : Fragment() {
     ): View {
         MainActivity.canGoBack = false
         _binding = SuccessPageBinding.inflate(inflater, container, false)
-        Loading.getGuessData(
-            binding.correctAnswer,
-            binding.guess1TextView,
-            binding.guess2TextView,
-            binding.guess3TextView,
-            binding.guess4TextView,
-            binding.guess5TextView,
-            binding.guess6TextView
-        )
+        textViews = listOf(binding.guess1TextView, binding.guess2TextView, binding.guess3TextView, binding.guess4TextView, binding.guess5TextView, binding.guess6TextView)
+        Loading.getGuessData(binding.correctAnswer, textViews)
         Loading.setCountDown(binding.countdownTimer, binding.continueButton)
         setContinue()
+        Loading.setScore(true, binding.scoreTextView)
         return binding.root
     }
 
@@ -85,7 +81,9 @@ class Success : Fragment() {
      * Method destroys the view, unsets the binding variable, and ensures the timer is cancelled.
      */
     override fun onDestroyView() {
-        Loading.timer.cancel()
+        if (Loading.timer != null) {
+            Loading.timer!!.cancel()
+        }
         MainActivity.canGoBack = true
         super.onDestroyView()
         _binding = null

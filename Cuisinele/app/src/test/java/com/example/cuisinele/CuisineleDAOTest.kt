@@ -7,6 +7,7 @@ import com.example.cuisinele.data.CuisineleDAO
 import com.example.cuisinele.data.CuisineleDB
 import com.example.cuisinele.data.models.Country
 import com.example.cuisinele.data.models.Dish
+import com.example.cuisinele.data.models.Guess
 import com.example.cuisinele.data.models.Hint
 import junit.framework.TestCase
 import org.junit.After
@@ -71,10 +72,13 @@ class CuisineleDAOTest: TestCase() {
         Assert.assertTrue("DAO getCountries method returned empty", countries.isNotEmpty())
         val country = countries.first()
 
-        val dishToAdd = Dish(1, "Test dish", "image_url", country.CountryID, false, 0, 0, 0, 0, 0, 0)
+        val dishToAdd = Dish(1, "Test dish", "image_url", country.CountryID, false, 0, 1000)
         dao.insertDish(dishToAdd)
 
-        val hintToAdd = Hint(1, "Test hint", country.CountryID)
+        val guessToAdd = Guess(1, 1, country.CountryID)
+        dao.insertGuess(guessToAdd)
+
+        val hintToAdd = Hint(1, "Test hint", country.CountryID, false)
         dao.insertHint(hintToAdd)
 
         val countryByID = dao.getCountryByID(country.CountryID)
@@ -100,6 +104,9 @@ class CuisineleDAOTest: TestCase() {
         Assert.assertTrue("DAO getDishes method returned an empty list", dishes.isNotEmpty())
         val dish = dao.getDishByID(dishes.first().DishID)
         Assert.assertTrue("Dish with ID: ${dishes.first().DishID} was not returned from DAO", dish != null)
+
+        val guesses = dao.getGuessesByDishID(dishes.first().DishID)
+        Assert.assertTrue("Guesses table returned empty", guesses.isNotEmpty())
     }
 
     /**

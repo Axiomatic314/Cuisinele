@@ -1,5 +1,6 @@
 package com.example.cuisinele.data.models
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
@@ -15,10 +16,7 @@ data class Dish(
     val ImageUrl: String,
     val CountryID: Int,
     var IsComplete: Boolean,
-    var GuessOne: Int,
-    var GuessTwo: Int,
-    var GuessThree: Int,
-    var GuessFour: Int,
-    var GuessFive: Int,
-    var GuessSix: Int,
+    @ColumnInfo(defaultValue = "0")
+    var HintCount: Int,
+    var Score: Int?
 )

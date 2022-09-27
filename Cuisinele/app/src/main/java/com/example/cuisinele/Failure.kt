@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.FailurePageBinding
@@ -20,6 +21,7 @@ class Failure : Fragment() {
 
     //This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
+    private lateinit var textViews: List<TextView>
 
     /**
      * Method creates and returns the view hierarchy associated with this fragment and inflates the page to be viewed.
@@ -33,18 +35,15 @@ class Failure : Fragment() {
     ): View {
         MainActivity.canGoBack = false
         _binding = FailurePageBinding.inflate(inflater, container, false)
+        textViews = listOf(binding.guess1TextView, binding.guess2TextView, binding.guess3TextView, binding.guess4TextView, binding.guess5TextView, binding.guess6TextView)
         MainActivity.hideTopBar()
         Loading.getGuessData(
             binding.correctAnswer,
-            binding.guess1TextView,
-            binding.guess2TextView,
-            binding.guess3TextView,
-            binding.guess4TextView,
-            binding.guess5TextView,
-            binding.guess6TextView
+            textViews
         )
         Loading.setCountDown(binding.countdownTimer, binding.continueButton)
         setContinue()
+        Loading.setScore(false, binding.scoreTextView)
         return binding.root
     }
 
@@ -87,7 +86,9 @@ class Failure : Fragment() {
      *
      */
     override fun onDestroyView() {
-        Loading.timer.cancel()
+        if (Loading.timer != null) {
+            Loading.timer!!.cancel()
+        }
         MainActivity.canGoBack = true
         super.onDestroyView()
         _binding = null
