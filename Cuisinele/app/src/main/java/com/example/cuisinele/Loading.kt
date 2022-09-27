@@ -169,6 +169,13 @@ class Loading : Fragment(R.layout.loading_page) {
             return score
         }
 
+        /**
+         * Calculates and sets the score in the database, as well as displaying the score on the
+         * end-screen.
+         *
+         * @param[won] true if the user is on the success page, false otherwise
+         * @param[textView] the TextView to put the score message in
+         */
         fun setScore(won: Boolean, textView: TextView) {
             var score = 0
             if (won){
