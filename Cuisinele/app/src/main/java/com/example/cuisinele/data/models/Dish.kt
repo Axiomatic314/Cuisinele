@@ -18,4 +18,5 @@ data class Dish(
     var IsComplete: Boolean,
     @ColumnInfo(defaultValue = "0")
     var HintCount: Int,
+    var Score: Int?
 )

@@ -72,7 +72,7 @@ class CuisineleDAOTest: TestCase() {
         Assert.assertTrue("DAO getCountries method returned empty", countries.isNotEmpty())
         val country = countries.first()
 
-        val dishToAdd = Dish(1, "Test dish", "image_url", country.CountryID, false, 0)
+        val dishToAdd = Dish(1, "Test dish", "image_url", country.CountryID, false, 0, 1000)
         dao.insertDish(dishToAdd)
 
         val guessToAdd = Guess(1, 1, country.CountryID)

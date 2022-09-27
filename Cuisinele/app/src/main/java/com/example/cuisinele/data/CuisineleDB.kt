@@ -8,10 +8,9 @@ import com.example.cuisinele.data.models.Dish
 import com.example.cuisinele.data.models.Guess
 import com.example.cuisinele.data.models.Hint
 
-@Database(entities = [Country::class, Dish::class, Hint::class, Guess::class], version = 3, exportSchema = true,
+@Database(entities = [Country::class, Dish::class, Hint::class, Guess::class], version = 2, exportSchema = true,
     autoMigrations = [
         AutoMigration (from = 1, to = 2, spec = CuisineleDB.DishAutoMigration::class),
-        AutoMigration(from = 2, to = 3)
     ])
 /** Class creates and populates the database. */
 abstract class CuisineleDB : RoomDatabase() {
