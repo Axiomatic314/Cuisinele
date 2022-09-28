@@ -122,4 +122,13 @@ class MainActivity : AppCompatActivity() {
             System.out.close()
         }
     }
+
+    /**
+     * When the app is minimised, the app will navigate to the loading page in case the date/dish
+     * changes.
+     */
+    override fun onPause() {
+        super.onPause()
+        findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.LoadingPage)
+    }
 }
