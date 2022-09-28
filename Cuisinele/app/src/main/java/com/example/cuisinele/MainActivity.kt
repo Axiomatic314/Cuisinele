@@ -124,8 +124,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Handles clicks of the android home button/leaving the app to navigate to the loading page
-     * when the app is minimised in case the date/dish changes.
+     * When the app is minimised, the app will navigate to the loading page in case the date/dish
+     * changes.
      */
     override fun onPause() {
         super.onPause()
