@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="@string/failure"
-        android:textSize="50sp"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,6 +26,7 @@
         android:layout_marginTop="30dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="testing"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/failureMessage" />
@@ -57,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/answerString"
             android:textAlignment="center"
             android:textSize="18sp" />
@@ -66,15 +68,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:text=""
             android:textAlignment="center"
             android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/scoreTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:layout_marginBottom="5dp"
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/guessesText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/guessesString"
             android:textAlignment="center"
             android:textSize="18sp" />
@@ -200,11 +213,6 @@
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="18sp" />
-            </TableRow>
-            <TableRow>
-                <!-- todo: format the score display -->
-                <TextView
-                    android:id="@+id/scoreTextView" />
             </TableRow>
         </TableLayout>
     </LinearLayout>

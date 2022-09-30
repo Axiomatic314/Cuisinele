@@ -13,8 +13,8 @@
     <string name="DishNameExample">Sushi</string>
     <string name="AvailableEachDay">A new CUISINELE will be available each day!</string>
     <string name="ExampleAnswer">Japan</string>
-    <string name="success">Success!</string>
-    <string name="failure">Failure...</string>
+    <string name="success">Well Done!</string>
+    <string name="failure">Better luck next time!</string>
     <string name="continueButton">Continue</string>
     <string name="DisplayGuess">Show Guesses</string>
     <string name="HideGuess">Hide Guesses</string>
