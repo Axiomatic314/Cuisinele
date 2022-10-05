@@ -1,13 +1,22 @@
 package com.example.cuisinele
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.SuccessPageBinding
+import com.google.android.material.snackbar.Snackbar
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 /**
  * Fragment class for the success page.
@@ -40,6 +49,8 @@ class Success : Fragment() {
         Loading.setCountDown(binding.countdownTimer, binding.continueButton)
         setContinue()
         Loading.setScore(true, binding.scoreTextView)
+        //todo add the required button, then uncomment this line
+//        copyResults()
         return binding.root
     }
 
@@ -76,6 +87,18 @@ class Success : Fragment() {
             findNavController().navigate(R.id.LoadingPage)
         }
     }
+
+    //todo add the shareResults button, then uncomment this code
+//    private fun copyResults(){
+//        val results = Loading.getResults(true)
+//        val clipboard = ContextCompat.getSystemService(requireContext(), ClipboardManager::class.java) as ClipboardManager
+//        val clip = ClipData.newPlainText("results", results)
+//        binding.shareResults.setOnClickListener {
+//            clipboard.setPrimaryClip(clip)
+//            //todo anchor this to an element of the success_page, so it can be seen
+//            Snackbar.make(requireView(),"Copied to clipboard!",Snackbar.LENGTH_SHORT).show()
+//        }
+//    }
 
     /**
      * Method destroys the view, unsets the binding variable, and ensures the timer is cancelled.

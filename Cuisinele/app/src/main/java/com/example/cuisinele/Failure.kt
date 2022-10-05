@@ -1,13 +1,21 @@
 package com.example.cuisinele
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.FailurePageBinding
+import com.google.android.material.snackbar.Snackbar
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 /**
  * Fragment class for the failure page.
@@ -35,7 +43,14 @@ class Failure : Fragment() {
     ): View {
         MainActivity.canGoBack = false
         _binding = FailurePageBinding.inflate(inflater, container, false)
-        textViews = listOf(binding.guess1TextView, binding.guess2TextView, binding.guess3TextView, binding.guess4TextView, binding.guess5TextView, binding.guess6TextView)
+        textViews = listOf(
+            binding.guess1TextView,
+            binding.guess2TextView,
+            binding.guess3TextView,
+            binding.guess4TextView,
+            binding.guess5TextView,
+            binding.guess6TextView
+        )
         MainActivity.hideTopBar()
         Loading.getGuessData(
             binding.correctAnswer,
@@ -44,6 +59,8 @@ class Failure : Fragment() {
         Loading.setCountDown(binding.countdownTimer, binding.continueButton)
         setContinue()
         Loading.setScore(false, binding.scoreTextView)
+        //todo: add the required button, then uncomment the line below
+//        copyResults()
         return binding.root
     }
 
@@ -80,6 +97,19 @@ class Failure : Fragment() {
             findNavController().navigate(R.id.LoadingPage)
         }
     }
+
+    //todo add the required button, then uncomment this functionality
+// private fun copyResults(){
+//        val results = Loading.getResults(false)
+//        val clipboard = ContextCompat.getSystemService(requireContext(), ClipboardManager::class.java) as ClipboardManager
+//        val clip = ClipData.newPlainText("results", results)
+         //todo add a button called shareResults
+//        binding.shareResults.setOnClickListener {setOnClickListener
+//            clipboard.setPrimaryClip(clip)
+//            //todo anchor this to an element of the success_page, so it can be seen
+//            Snackbar.make(requireView(),"Copied to clipboard!", Snackbar.LENGTH_SHORT).show()
+//        }
+//    }
 
     /**
      * This method destroys the view, cancels the timer, and unsets the binding variable.
