@@ -19,6 +19,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
 
 /**
@@ -183,6 +184,36 @@ class Loading : Fragment(R.layout.loading_page) {
             }
             dish!!.Score = score
             textView.text = "Your score is: $score"
+        }
+
+        /**
+         * Formats the user's game results (hints and guesses used) into a string to be shared.
+         *
+         * @param[won] true if the user is on the success page, false otherwise
+         *
+         * @return a string representation of the user's results
+         */
+        fun getResults(won: Boolean): String {
+            var hintsUsed = ""
+            var guessesUsed = ""
+            if (won) {
+                for (guess in 0..5) {
+                    if (guess == guesses.size - 1) { //final guess in list will be correct
+                        guessesUsed += "\uD83D\uDFE9"
+                    }else if (guess < guesses.size) {
+                        guessesUsed += "\uD83D\uDFE5"
+                    }else{ //guesses after correct guess are padding
+                        guessesUsed += "⬛"
+                    }
+                }
+            }else{ //all guesses were wrong
+                guessesUsed = "\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5\uD83D\uDFE5"
+            }
+            for (hint in 1..dish!!.HintCount){
+                hintsUsed += "\uD83D\uDD35"
+            }
+            val date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yy"))
+            return "Cuisinele $date\nHints: $hintsUsed\nGuesses: $guessesUsed"
         }
     }
 
