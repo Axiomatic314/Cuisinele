@@ -67,7 +67,7 @@
                     android:layout_gravity="fill"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textSize="40sp"
+                    android:textSize="16sp"
                     android:visibility="gone" />
 
                 <Button
@@ -87,7 +87,7 @@
                     android:layout_gravity="fill"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textSize="16sp"
+                    android:textSize="40sp"
                     android:visibility="gone" />
 
                 <Button
