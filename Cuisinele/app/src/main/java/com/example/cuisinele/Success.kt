@@ -39,7 +39,7 @@ class Success : Fragment() {
         Loading.getGuessData(binding.correctAnswer, textViews)
         Loading.setCountDown(binding.countdownTimer, binding.continueButton)
         setContinue()
-        Loading.setScore(true, binding.scoreTextView)
+//        Loading.setScore(true, binding.scoreTextView)
         return binding.root
     }
 

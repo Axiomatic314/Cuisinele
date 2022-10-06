@@ -8,34 +8,71 @@
     tools:context=".Success"
     tools:ignore="SpeakableTextPresentCheck">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
     <TextView
         android:id="@+id/successMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:text="@string/success"
-        android:textSize="50sp"
+        android:layout_marginTop="5dp"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/answerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/correctAnswerString"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/successMessage"/>
+
+    <TextView
+        android:id="@+id/correctAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="26sp"
+        app:layout_constraintTop_toBottomOf="@+id/answerText"/>
+
+    <Button
+        android:id="@+id/scoreButtonView"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"
+        android:text="@string/CopyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/correctAnswer" />
+
+    <TextView
         android:id="@+id/countdownTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center_horizontal|center_vertical"
-        android:text="testing"
+        android:text="loading"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/successMessage" />
+        app:layout_constraintTop_toBottomOf="@id/scoreButtonView" />
 
-
-    <!--  todo: add a share option  -->
-
-    <!-- todo: add recipe links -->
-
-    <!-- only use for unlimited games, todo: remove when finalising app -->
 
     <Button
             android:id="@+id/continueButton"
@@ -46,40 +83,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:padding="10dp"
-            android:visibility="invisible"
-            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintTop_toBottomOf="@+id/successMessage"
+            android:visibility="gone"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintTop_toBottomOf="@+id/successMessage"
             android:layout_marginTop="17dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent">
 
-        <TextView
-            android:id="@+id/answerText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/correctAnswerString"
-            android:textAlignment="center"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/correctAnswer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=""
-            android:textAlignment="center"
-            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/guessesText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/guessesString"
             android:textAlignment="center"
             android:textSize="18sp" />
@@ -89,15 +104,14 @@
             android:layout_width="fill_parent"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:gravity="center"
             android:stretchColumns="0,1">
 
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent">
 
@@ -112,7 +126,7 @@
                     android:gravity="center"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/guess2TextView"
@@ -126,16 +140,12 @@
                     android:padding="10sp"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
             </TableRow>
 
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent">
 
@@ -151,7 +161,7 @@
                     android:padding="10sp"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/guess4TextView"
@@ -165,16 +175,12 @@
                     android:padding="10sp"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
             </TableRow>
 
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent">
 
@@ -190,7 +196,7 @@
                     android:padding="10sp"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/guess6TextView"
@@ -204,12 +210,7 @@
                     android:padding="10sp"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
-            </TableRow>
-            <TableRow>
-                <!-- todo: format the score display -->
-                <TextView
-                    android:id="@+id/scoreTextView" />
+                    android:textSize="17sp" />
             </TableRow>
         </TableLayout>
     </LinearLayout>
