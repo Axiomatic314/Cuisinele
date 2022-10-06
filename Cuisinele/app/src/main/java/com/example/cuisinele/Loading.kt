@@ -135,7 +135,7 @@ class Loading : Fragment(R.layout.loading_page) {
 
                     override fun onFinish() {
                         continueButton.visibility = View.VISIBLE
-                        countdownTimer.visibility = View.INVISIBLE
+                        countdownTimer.visibility = View.GONE
                     }
 
                 }.start()

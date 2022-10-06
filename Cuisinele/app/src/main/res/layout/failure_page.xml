@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".Failure"
     tools:ignore="SpeakableTextPresentCheck">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
 
     <TextView
         android:id="@+id/failureMessage"
@@ -38,32 +45,32 @@
         android:textAlignment="center"
         android:textSize="26sp"
         app:layout_constraintTop_toBottomOf="@id/answerText" />
-    <Button
-        android:id="@+id/scoreButtonView"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="0dp"
-        android:layout_height="62dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:padding="10dp"
-        android:text="@string/CopyButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/correctAnswer" />
 
+        <Button
+            android:id="@+id/scoreButtonView"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="62dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
+            android:text="@string/CopyButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/correctAnswer" />
 
     <TextView
         android:id="@+id/countdownTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="testing"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/scoreButtonView" />
-
 
     <Button
         android:id="@+id/continueButton"
@@ -73,19 +80,10 @@
         android:layout_marginTop="17dp"
         android:padding="10dp"
         android:text="@string/continueButton"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/failureMessage" />
-
-    <!--  todo: add a share option  -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
             android:id="@+id/guessesText"

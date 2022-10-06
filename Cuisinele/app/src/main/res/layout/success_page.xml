@@ -8,6 +8,14 @@
     tools:context=".Success"
     tools:ignore="SpeakableTextPresentCheck">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
     <TextView
         android:id="@+id/successMessage"
         android:layout_width="wrap_content"
@@ -43,9 +51,8 @@
         android:id="@+id/scoreButtonView"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="62dp"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
         android:layout_marginTop="20dp"
         android:padding="15dp"
         android:text="@string/CopyButton"
@@ -58,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="testing"
         android:textSize="22sp"
@@ -81,17 +89,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:padding="10dp"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:layout_constraintHorizontal_bias="0.498" app:layout_constraintTop_toBottomOf="@+id/successMessage"
             android:layout_marginTop="17dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent">
-
 
 
         <TextView
