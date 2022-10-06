@@ -14,7 +14,7 @@
     <string name="AvailableEachDay">A new CUISINELE will be available each day!</string>
     <string name="ExampleAnswer">Japan</string>
     <string name="success">Success!</string>
-    <string name="failure">Failure...</string>
+    <string name="failure">Failure…</string>
     <string name="continueButton">Continue</string>
     <string name="DisplayGuess">Show Guesses</string>
     <string name="HideGuess">Hide Guesses</string>
@@ -25,5 +25,6 @@
     <string name="correctAnswerString">You correctly guessed today\'s Cuisinele:</string>
     <string name="answerString">The correct country was:</string>
     <string name="guessesString">Your Guesses:</string>
-    <string name="enterCountry">Enter country...</string>
+    <string name="enterCountry">Enter country…</string>
+    <string name="outOfDishes">There is no Cuisinele for today! Try again tomorrow…</string>
 </resources>
