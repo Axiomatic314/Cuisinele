@@ -6,7 +6,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="howTo">How To Play</string>
-    <string name="Steps">Guess the CUISINELE in 6 tries or less. \n\nEach Guess must be a valid country. \n\nAfter each incorrect guess, you will be given a fact about the country to help narrow down the possibilities.</string>
+    <string name="Steps">Guess the CUISINELE in 6 tries or less. \n\nEach Guess must be a valid country. \n\nYou may choose to reveal up to three hints: those being the region, the flag, and the first letter of the country\'s name.</string>
     <string name="ExampleString">Example:</string>
     <string name="HintStringExample">Hint</string>
     <string name="HintDescription">In this case, the correct answer was:</string>
@@ -14,7 +14,7 @@
     <string name="AvailableEachDay">A new CUISINELE will be available each day!</string>
     <string name="ExampleAnswer">Japan</string>
     <string name="success">Well Done!</string>
-    <string name="failure">Better luck next time!</string>
+    <string name="failure">So Close!</string>
     <string name="continueButton">Continue</string>
     <string name="DisplayGuess">Show Guesses</string>
     <string name="HideGuess">Hide Guesses</string>
@@ -25,7 +25,7 @@
     <string name="correctAnswerString">You correctly guessed today\'s Cuisinele:</string>
     <string name="answerString">The correct country was:</string>
     <string name="guessesString">Your Guesses:</string>
-    <string name="enterCountry">Enter country...</string>
-    <string name="CopyButton">Share Game</string>
+    <string name="enterCountry">Enter country…</string>
+    <string name="CopyButton">Share Results</string>
 
 </resources>
