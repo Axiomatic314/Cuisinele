@@ -43,7 +43,7 @@ class Failure : Fragment() {
         )
         Loading.setCountDown(binding.countdownTimer, binding.continueButton)
         setContinue()
-        Loading.setScore(false, binding.scoreTextView)
+//        Loading.setScore(false, binding.scoreTextView)
         return binding.root
     }
 

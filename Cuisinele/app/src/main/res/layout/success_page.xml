@@ -33,32 +33,37 @@
         android:id="@+id/correctAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:text=""
         android:textAlignment="center"
         android:textSize="26sp"
         app:layout_constraintTop_toBottomOf="@+id/answerText"/>
 
-    <TextView
-        android:id="@+id/scoreTextView"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/scoreButtonView"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/correctAnswer"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:padding="15dp"
+        android:text="@string/CopyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/correctAnswer" />
 
     <TextView
         android:id="@+id/countdownTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="testing"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scoreTextView" />
+        app:layout_constraintTop_toBottomOf="@id/scoreButtonView" />
 
 
     <!--  todo: add a share option  -->
