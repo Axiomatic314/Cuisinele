@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".Failure"
     tools:ignore="SpeakableTextPresentCheck">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,9 +20,8 @@
         android:id="@+id/failureMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:text="@string/failure"
-        android:textSize="40sp"
+        android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +30,7 @@
         android:id="@+id/answerText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="@string/answerString"
         android:textAlignment="center"
         android:textSize="18sp"
@@ -40,7 +40,7 @@
         android:id="@+id/correctAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:text=""
         android:textAlignment="center"
         android:textSize="26sp"
@@ -50,10 +50,10 @@
             android:id="@+id/scoreButtonView"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
-            android:layout_height="62dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:padding="15dp"
+            android:padding="8dp"
             android:text="@string/CopyButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
         android:gravity="center_horizontal|center_vertical"
-        android:text="testing"
+        android:text="loading"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,7 @@
             android:id="@+id/guessesText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:text="@string/guessesString"
             android:textAlignment="center"
@@ -100,15 +100,15 @@
             android:layout_width="fill_parent"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
             android:stretchColumns="0,1">
 
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent">
 
@@ -123,7 +123,7 @@
                     android:gravity="center"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/guess2TextView"
@@ -134,19 +134,14 @@
                     android:layout_weight="1"
                     android:background="@color/orangeDarker"
                     android:gravity="center"
-                    android:padding="10sp"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
             </TableRow>
 
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent">
 
@@ -159,10 +154,9 @@
                     android:layout_weight="1"
                     android:background="@color/orangeDarker"
                     android:gravity="center"
-                    android:padding="10sp"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/guess4TextView"
@@ -173,19 +167,14 @@
                     android:layout_weight="1"
                     android:background="@color/orangeDarker"
                     android:gravity="center"
-                    android:padding="10sp"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
             </TableRow>
 
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent">
 
@@ -198,10 +187,9 @@
                     android:layout_weight="1"
                     android:background="@color/orangeDarker"
                     android:gravity="center"
-                    android:padding="10sp"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/guess6TextView"
@@ -212,10 +200,9 @@
                     android:layout_weight="1"
                     android:background="@color/orangeDarker"
                     android:gravity="center"
-                    android:padding="10sp"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
             </TableRow>
         </TableLayout>
     </LinearLayout>

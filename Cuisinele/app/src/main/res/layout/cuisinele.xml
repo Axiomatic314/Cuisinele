@@ -110,29 +110,20 @@
                     android:textSize="16sp"
                     android:visibility="gone" />
             </LinearLayout>
-            <!--            <Button-->
-            <!--                android:id="@+id/displayGuessButton"-->
-            <!--                android:text="@string/HideGuess"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="48dp"-->
-            <!--                android:padding="10dp"-->
-            <!--                android:layout_gravity="center_horizontal"-->
-            <!--                style="@style/Widget.AppCompat.Button.Small" />-->
 
             <TableLayout
                 android:id="@+id/guessDisplay"
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:gravity="center"
                 android:stretchColumns="0,1">
 
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginRight="1dp"
-                    android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:background="@android:color/transparent">
 
@@ -150,7 +141,7 @@
                         android:padding="5dp"
                         android:textAlignment="center"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="18sp" />
+                        android:textSize="17sp" />
 
                     <TextView
                         android:id="@+id/guess2TextView"
@@ -166,16 +157,12 @@
                         android:padding="5dp"
                         android:textAlignment="center"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="18sp" />
+                        android:textSize="17sp" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="1dp"
-                    android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:background="@android:color/transparent">
 
@@ -193,7 +180,7 @@
                         android:padding="5dp"
                         android:textAlignment="center"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="18sp" />
+                        android:textSize="17sp" />
 
                     <TextView
                         android:id="@+id/guess4TextView"
@@ -209,16 +196,12 @@
                         android:padding="5dp"
                         android:textAlignment="center"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="18sp" />
+                        android:textSize="17sp" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="1dp"
-                    android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:background="@android:color/transparent">
 
@@ -236,7 +219,7 @@
                         android:padding="5dp"
                         android:textAlignment="center"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="18sp" />
+                        android:textSize="17sp" />
 
                     <TextView
                         android:id="@+id/guess6TextView"
@@ -252,7 +235,7 @@
                         android:padding="5dp"
                         android:textAlignment="center"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textSize="18sp" />
+                        android:textSize="17sp" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>
