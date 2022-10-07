@@ -109,25 +109,25 @@
                             android:layout_width="0dp"
                             android:layout_height="75dp"
                             android:layout_weight="1"
-                            android:text="@string/tutorialHintFlag"
+                            android:text="@string/tutorialHintRegion"
                             android:textAlignment="center"
-                            android:textSize="40sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/tutorialHint2"
                             android:layout_width="0dp"
                             android:layout_height="75dp"
                             android:layout_weight="1"
-                            android:text="@string/tutorialHintLetter"
+                            android:text="@string/tutorialHintFlag"
                             android:textAlignment="center"
-                            android:textSize="16sp" />
+                            android:textSize="40sp" />
 
                         <TextView
                             android:id="@+id/tutorialHint3"
                             android:layout_width="0dp"
                             android:layout_height="75dp"
                             android:layout_weight="1"
-                            android:text="@string/tutorialHintRegion"
+                            android:text="@string/tutorialHintLetter"
                             android:textAlignment="center"
                             android:textSize="16sp" />
 

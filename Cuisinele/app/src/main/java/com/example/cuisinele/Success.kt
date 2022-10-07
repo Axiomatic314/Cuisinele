@@ -1,13 +1,17 @@
 package com.example.cuisinele
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.SuccessPageBinding
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * Fragment class for the success page.
@@ -39,7 +43,7 @@ class Success : Fragment() {
         Loading.getGuessData(binding.correctAnswer, textViews)
         Loading.setCountDown(binding.countdownTimer, binding.continueButton)
         setContinue()
-        Loading.setScore(true, binding.scoreTextView)
+        copyResults()
         return binding.root
     }
 
@@ -74,6 +78,18 @@ class Success : Fragment() {
         }
         binding.continueButton.setOnClickListener {
             findNavController().navigate(R.id.LoadingPage)
+        }
+    }
+
+    private fun copyResults(){
+        val results = Loading.getResults(true)
+        val clipboard = ContextCompat.getSystemService(requireContext(), ClipboardManager::class.java) as ClipboardManager
+        val clip = ClipData.newPlainText("results", results)
+        binding.shareResults.setOnClickListener {
+            clipboard.setPrimaryClip(clip)
+            Snackbar.make(binding.successMessage,"Copied to clipboard!", Snackbar.LENGTH_SHORT).apply {
+                anchorView = binding.successMessage
+            }.show()
         }
     }
 
