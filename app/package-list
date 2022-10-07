@@ -113,6 +113,12 @@ $dokka.location:com.example.cuisinele/MainActivity/onBackPressed/#/PointingToDec
 $dokka.location:com.example.cuisinele/MainActivity/onCreateOptionsMenu/#android.view.Menu/PointingToDeclaration/app/com.example.cuisinele/-main-activity/on-create-options-menu.html
 $dokka.location:com.example.cuisinele/MainActivity/onOptionsItemSelected/#android.view.MenuItem/PointingToDeclaration/app/com.example.cuisinele/-main-activity/on-options-item-selected.html
 $dokka.location:com.example.cuisinele/MainActivity/onSupportNavigateUp/#/PointingToDeclaration/app/com.example.cuisinele/-main-activity/on-support-navigate-up.html
+$dokka.location:com.example.cuisinele/NoDishes///PointingToDeclaration/app/com.example.cuisinele/-no-dishes/index.html
+$dokka.location:com.example.cuisinele/NoDishes/NoDishes/#/PointingToDeclaration/app/com.example.cuisinele/-no-dishes/-no-dishes.html
+$dokka.location:com.example.cuisinele/NoDishes/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/com.example.cuisinele/-no-dishes/on-create-view.html
+$dokka.location:com.example.cuisinele/NoDishes/onDestroyView/#/PointingToDeclaration/app/com.example.cuisinele/-no-dishes/on-destroy-view.html
+$dokka.location:com.example.cuisinele/NoDishes/onPause/#/PointingToDeclaration/app/com.example.cuisinele/-no-dishes/on-pause.html
+$dokka.location:com.example.cuisinele/NoDishes/onResume/#/PointingToDeclaration/app/com.example.cuisinele/-no-dishes/on-resume.html
 $dokka.location:com.example.cuisinele/Settings.Companion///PointingToDeclaration/app/com.example.cuisinele/-settings/-companion/index.html
 $dokka.location:com.example.cuisinele/Settings.Companion/getDailyGames/#/PointingToDeclaration/app/com.example.cuisinele/-settings/-companion/get-daily-games.html
 $dokka.location:com.example.cuisinele/Settings.Companion/getStartDate/#/PointingToDeclaration/app/com.example.cuisinele/-settings/-companion/get-start-date.html
