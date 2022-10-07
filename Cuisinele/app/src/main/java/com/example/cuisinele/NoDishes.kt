@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.cuisinele.databinding.NoDishesPageBinding
 
+/** Fragment class for the NoDishes page.
+ *
+ * If there is no dish for the given day, the user will be redirected to this fragment.
+ */
 class NoDishes: Fragment() {
 
     private var _binding: NoDishesPageBinding? = null

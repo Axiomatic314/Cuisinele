@@ -81,6 +81,9 @@ class Success : Fragment() {
         }
     }
 
+    /**
+     * Copies the results to the device's clipboard.
+     */
     private fun copyResults(){
         val results = Loading.getResults(true)
         val clipboard = ContextCompat.getSystemService(requireContext(), ClipboardManager::class.java) as ClipboardManager
