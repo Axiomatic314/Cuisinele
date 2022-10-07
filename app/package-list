@@ -82,6 +82,7 @@ $dokka.location:com.example.cuisinele/Loading.Companion/getDish/#/PointingToDecl
 $dokka.location:com.example.cuisinele/Loading.Companion/getGuessData/#android.widget.TextView#kotlin.collections.List[android.widget.TextView]/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/get-guess-data.html
 $dokka.location:com.example.cuisinele/Loading.Companion/getGuesses/#/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/get-guesses.html
 $dokka.location:com.example.cuisinele/Loading.Companion/getHints/#/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/get-hints.html
+$dokka.location:com.example.cuisinele/Loading.Companion/getResults/#kotlin.Boolean/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/get-results.html
 $dokka.location:com.example.cuisinele/Loading.Companion/getTimer/#/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/get-timer.html
 $dokka.location:com.example.cuisinele/Loading.Companion/setCountDown/#android.widget.TextView#android.widget.TextView/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/set-count-down.html
 $dokka.location:com.example.cuisinele/Loading.Companion/setCountries/#kotlin.collections.List[com.example.cuisinele.data.models.Country]/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/set-countries.html
