@@ -91,7 +91,6 @@ $dokka.location:com.example.cuisinele/Loading.Companion/setDao/#com.example.cuis
 $dokka.location:com.example.cuisinele/Loading.Companion/setDish/#com.example.cuisinele.data.models.Dish?/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/set-dish.html
 $dokka.location:com.example.cuisinele/Loading.Companion/setGuesses/#kotlin.collections.List[com.example.cuisinele.data.models.Guess]/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/set-guesses.html
 $dokka.location:com.example.cuisinele/Loading.Companion/setHints/#kotlin.collections.List[com.example.cuisinele.data.models.Hint]?/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/set-hints.html
-$dokka.location:com.example.cuisinele/Loading.Companion/setScore/#kotlin.Boolean#android.widget.TextView/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/set-score.html
 $dokka.location:com.example.cuisinele/Loading.Companion/setTimer/#android.os.CountDownTimer?/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/set-timer.html
 $dokka.location:com.example.cuisinele/Loading.Companion/updateDish/#/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/update-dish.html
 $dokka.location:com.example.cuisinele/Loading.Companion/updateHint/#com.example.cuisinele.data.models.Hint/PointingToDeclaration/app/com.example.cuisinele/-loading/-companion/update-hint.html
