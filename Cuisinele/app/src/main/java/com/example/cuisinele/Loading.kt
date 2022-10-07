@@ -154,38 +154,6 @@ class Loading : Fragment(R.layout.loading_page) {
             }
         }
 
-        private fun calcScore(guesses: List<Guess>, hints: List<Hint>?): Int {
-            var score = 1050
-            if (hints != null) {
-                for (hint: Hint in hints) {
-                    if (hint.Activated) {
-                        score -= 100
-                    }
-                }
-            }
-
-            for (guess: Guess in guesses) {
-                score -= 50
-            }
-            return score
-        }
-
-        /**
-         * Calculates and sets the score in the database, as well as displaying the score on the
-         * end-screen.
-         *
-         * @param[won] true if the user is on the success page, false otherwise
-         * @param[textView] the TextView to put the score message in
-         */
-        fun setScore(won: Boolean, textView: TextView) {
-            var score = 0
-            if (won){
-                score = calcScore(guesses, hints)
-            }
-            dish!!.Score = score
-            textView.text = "Your score is: $score"
-        }
-
         /**
          * Formats the user's game results (hints and guesses used) into a string to be shared.
          *
