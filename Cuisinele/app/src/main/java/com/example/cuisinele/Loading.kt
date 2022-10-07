@@ -293,6 +293,8 @@ class Loading : Fragment(R.layout.loading_page) {
 
                         findNavController().navigate(R.id.Home)
                     }
+                }else{
+                    findNavController().navigate(R.id.NoDishesPage)
                 }
             }
         }

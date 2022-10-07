@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_LoadingPage_to_SuccessPage"
             app:destination="@id/SuccessPage" />
+        <action
+            android:id="@+id/action_LoadingPage_to_NoDishesPage"
+            app:destination="@id/NoDishesPage" />
     </fragment>
     <fragment
         android:id="@+id/Tut"
@@ -54,4 +57,9 @@
         android:name="com.example.cuisinele.Failure"
         android:label="@string/app_name"
         tools:layout="@layout/failure_page" />
+    <fragment
+        android:id="@+id/NoDishesPage"
+        android:name="com.example.cuisinele.NoDishes"
+        android:label="@string/app_name"
+        tools:layout="@layout/no_dishes_page" />
 </navigation>

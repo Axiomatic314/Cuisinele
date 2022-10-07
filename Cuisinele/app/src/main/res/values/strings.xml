@@ -26,6 +26,6 @@
     <string name="answerString">The correct country was:</string>
     <string name="guessesString">Your Guesses:</string>
     <string name="enterCountry">Enter country…</string>
+    <string name="outOfDishes">There is no Cuisinele for today!\nTry again tomorrow…</string>
     <string name="CopyButton">Share Results</string>
-
 </resources>
